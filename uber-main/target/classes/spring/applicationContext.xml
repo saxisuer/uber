@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" p:fileEncoding="utf-8">
+        <property name="location" value="classpath:init.properties"/>
+    </bean>
+
+    <context:component-scan base-package="com.uber.uberfamily">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"/>
+    </context:component-scan>
+    <context:annotation-config/>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="driverClass" value="${jdbc.driver_class}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="minPoolSize" value="${c3p0.minPoolSize}"/>
+        <property name="maxPoolSize" value="${c3p0.maxPoolSize}"/>
+        <property name="maxIdleTime" value="${c3p0.maxIdleTime}"/>
+        <property name="acquireIncrement" value="${c3p0.acquireIncrement}"/>
+        <property name="maxStatements" value="${c3p0.maxStatements}"/>
+        <property name="initialPoolSize" value="${c3p0.initialPoolSize}"/>
+        <property name="idleConnectionTestPeriod" value="${c3p0.idleConnectionTestPeriod}"/>
+        <property name="acquireRetryAttempts" value="${c3p0.acquireRetryAttempts}"/>
+        <property name="acquireRetryDelay" value="${c3p0.acquireRetryDelay}"/>
+        <property name="breakAfterAcquireFailure" value="${c3p0.breakAfterAcquireFailure}"/>
+        <property name="testConnectionOnCheckout" value="${c3p0.testConnectionOnCheckout}"/>
+        <property name="checkoutTimeout" value="${c3p0.checkoutTimeout}"/>
+        <property name="preferredTestQuery" value="${c3p0.preferredTestQuery}"/>
+        <property name="forceIgnoreUnresolvedTransactions" value="false"/>
+        <property name="testConnectionOnCheckin" value="${c3p0.testConnectionOnCheckin}"/>
+    </bean>
+
+
+    <!-- 事务 -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 配置事务异常封装 -->
+    <bean id="persistenceExceptionTranslationPostProcessor"
+          class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!-- AOP-->
+    <aop:aspectj-autoproxy/>
+
+
+    <!-- MyBatis配置 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
+        <property name="typeAliasesPackage" value="com.uber.uberfamily.model"/>
+        <!-- 显式指定Mapper文件位置 -->
+        <property name="mapperLocations" value="classpath:/mybatis/*Mapper.xml"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+    </bean>
+
+    <!-- 扫描basePackage下所有以@MyBatisRepository标识的 接口 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.uber.uberfamily.dao"/>
+        <property name="annotationClass" value="com.uber.uberfamily.framework.MyBatisRepository"/>
+    </bean>
+
+
+</beans>
