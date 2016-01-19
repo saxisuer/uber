@@ -1,11 +1,12 @@
 package com.ps;
 
+import com.uber.uberfamily.model.BaseCard;
 import com.uber.uberfamily.service.BaseCardService;
+import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
 /**
@@ -16,11 +17,12 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
  * @USER saxisuer
  * @COMPANY ENMOTECH
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(CustomJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring/applicationContext.xml"})
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 public class MybatisTest {
 
+    private static final Logger logger = Logger.getLogger(MybatisTest.class);
 
     @Autowired
     private BaseCardService baseCardService;
@@ -28,6 +30,7 @@ public class MybatisTest {
 
     @Test
     public void test1() {
-        baseCardService.getById(57L);
+        BaseCard baseCard = baseCardService.getById(57L);
+        logger.info(baseCard);
     }
 }

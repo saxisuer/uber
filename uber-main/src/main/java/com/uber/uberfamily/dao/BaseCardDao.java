@@ -1,6 +1,7 @@
 package com.uber.uberfamily.dao;
 
 import com.uber.uberfamily.framework.BaseDao;
+import com.uber.uberfamily.framework.MyBatisRepository;
 import com.uber.uberfamily.model.BaseCard;
 
 /**

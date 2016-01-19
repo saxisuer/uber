@@ -1,4 +1,4 @@
-package com.uber.uberfamily.dao;
+package com.uber.uberfamily.framework;
 
 import org.springframework.stereotype.Component;
 
