@@ -1,0 +1,636 @@
+[uber] 2016-01-20 02:47:29 276 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 02:47:29 276 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 02:47:29 278 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 02:47:29 278 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 02:47:29 279 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 02:47:29 279 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 02:47:29 702 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 02:47:29 702 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 02:47:29 735 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 02:47:29 735 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 02:47:29 796 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 02:47:29 796 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 02:47:30 080 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:104) - Creating a new SqlSession
+[uber] 2016-01-20 02:47:30 080 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Creating a new SqlSession
+[uber] 2016-01-20 02:47:30 088 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:120) - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7a49926c]
+[uber] 2016-01-20 02:47:30 088 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7a49926c]
+[uber] 2016-01-20 02:47:30 099 [DEBUG] main(org.mybatis.spring.transaction.SpringManagedTransaction:86) - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@3b1f1f5] will be managed by Spring
+[uber] 2016-01-20 02:47:30 099 [DEBUG] main(org.mybatis.spring.transaction.SpringManagedTransaction:) - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@3b1f1f5] will be managed by Spring
+[uber] 2016-01-20 02:47:30 107 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getById:139) - ==>  Preparing: SELECT * FROM t_base_card WHERE id = ? 
+[uber] 2016-01-20 02:47:30 107 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getById:) - ==>  Preparing: SELECT * FROM t_base_card WHERE id = ? 
+[uber] 2016-01-20 02:47:30 176 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getById:139) - ==> Parameters: 57(Long)
+[uber] 2016-01-20 02:47:30 176 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getById:) - ==> Parameters: 57(Long)
+[uber] 2016-01-20 02:47:30 206 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getById:139) - <==      Total: 1
+[uber] 2016-01-20 02:47:30 206 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getById:) - <==      Total: 1
+[uber] 2016-01-20 02:47:30 211 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:163) - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7a49926c]
+[uber] 2016-01-20 02:47:30 211 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7a49926c]
+[uber] 2016-01-20 02:47:30 211 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:261) - Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7a49926c]
+[uber] 2016-01-20 02:47:30 211 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7a49926c]
+[uber] 2016-01-20 02:47:30 212 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:287) - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7a49926c]
+[uber] 2016-01-20 02:47:30 212 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7a49926c]
+[uber] 2016-01-20 02:47:30 212 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:292) - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7a49926c]
+[uber] 2016-01-20 02:47:30 212 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7a49926c]
+[uber] 2016-01-20 02:47:30 214 [INFO ] main(com.ps.MybatisTest:34) - com.uber.uberfamily.model.BaseCard@177a26e[uuid=4020f162-a2c6-11e5-a029-00163e000e56,cardNoLogical=1000000001,cardNoPhysical=W1000000001,isLocked=0,lockedTime=<null>,lockedByWho=,isIssued=1,issueTime=Tue Dec 15 09:48:41 CST 2015,issuedByWho=admin,createTime=Tue Dec 15 08:53:26 CST 2015,createByWho=admin,ids=<null>,id=57]
+[uber] 2016-01-20 02:47:30 214 [INFO ] main(com.ps.MybatisTest:) - com.uber.uberfamily.model.BaseCard@177a26e[uuid=4020f162-a2c6-11e5-a029-00163e000e56,cardNoLogical=1000000001,cardNoPhysical=W1000000001,isLocked=0,lockedTime=<null>,lockedByWho=,isIssued=1,issueTime=Tue Dec 15 09:48:41 CST 2015,issuedByWho=admin,createTime=Tue Dec 15 08:53:26 CST 2015,createByWho=admin,ids=<null>,id=57]
+[uber] 2016-01-20 02:50:29 358 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 02:50:29 358 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 02:50:29 360 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 02:50:29 360 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 02:50:29 361 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 02:50:29 361 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 02:50:29 794 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 02:50:29 794 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 02:50:29 834 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 02:50:29 834 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 02:50:29 896 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 02:50:29 896 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 02:50:30 255 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:104) - Creating a new SqlSession
+[uber] 2016-01-20 02:50:30 255 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Creating a new SqlSession
+[uber] 2016-01-20 02:50:30 260 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:120) - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@97900df]
+[uber] 2016-01-20 02:50:30 260 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@97900df]
+[uber] 2016-01-20 02:50:30 274 [DEBUG] main(org.mybatis.spring.transaction.SpringManagedTransaction:86) - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@7a2ff95e] will be managed by Spring
+[uber] 2016-01-20 02:50:30 274 [DEBUG] main(org.mybatis.spring.transaction.SpringManagedTransaction:) - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@7a2ff95e] will be managed by Spring
+[uber] 2016-01-20 02:50:30 287 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getById:139) - ==>  Preparing: SELECT * FROM t_base_card WHERE id = ? 
+[uber] 2016-01-20 02:50:30 287 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getById:) - ==>  Preparing: SELECT * FROM t_base_card WHERE id = ? 
+[uber] 2016-01-20 02:50:30 365 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getById:139) - ==> Parameters: 57(Long)
+[uber] 2016-01-20 02:50:30 365 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getById:) - ==> Parameters: 57(Long)
+[uber] 2016-01-20 02:50:30 396 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getById:139) - <==      Total: 1
+[uber] 2016-01-20 02:50:30 396 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getById:) - <==      Total: 1
+[uber] 2016-01-20 02:50:30 402 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:163) - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@97900df]
+[uber] 2016-01-20 02:50:30 402 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@97900df]
+[uber] 2016-01-20 02:50:30 403 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:261) - Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@97900df]
+[uber] 2016-01-20 02:50:30 403 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@97900df]
+[uber] 2016-01-20 02:50:30 403 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:287) - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@97900df]
+[uber] 2016-01-20 02:50:30 403 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@97900df]
+[uber] 2016-01-20 02:50:30 403 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:292) - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@97900df]
+[uber] 2016-01-20 02:50:30 403 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@97900df]
+[uber] 2016-01-20 02:50:30 405 [INFO ] main(com.ps.MybatisTest:34) - com.uber.uberfamily.model.BaseCard@6ace086b[uuid=4020f162-a2c6-11e5-a029-00163e000e56,cardNoLogical=1000000001,cardNoPhysical=W1000000001,isLocked=0,lockedTime=<null>,lockedByWho=,isIssued=1,issueTime=Tue Dec 15 09:48:41 CST 2015,issuedByWho=admin,createTime=Tue Dec 15 08:53:26 CST 2015,createByWho=admin,ids=<null>,id=57]
+[uber] 2016-01-20 02:50:30 405 [INFO ] main(com.ps.MybatisTest:) - com.uber.uberfamily.model.BaseCard@6ace086b[uuid=4020f162-a2c6-11e5-a029-00163e000e56,cardNoLogical=1000000001,cardNoPhysical=W1000000001,isLocked=0,lockedTime=<null>,lockedByWho=,isIssued=1,issueTime=Tue Dec 15 09:48:41 CST 2015,issuedByWho=admin,createTime=Tue Dec 15 08:53:26 CST 2015,createByWho=admin,ids=<null>,id=57]
+[uber] 2016-01-20 14:08:58 870 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 14:08:58 870 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 14:08:58 872 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 14:08:58 872 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 14:08:58 874 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 14:08:58 874 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 14:08:59 405 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 14:08:59 405 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 14:08:59 511 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 14:08:59 511 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 14:08:59 580 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 14:08:59 580 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 14:08:59 992 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:104) - Creating a new SqlSession
+[uber] 2016-01-20 14:08:59 992 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Creating a new SqlSession
+[uber] 2016-01-20 14:09:00 009 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:140) - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7911fa00] was not registered for synchronization because synchronization is not active
+[uber] 2016-01-20 14:09:00 009 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7911fa00] was not registered for synchronization because synchronization is not active
+[uber] 2016-01-20 14:09:00 018 [DEBUG] main(org.mybatis.spring.transaction.SpringManagedTransaction:86) - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@3387f025] will not be managed by Spring
+[uber] 2016-01-20 14:09:00 018 [DEBUG] main(org.mybatis.spring.transaction.SpringManagedTransaction:) - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@3387f025] will not be managed by Spring
+[uber] 2016-01-20 14:09:00 024 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage:139) - ==>  Preparing: SELECT * FROM t_base_card 
+[uber] 2016-01-20 14:09:00 024 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage:) - ==>  Preparing: SELECT * FROM t_base_card 
+[uber] 2016-01-20 14:09:00 102 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage:139) - ==> Parameters: 
+[uber] 2016-01-20 14:09:00 102 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage:) - ==> Parameters: 
+[uber] 2016-01-20 14:09:00 230 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage:139) - <==      Total: 300
+[uber] 2016-01-20 14:09:00 230 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage:) - <==      Total: 300
+[uber] 2016-01-20 14:09:00 235 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:168) - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7911fa00]
+[uber] 2016-01-20 14:09:00 235 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7911fa00]
+[uber] 2016-01-20 14:09:27 709 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 14:09:27 709 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 14:09:27 712 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 14:09:27 712 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 14:09:27 713 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 14:09:27 713 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 14:09:28 122 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 14:09:28 122 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 14:09:28 180 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 14:09:28 180 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 14:09:28 229 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 14:09:28 229 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 14:09:28 536 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:104) - Creating a new SqlSession
+[uber] 2016-01-20 14:09:28 536 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Creating a new SqlSession
+[uber] 2016-01-20 14:09:28 549 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:140) - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6ffe8d15] was not registered for synchronization because synchronization is not active
+[uber] 2016-01-20 14:09:28 549 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6ffe8d15] was not registered for synchronization because synchronization is not active
+[uber] 2016-01-20 14:09:28 612 [DEBUG] main(org.mybatis.spring.transaction.SpringManagedTransaction:86) - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@6cb9c607] will not be managed by Spring
+[uber] 2016-01-20 14:09:28 612 [DEBUG] main(org.mybatis.spring.transaction.SpringManagedTransaction:) - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@6cb9c607] will not be managed by Spring
+[uber] 2016-01-20 14:09:28 621 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage_COUNT:139) - ==>  Preparing: SELECT count(*) FROM t_base_card 
+[uber] 2016-01-20 14:09:28 621 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage_COUNT:) - ==>  Preparing: SELECT count(*) FROM t_base_card 
+[uber] 2016-01-20 14:09:28 647 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage_COUNT:139) - ==> Parameters: 
+[uber] 2016-01-20 14:09:28 647 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage_COUNT:) - ==> Parameters: 
+[uber] 2016-01-20 14:09:28 665 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage_COUNT:139) - <==      Total: 1
+[uber] 2016-01-20 14:09:28 665 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage_COUNT:) - <==      Total: 1
+[uber] 2016-01-20 14:09:28 669 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage:139) - ==>  Preparing: SELECT * FROM t_base_card limit ?,? 
+[uber] 2016-01-20 14:09:28 669 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage:) - ==>  Preparing: SELECT * FROM t_base_card limit ?,? 
+[uber] 2016-01-20 14:09:28 670 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage:139) - ==> Parameters: 0(Integer), 10(Integer)
+[uber] 2016-01-20 14:09:28 670 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage:) - ==> Parameters: 0(Integer), 10(Integer)
+[uber] 2016-01-20 14:09:28 681 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage:139) - <==      Total: 10
+[uber] 2016-01-20 14:09:28 681 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage:) - <==      Total: 10
+[uber] 2016-01-20 14:09:28 681 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:168) - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6ffe8d15]
+[uber] 2016-01-20 14:09:28 681 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6ffe8d15]
+[uber] 2016-01-20 14:45:42 731 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 14:45:42 731 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 14:45:42 733 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 14:45:42 733 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 14:45:42 734 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 14:45:42 734 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 14:45:43 230 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 14:45:43 230 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 14:45:43 295 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 14:45:43 295 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 14:45:43 363 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 14:45:43 363 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 14:45:43 741 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:104) - Creating a new SqlSession
+[uber] 2016-01-20 14:45:43 741 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Creating a new SqlSession
+[uber] 2016-01-20 14:45:43 767 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:140) - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@72a973bd] was not registered for synchronization because synchronization is not active
+[uber] 2016-01-20 14:45:43 767 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@72a973bd] was not registered for synchronization because synchronization is not active
+[uber] 2016-01-20 14:45:43 839 [DEBUG] main(org.mybatis.spring.transaction.SpringManagedTransaction:86) - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@2281f1b2] will not be managed by Spring
+[uber] 2016-01-20 14:45:43 839 [DEBUG] main(org.mybatis.spring.transaction.SpringManagedTransaction:) - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@2281f1b2] will not be managed by Spring
+[uber] 2016-01-20 14:45:43 845 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage_COUNT:139) - ==>  Preparing: SELECT count(*) FROM t_base_card 
+[uber] 2016-01-20 14:45:43 845 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage_COUNT:) - ==>  Preparing: SELECT count(*) FROM t_base_card 
+[uber] 2016-01-20 14:45:43 885 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage_COUNT:139) - ==> Parameters: 
+[uber] 2016-01-20 14:45:43 885 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage_COUNT:) - ==> Parameters: 
+[uber] 2016-01-20 14:45:43 903 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage_COUNT:139) - <==      Total: 1
+[uber] 2016-01-20 14:45:43 903 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage_COUNT:) - <==      Total: 1
+[uber] 2016-01-20 14:45:43 908 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage:139) - ==>  Preparing: SELECT * FROM t_base_card limit ?,? 
+[uber] 2016-01-20 14:45:43 908 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage:) - ==>  Preparing: SELECT * FROM t_base_card limit ?,? 
+[uber] 2016-01-20 14:45:43 908 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage:139) - ==> Parameters: 0(Integer), 10(Integer)
+[uber] 2016-01-20 14:45:43 908 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage:) - ==> Parameters: 0(Integer), 10(Integer)
+[uber] 2016-01-20 14:45:43 920 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage:139) - <==      Total: 10
+[uber] 2016-01-20 14:45:43 920 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getPage:) - <==      Total: 10
+[uber] 2016-01-20 14:45:43 920 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:168) - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@72a973bd]
+[uber] 2016-01-20 14:45:43 920 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@72a973bd]
+[uber] 2016-01-20 14:45:43 921 [INFO ] main(com.ps.MybatisTest:46) - PageInfo{pageNum=1, pageSize=10, size=10, startRow=1, endRow=10, total=300, pages=30, list=Page{count=true, pageNum=1, pageSize=10, startRow=0, endRow=10, total=300, pages=30, countSignal=false, orderBy='null', orderByOnly=false, reasonable=false, pageSizeZero=true}, firstPage=1, prePage=0, nextPage=2, lastPage=8, isFirstPage=true, isLastPage=false, hasPreviousPage=false, hasNextPage=true, navigatePages=8, navigatepageNums=[1, 2, 3, 4, 5, 6, 7, 8]}
+[uber] 2016-01-20 14:45:43 921 [INFO ] main(com.ps.MybatisTest:) - PageInfo{pageNum=1, pageSize=10, size=10, startRow=1, endRow=10, total=300, pages=30, list=Page{count=true, pageNum=1, pageSize=10, startRow=0, endRow=10, total=300, pages=30, countSignal=false, orderBy='null', orderByOnly=false, reasonable=false, pageSizeZero=true}, firstPage=1, prePage=0, nextPage=2, lastPage=8, isFirstPage=true, isLastPage=false, hasPreviousPage=false, hasNextPage=true, navigatePages=8, navigatepageNums=[1, 2, 3, 4, 5, 6, 7, 8]}
+[uber] 2016-01-20 16:48:00 878 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:48:00 878 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:48:00 880 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:48:00 880 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:48:00 881 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:48:00 881 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:48:01 412 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:48:01 412 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:48:01 482 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:48:01 482 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:48:01 561 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:48:01 561 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:48:25 199 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:48:25 199 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:48:25 201 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:48:25 201 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:48:25 203 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:48:25 203 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:48:25 656 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:48:25 656 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:48:25 740 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:48:25 740 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:48:25 793 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:48:25 793 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:53:28 714 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:53:28 714 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:53:28 716 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:53:28 716 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:53:28 717 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:53:28 717 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:53:29 209 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:53:29 209 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:53:29 268 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:53:29 268 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:53:29 319 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:53:29 319 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:55:11 862 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:55:11 862 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:55:11 864 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:55:11 864 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:55:11 865 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:55:11 865 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:55:12 419 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:55:12 419 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:55:12 488 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:55:12 488 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:55:12 542 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:55:12 542 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:56:14 176 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:56:14 176 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:56:14 178 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:56:14 178 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:56:14 179 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:56:14 179 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:56:14 683 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:56:14 683 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:56:14 753 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:56:14 753 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:56:14 806 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:56:14 806 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:57:06 174 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:57:06 174 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:57:06 177 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:57:06 177 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:57:06 179 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:57:06 179 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:57:06 598 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:57:06 598 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:57:06 655 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:57:06 655 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:57:06 710 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:57:06 710 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:57:06 774 [INFO ] main(com.ps.MybatisTest:57) - MybatisTest's superclass not ParameterizedType
+[uber] 2016-01-20 16:57:06 774 [INFO ] main(com.ps.MybatisTest:) - MybatisTest's superclass not ParameterizedType
+[uber] 2016-01-20 16:58:00 338 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:58:00 338 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:58:00 340 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:58:00 340 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:58:00 341 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:58:00 341 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:58:00 762 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:58:00 762 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:58:00 834 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:58:00 834 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:58:00 896 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:58:00 896 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:58:00 966 [INFO ] main(com.ps.MybatisTest:57) - MybatisTest's superclass not ParameterizedType
+[uber] 2016-01-20 16:58:00 966 [INFO ] main(com.ps.MybatisTest:) - MybatisTest's superclass not ParameterizedType
+[uber] 2016-01-20 16:59:08 983 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:59:08 983 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:59:08 987 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:59:08 987 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:59:08 988 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:59:08 988 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:59:09 389 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:59:09 389 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:59:09 466 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:59:09 466 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:59:09 536 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:59:09 536 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:59:09 619 [INFO ] main(com.ps.MybatisTest:57) - MybatisTest's superclass not ParameterizedType
+[uber] 2016-01-20 16:59:09 619 [INFO ] main(com.ps.MybatisTest:) - MybatisTest's superclass not ParameterizedType
+[uber] 2016-01-20 16:59:46 540 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:59:46 540 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:59:46 542 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:59:46 542 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:59:46 543 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:59:46 543 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:59:47 044 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:59:47 044 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:59:47 104 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:59:47 104 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:59:47 172 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:59:47 172 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:59:47 240 [INFO ] main(com.ps.MybatisTest:57) - MybatisTest's superclass not ParameterizedType
+[uber] 2016-01-20 16:59:47 240 [INFO ] main(com.ps.MybatisTest:) - MybatisTest's superclass not ParameterizedType
+[uber] 2016-01-20 16:59:54 601 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:59:54 601 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 16:59:54 604 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:59:54 604 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 16:59:54 606 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:59:54 606 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 16:59:55 074 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:59:55 074 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 16:59:55 129 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:59:55 129 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 16:59:55 185 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:59:55 185 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 16:59:55 239 [INFO ] main(com.ps.MybatisTest:57) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 16:59:55 239 [INFO ] main(com.ps.MybatisTest:) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:00:45 469 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:00:45 469 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:00:45 473 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:00:45 473 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:00:45 477 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:00:45 477 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:00:45 941 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:00:45 941 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:00:46 024 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:00:46 024 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:00:46 090 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:00:46 090 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:00:46 146 [INFO ] main(com.ps.MybatisTest:57) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:00:46 146 [INFO ] main(com.ps.MybatisTest:) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:04:25 078 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:04:25 078 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:04:25 080 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:04:25 080 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:04:25 082 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:04:25 082 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:04:25 587 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:04:25 587 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:04:25 648 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:04:25 648 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:04:25 705 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:04:25 705 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:04:36 920 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:04:36 920 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:04:36 922 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:04:36 922 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:04:36 924 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:04:36 924 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:04:37 371 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:04:37 371 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:04:37 435 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:04:37 435 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:04:37 489 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:04:37 489 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:07:46 180 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:07:46 180 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:07:46 182 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:07:46 182 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:07:46 183 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:07:46 183 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:07:46 652 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:07:46 652 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:07:46 716 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:07:46 716 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:07:46 766 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:07:46 766 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:09:27 986 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:09:27 986 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:09:27 989 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:09:27 989 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:09:27 990 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:09:27 990 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:09:28 502 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:09:28 502 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:09:28 565 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:09:28 565 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:09:28 618 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:09:28 618 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:15:17 273 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:15:17 273 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:15:17 275 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:15:17 275 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:15:17 276 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:15:17 276 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:15:17 758 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:15:17 758 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:15:17 812 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:15:17 812 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:15:17 867 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:15:17 867 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:15:17 927 [INFO ] main(com.ps.MybatisTest:58) - PageInfo's superclass not ParameterizedType
+[uber] 2016-01-20 17:15:17 927 [INFO ] main(com.ps.MybatisTest:) - PageInfo's superclass not ParameterizedType
+[uber] 2016-01-20 17:19:22 614 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:19:22 614 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:19:22 616 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:19:22 616 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:19:22 617 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:19:22 617 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:19:23 052 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:19:23 052 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:19:23 118 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:19:23 118 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:19:23 172 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:19:23 172 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:20:25 259 [INFO ] main(com.ps.MybatisTest:59) - GenricTest's superclass not ParameterizedType
+[uber] 2016-01-20 17:20:25 259 [INFO ] main(com.ps.MybatisTest:) - GenricTest's superclass not ParameterizedType
+[uber] 2016-01-20 17:21:52 644 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:21:52 644 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:21:52 647 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:21:52 647 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:21:52 649 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:21:52 649 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:21:53 165 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:21:53 165 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:21:53 227 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:21:53 227 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:21:53 283 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:21:53 283 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:21:54 247 [INFO ] main(com.ps.MybatisTest:59) - GenricTest's superclass not ParameterizedType
+[uber] 2016-01-20 17:21:54 247 [INFO ] main(com.ps.MybatisTest:) - GenricTest's superclass not ParameterizedType
+[uber] 2016-01-20 17:26:33 540 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:26:33 540 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:26:33 542 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:26:33 542 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:26:33 544 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:26:33 544 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:26:34 024 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:26:34 024 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:26:34 088 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:26:34 088 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:26:34 143 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:26:34 143 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:26:52 293 [INFO ] main(com.ps.MybatisTest:64) - com.uber.uberfamily.model.User
+[uber] 2016-01-20 17:26:52 293 [INFO ] main(com.ps.MybatisTest:) - com.uber.uberfamily.model.User
+[uber] 2016-01-20 17:28:05 808 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:28:05 808 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:28:05 814 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:28:05 814 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:28:05 816 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:28:05 816 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:28:06 273 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:28:06 273 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:28:06 344 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:28:06 344 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:28:06 397 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:28:06 397 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:28:06 456 [INFO ] main(com.ps.MybatisTest:64) - com.uber.uberfamily.model.User
+[uber] 2016-01-20 17:28:06 456 [INFO ] main(com.ps.MybatisTest:) - com.uber.uberfamily.model.User
+[uber] 2016-01-20 17:28:06 456 [INFO ] main(com.ps.MybatisTest:64) - com.uber.uberfamily.model.Role
+[uber] 2016-01-20 17:28:06 456 [INFO ] main(com.ps.MybatisTest:) - com.uber.uberfamily.model.Role
+[uber] 2016-01-20 17:28:06 457 [INFO ] main(com.ps.MybatisTest:64) - java.lang.Long
+[uber] 2016-01-20 17:28:06 457 [INFO ] main(com.ps.MybatisTest:) - java.lang.Long
+[uber] 2016-01-20 17:28:06 457 [INFO ] main(com.ps.MybatisTest:64) - com.uber.uberfamily.model.Permission
+[uber] 2016-01-20 17:28:06 457 [INFO ] main(com.ps.MybatisTest:) - com.uber.uberfamily.model.Permission
+[uber] 2016-01-20 17:30:29 183 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:30:29 183 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:30:29 185 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:30:29 185 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:30:29 186 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:30:29 186 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:30:29 729 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:30:29 729 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:30:29 793 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:30:29 793 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:30:29 853 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:30:29 853 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:30:44 927 [INFO ] main(com.ps.MybatisTest:69) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:30:44 927 [INFO ] main(com.ps.MybatisTest:) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:31:04 916 [INFO ] main(com.ps.MybatisTest:69) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:31:04 916 [INFO ] main(com.ps.MybatisTest:) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:31:14 073 [INFO ] main(com.ps.MybatisTest:69) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:31:14 073 [INFO ] main(com.ps.MybatisTest:) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:31:18 649 [INFO ] main(com.ps.MybatisTest:69) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:31:18 649 [INFO ] main(com.ps.MybatisTest:) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:31:31 567 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:31:31 567 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:31:31 569 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:31:31 569 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:31:31 570 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:31:31 570 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:31:32 049 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:31:32 049 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:31:32 113 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:31:32 113 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:31:32 171 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:31:32 171 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:31:32 248 [INFO ] main(com.ps.MybatisTest:69) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:31:32 248 [INFO ] main(com.ps.MybatisTest:) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:31:32 248 [INFO ] main(com.ps.MybatisTest:69) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:31:32 248 [INFO ] main(com.ps.MybatisTest:) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:31:32 248 [INFO ] main(com.ps.MybatisTest:69) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:31:32 248 [INFO ] main(com.ps.MybatisTest:) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:31:32 249 [INFO ] main(com.ps.MybatisTest:69) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:31:32 249 [INFO ] main(com.ps.MybatisTest:) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:31:58 833 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:31:58 833 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:31:58 835 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:31:58 835 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:31:58 836 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:31:58 836 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:31:59 268 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:31:59 268 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:31:59 332 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:31:59 332 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:31:59 385 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:31:59 385 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:32:30 297 [INFO ] main(com.ps.MybatisTest:69) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:32:30 297 [INFO ] main(com.ps.MybatisTest:) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:32:30 297 [INFO ] main(com.ps.MybatisTest:69) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:32:30 297 [INFO ] main(com.ps.MybatisTest:) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:32:30 298 [INFO ] main(com.ps.MybatisTest:69) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:32:30 298 [INFO ] main(com.ps.MybatisTest:) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:32:30 298 [INFO ] main(com.ps.MybatisTest:69) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:32:30 298 [INFO ] main(com.ps.MybatisTest:) - $Proxy41's superclass not ParameterizedType
+[uber] 2016-01-20 17:55:40 538 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:55:40 538 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:55:40 540 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/PermissionDao.class]
+[uber] 2016-01-20 17:55:40 540 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/PermissionDao.class]
+[uber] 2016-01-20 17:55:40 540 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:55:40 540 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:55:40 542 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:55:40 542 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:55:40 542 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'permissionDao' and 'com.uber.uberfamily.dao.PermissionDao' mapperInterface
+[uber] 2016-01-20 17:55:40 542 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'permissionDao' and 'com.uber.uberfamily.dao.PermissionDao' mapperInterface
+[uber] 2016-01-20 17:55:40 542 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'permissionDao'.
+[uber] 2016-01-20 17:55:40 542 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'permissionDao'.
+[uber] 2016-01-20 17:55:41 034 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:55:41 034 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:55:41 102 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:55:41 102 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:55:41 154 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:55:41 154 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:55:41 165 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/PermissionMapper.xml]'
+[uber] 2016-01-20 17:55:41 165 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/PermissionMapper.xml]'
+[uber] 2016-01-20 17:56:35 953 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:56:35 953 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 17:56:35 955 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/PermissionDao.class]
+[uber] 2016-01-20 17:56:35 955 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/PermissionDao.class]
+[uber] 2016-01-20 17:56:35 955 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:56:35 955 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 17:56:35 956 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:56:35 956 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 17:56:35 957 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'permissionDao' and 'com.uber.uberfamily.dao.PermissionDao' mapperInterface
+[uber] 2016-01-20 17:56:35 957 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'permissionDao' and 'com.uber.uberfamily.dao.PermissionDao' mapperInterface
+[uber] 2016-01-20 17:56:35 957 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'permissionDao'.
+[uber] 2016-01-20 17:56:35 957 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'permissionDao'.
+[uber] 2016-01-20 17:56:36 384 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:56:36 384 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 17:56:36 445 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:56:36 445 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 17:56:36 496 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:56:36 496 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 17:56:36 507 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/PermissionMapper.xml]'
+[uber] 2016-01-20 17:56:36 507 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/PermissionMapper.xml]'
+[uber] 2016-01-20 17:56:36 865 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:104) - Creating a new SqlSession
+[uber] 2016-01-20 17:56:36 865 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Creating a new SqlSession
+[uber] 2016-01-20 17:56:36 894 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:120) - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@49b62ba]
+[uber] 2016-01-20 17:56:36 894 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@49b62ba]
+[uber] 2016-01-20 17:56:36 947 [DEBUG] main(org.mybatis.spring.transaction.SpringManagedTransaction:86) - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@486e8b86] will be managed by Spring
+[uber] 2016-01-20 17:56:36 947 [DEBUG] main(org.mybatis.spring.transaction.SpringManagedTransaction:) - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@486e8b86] will be managed by Spring
+[uber] 2016-01-20 17:56:36 952 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getList_COUNT:139) - ==>  Preparing: SELECT count(*) FROM t_base_card 
+[uber] 2016-01-20 17:56:36 952 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getList_COUNT:) - ==>  Preparing: SELECT count(*) FROM t_base_card 
+[uber] 2016-01-20 17:56:36 983 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getList_COUNT:139) - ==> Parameters: 
+[uber] 2016-01-20 17:56:36 983 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getList_COUNT:) - ==> Parameters: 
+[uber] 2016-01-20 17:56:37 005 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getList_COUNT:139) - <==      Total: 1
+[uber] 2016-01-20 17:56:37 005 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getList_COUNT:) - <==      Total: 1
+[uber] 2016-01-20 17:56:37 010 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getList:139) - ==>  Preparing: SELECT * FROM t_base_card limit ?,? 
+[uber] 2016-01-20 17:56:37 010 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getList:) - ==>  Preparing: SELECT * FROM t_base_card limit ?,? 
+[uber] 2016-01-20 17:56:37 010 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getList:139) - ==> Parameters: 0(Integer), 10(Integer)
+[uber] 2016-01-20 17:56:37 010 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getList:) - ==> Parameters: 0(Integer), 10(Integer)
+[uber] 2016-01-20 17:56:37 022 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getList:139) - <==      Total: 10
+[uber] 2016-01-20 17:56:37 022 [DEBUG] main(com.uber.uberfamily.dao.BaseCardDao.getList:) - <==      Total: 10
+[uber] 2016-01-20 17:56:37 022 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:163) - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@49b62ba]
+[uber] 2016-01-20 17:56:37 022 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@49b62ba]
+[uber] 2016-01-20 17:56:37 023 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:261) - Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@49b62ba]
+[uber] 2016-01-20 17:56:37 023 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@49b62ba]
+[uber] 2016-01-20 17:56:37 023 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:287) - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@49b62ba]
+[uber] 2016-01-20 17:56:37 023 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@49b62ba]
+[uber] 2016-01-20 17:56:37 024 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:292) - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@49b62ba]
+[uber] 2016-01-20 17:56:37 024 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@49b62ba]
+[uber] 2016-01-20 17:56:37 025 [INFO ] main(com.ps.MybatisTest:41) - PageInfo{pageNum=1, pageSize=10, size=10, startRow=1, endRow=10, total=300, pages=30, list=Page{count=true, pageNum=1, pageSize=10, startRow=0, endRow=10, total=300, pages=30, countSignal=false, orderBy='null', orderByOnly=false, reasonable=false, pageSizeZero=true}, firstPage=1, prePage=0, nextPage=2, lastPage=8, isFirstPage=true, isLastPage=false, hasPreviousPage=false, hasNextPage=true, navigatePages=8, navigatepageNums=[1, 2, 3, 4, 5, 6, 7, 8]}
+[uber] 2016-01-20 17:56:37 025 [INFO ] main(com.ps.MybatisTest:) - PageInfo{pageNum=1, pageSize=10, size=10, startRow=1, endRow=10, total=300, pages=30, list=Page{count=true, pageNum=1, pageSize=10, startRow=0, endRow=10, total=300, pages=30, countSignal=false, orderBy='null', orderByOnly=false, reasonable=false, pageSizeZero=true}, firstPage=1, prePage=0, nextPage=2, lastPage=8, isFirstPage=true, isLastPage=false, hasPreviousPage=false, hasNextPage=true, navigatePages=8, navigatepageNums=[1, 2, 3, 4, 5, 6, 7, 8]}
+[uber] 2016-01-20 18:12:56 926 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 18:12:56 926 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 18:12:56 928 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/PermissionDao.class]
+[uber] 2016-01-20 18:12:56 928 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/PermissionDao.class]
+[uber] 2016-01-20 18:12:56 928 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 18:12:56 928 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 18:12:56 930 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 18:12:56 930 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 18:12:56 930 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'permissionDao' and 'com.uber.uberfamily.dao.PermissionDao' mapperInterface
+[uber] 2016-01-20 18:12:56 930 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'permissionDao' and 'com.uber.uberfamily.dao.PermissionDao' mapperInterface
+[uber] 2016-01-20 18:12:56 930 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'permissionDao'.
+[uber] 2016-01-20 18:12:56 930 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'permissionDao'.
+[uber] 2016-01-20 18:12:57 370 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 18:12:57 370 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 18:12:57 422 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 18:12:57 422 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 18:12:57 477 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 18:12:57 477 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 18:12:57 497 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/PermissionMapper.xml]'
+[uber] 2016-01-20 18:12:57 497 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/PermissionMapper.xml]'
+[uber] 2016-01-20 18:12:57 804 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:104) - Creating a new SqlSession
+[uber] 2016-01-20 18:12:57 804 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Creating a new SqlSession
+[uber] 2016-01-20 18:12:57 820 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:120) - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@173d346e]
+[uber] 2016-01-20 18:12:57 820 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@173d346e]
+[uber] 2016-01-20 18:12:57 830 [DEBUG] main(org.mybatis.spring.transaction.SpringManagedTransaction:86) - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@30926bd7] will be managed by Spring
+[uber] 2016-01-20 18:12:57 830 [DEBUG] main(org.mybatis.spring.transaction.SpringManagedTransaction:) - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@30926bd7] will be managed by Spring
+[uber] 2016-01-20 18:12:57 837 [DEBUG] main(com.uber.uberfamily.dao.PermissionDao.getModuleGroups:139) - ==>  Preparing: SELECT * FROM t_auth_permission WHERE type = 1 ORDER BY sort_no ASC 
+[uber] 2016-01-20 18:12:57 837 [DEBUG] main(com.uber.uberfamily.dao.PermissionDao.getModuleGroups:) - ==>  Preparing: SELECT * FROM t_auth_permission WHERE type = 1 ORDER BY sort_no ASC 
+[uber] 2016-01-20 18:12:57 903 [DEBUG] main(com.uber.uberfamily.dao.PermissionDao.getModuleGroups:139) - ==> Parameters: 
+[uber] 2016-01-20 18:12:57 903 [DEBUG] main(com.uber.uberfamily.dao.PermissionDao.getModuleGroups:) - ==> Parameters: 
+[uber] 2016-01-20 18:12:57 936 [DEBUG] main(com.uber.uberfamily.dao.PermissionDao.getModuleGroups:139) - <==      Total: 3
+[uber] 2016-01-20 18:12:57 936 [DEBUG] main(com.uber.uberfamily.dao.PermissionDao.getModuleGroups:) - <==      Total: 3
+[uber] 2016-01-20 18:12:57 940 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:163) - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@173d346e]
+[uber] 2016-01-20 18:12:57 940 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@173d346e]
+[uber] 2016-01-20 18:12:57 940 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:261) - Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@173d346e]
+[uber] 2016-01-20 18:12:57 940 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@173d346e]
+[uber] 2016-01-20 18:12:57 940 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:287) - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@173d346e]
+[uber] 2016-01-20 18:12:57 940 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@173d346e]
+[uber] 2016-01-20 18:12:57 940 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:292) - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@173d346e]
+[uber] 2016-01-20 18:12:57 940 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@173d346e]
+[uber] 2016-01-20 18:13:49 380 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 18:13:49 380 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/BaseCardDao.class]
+[uber] 2016-01-20 18:13:49 382 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:286) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/PermissionDao.class]
+[uber] 2016-01-20 18:13:49 382 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Identified candidate component class: file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/com/uber/uberfamily/dao/PermissionDao.class]
+[uber] 2016-01-20 18:13:49 383 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 18:13:49 383 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'baseCardDao' and 'com.uber.uberfamily.dao.BaseCardDao' mapperInterface
+[uber] 2016-01-20 18:13:49 387 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 18:13:49 387 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'baseCardDao'.
+[uber] 2016-01-20 18:13:49 388 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:164) - Creating MapperFactoryBean with name 'permissionDao' and 'com.uber.uberfamily.dao.PermissionDao' mapperInterface
+[uber] 2016-01-20 18:13:49 388 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Creating MapperFactoryBean with name 'permissionDao' and 'com.uber.uberfamily.dao.PermissionDao' mapperInterface
+[uber] 2016-01-20 18:13:49 388 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:200) - Enabling autowire by type for MapperFactoryBean with name 'permissionDao'.
+[uber] 2016-01-20 18:13:49 388 [DEBUG] main(org.mybatis.spring.mapper.ClassPathMapperScanner:) - Enabling autowire by type for MapperFactoryBean with name 'permissionDao'.
+[uber] 2016-01-20 18:13:49 802 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:383) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 18:13:49 802 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Scanned package: 'com.uber.uberfamily.model' for aliases
+[uber] 2016-01-20 18:13:49 863 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:431) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 18:13:49 863 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[uber] 2016-01-20 18:13:49 921 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 18:13:49 921 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/BaseCardMapper.xml]'
+[uber] 2016-01-20 18:13:49 938 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:472) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/PermissionMapper.xml]'
+[uber] 2016-01-20 18:13:49 938 [DEBUG] main(org.mybatis.spring.SqlSessionFactoryBean:) - Parsed mapper file: 'file [/Users/saxisuer/Documents/workspace-intellij/uber/uber-main/target/classes/mybatis/PermissionMapper.xml]'
+[uber] 2016-01-20 18:13:50 256 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:104) - Creating a new SqlSession
+[uber] 2016-01-20 18:13:50 256 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Creating a new SqlSession
+[uber] 2016-01-20 18:13:50 273 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:120) - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5afecc75]
+[uber] 2016-01-20 18:13:50 273 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5afecc75]
+[uber] 2016-01-20 18:13:50 283 [DEBUG] main(org.mybatis.spring.transaction.SpringManagedTransaction:86) - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@3542d6bb] will be managed by Spring
+[uber] 2016-01-20 18:13:50 283 [DEBUG] main(org.mybatis.spring.transaction.SpringManagedTransaction:) - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@3542d6bb] will be managed by Spring
+[uber] 2016-01-20 18:13:50 292 [DEBUG] main(com.uber.uberfamily.dao.PermissionDao.getModuleGroups:139) - ==>  Preparing: SELECT * FROM t_auth_permission WHERE type = 1 ORDER BY sort_no ASC 
+[uber] 2016-01-20 18:13:50 292 [DEBUG] main(com.uber.uberfamily.dao.PermissionDao.getModuleGroups:) - ==>  Preparing: SELECT * FROM t_auth_permission WHERE type = 1 ORDER BY sort_no ASC 
+[uber] 2016-01-20 18:13:50 364 [DEBUG] main(com.uber.uberfamily.dao.PermissionDao.getModuleGroups:139) - ==> Parameters: 
+[uber] 2016-01-20 18:13:50 364 [DEBUG] main(com.uber.uberfamily.dao.PermissionDao.getModuleGroups:) - ==> Parameters: 
+[uber] 2016-01-20 18:13:50 387 [DEBUG] main(com.uber.uberfamily.dao.PermissionDao.getModuleGroups:139) - <==      Total: 3
+[uber] 2016-01-20 18:13:50 387 [DEBUG] main(com.uber.uberfamily.dao.PermissionDao.getModuleGroups:) - <==      Total: 3
+[uber] 2016-01-20 18:13:50 391 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:163) - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5afecc75]
+[uber] 2016-01-20 18:13:50 391 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5afecc75]
+[uber] 2016-01-20 18:13:50 392 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:261) - Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5afecc75]
+[uber] 2016-01-20 18:13:50 392 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5afecc75]
+[uber] 2016-01-20 18:13:50 393 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:287) - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5afecc75]
+[uber] 2016-01-20 18:13:50 393 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5afecc75]
+[uber] 2016-01-20 18:13:50 393 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:292) - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5afecc75]
+[uber] 2016-01-20 18:13:50 393 [DEBUG] main(org.mybatis.spring.SqlSessionUtils:) - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5afecc75]
