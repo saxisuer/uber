@@ -15,7 +15,7 @@ import java.util.Set;
  * @USER saxisuer
  * @COMPANY ENMOTECH
  */
-public class User  extends BaseModel{
+public class User extends BaseModel {
 
     private String name;
 
