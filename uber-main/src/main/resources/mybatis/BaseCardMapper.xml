@@ -7,4 +7,9 @@
         SELECT * FROM t_base_card
         WHERE id = #{value,javaType=long}
     </select>
+
+
+    <select id="getList" parameterType="java.util.Map" resultType="baseCard">
+        SELECT * FROM t_base_card
+    </select>
 </mapper>

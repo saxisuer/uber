@@ -9,8 +9,7 @@
     <appenders>
         <!-- 定义控制台输出 -->
         <Console name="Console" target="SYSTEM_OUT" follow="true" ignoreExceptions="false">
-            <PatternLayout
-                    pattern="[license] %d{yyyy-MM-dd HH:mm:ss SSS} [%-5p] %t(%c:%L) - %m%n"/>
+            <PatternLayout pattern="[uber] %d{yyyy-MM-dd HH:mm:ss SSS} [%-5p] %t(%c:%L) - %m%n"/>
         </Console>
 
         <RollingFile name="file-log" fileName="${LOG_HOME}/license.log"

@@ -1,6 +1,8 @@
 package com.uber.uberfamily.framework;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Project uber
@@ -10,7 +12,17 @@ import java.io.Serializable;
  * @USER saxisuer
  * @COMPANY ENMOTECH
  */
-public interface BaseDao<T, PK extends Serializable> {
+public interface BaseDao<T extends BaseModel, PK extends Serializable> {
 
     T getById(PK id);
+
+    T create(T model);
+
+    T update(T model);
+
+    T load(PK id);
+
+    void delete(PK id);
+
+    List<T> getList(Map<String, Object> param);
 }

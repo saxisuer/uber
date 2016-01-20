@@ -1,4 +1,4 @@
-package com.uber.uberfamily.service;
+package com.uber.uberfamily.framework;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;

@@ -1,11 +1,15 @@
 package com.uber.uberfamily.framework;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.log4j.Logger;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Project uber
@@ -22,6 +26,7 @@ public abstract class BaseServiceImpl<T extends BaseModel, PK extends Serializab
 
     protected E baseDao;
 
+    @Override
     public E getBaseDao() {
         return baseDao;
     }
@@ -31,5 +36,33 @@ public abstract class BaseServiceImpl<T extends BaseModel, PK extends Serializab
     @Override
     public T getById(PK id) {
         return this.getBaseDao().getById(id);
+    }
+
+    @Override
+    public T create(T model) {
+        return this.getBaseDao().create(model);
+    }
+
+    @Override
+    public T update(T model) {
+        return this.getBaseDao().update(model);
+    }
+
+    @Override
+    public void delete(PK id) {
+        this.getBaseDao().delete(id);
+    }
+
+    @Override
+    public List<T> getList(Map<String, Object> paramMap) {
+        return this.getBaseDao().getList(paramMap);
+    }
+
+    @Override
+    public PageInfo<T> getPage(Map<String, Object> param, int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<T> list = this.getBaseDao().getList(param);
+        PageInfo<T> pageInfo = new PageInfo<T>(list);
+        return pageInfo;
     }
 }

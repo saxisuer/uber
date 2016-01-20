@@ -1,6 +1,10 @@
 package com.uber.uberfamily.framework;
 
+import com.github.pagehelper.PageInfo;
+
 import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Project uber
@@ -12,5 +16,19 @@ import java.io.Serializable;
  */
 public interface BaseService<T extends BaseModel, PK extends Serializable, E extends BaseDao<T, PK>> {
 
+    E getBaseDao();
+
     T getById(PK id);
+
+    T create(T model);
+
+    T update(T model);
+
+    void delete(PK id);
+
+    List<T> getList(Map<String, Object> paramMap);
+
+
+    PageInfo<T> getPage(Map<String, Object> param, int pageNum, int pageSize);
+
 }
