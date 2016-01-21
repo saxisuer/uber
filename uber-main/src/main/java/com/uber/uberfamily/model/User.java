@@ -1,6 +1,7 @@
 package com.uber.uberfamily.model;
 
 import com.uber.uberfamily.framework.BaseModel;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -106,5 +107,10 @@ public class User extends BaseModel {
 
     public void setRoleIds(String roleIds) {
         this.roleIds = roleIds;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 }

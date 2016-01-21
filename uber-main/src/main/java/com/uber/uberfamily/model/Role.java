@@ -2,11 +2,6 @@ package com.uber.uberfamily.model;
 
 import com.uber.uberfamily.framework.BaseModel;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-
 /**
  * @Project uber
  * @Package com.uber.uberfamily.model
@@ -16,8 +11,8 @@ import java.util.Set;
  * @COMPANY ENMOTECH
  */
 public class Role extends BaseModel {
+
     private String name;
-    private Set<Permission> permissions = new LinkedHashSet<Permission>();
 
     public String getName() {
         return name;
@@ -26,16 +21,6 @@ public class Role extends BaseModel {
     public void setName(String name) {
         this.name = name;
     }
-
-    public Set<Permission> getPermissions() {
-        return permissions;
-    }
-
-    public void setPermissions(Set<Permission> permissions) {
-        this.permissions = permissions;
-    }
-
-    private List<String> permissionList = new ArrayList<String>();
 
     private String permissionIds;
 
