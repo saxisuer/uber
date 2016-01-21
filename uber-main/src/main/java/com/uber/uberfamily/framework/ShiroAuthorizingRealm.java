@@ -2,6 +2,7 @@ package com.uber.uberfamily.framework;
 
 import com.uber.uberfamily.model.Role;
 import com.uber.uberfamily.model.User;
+import com.uber.uberfamily.service.RoleService;
 import com.uber.uberfamily.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.*;
@@ -28,6 +29,9 @@ public class ShiroAuthorizingRealm extends AuthorizingRealm {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private RoleService roleService;
+
 
     /**
      * 授权
@@ -48,8 +52,7 @@ public class ShiroAuthorizingRealm extends AuthorizingRealm {
         if (user.getStatus().equals("0")) {
             throw new DisabledAccountException("User disabled");
         }
-        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(
-                getRoleNames(user.getRoles()));
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(getRoleNames(roleService.getRoleSetByUserId(user.getId())));
         return null;
     }
 

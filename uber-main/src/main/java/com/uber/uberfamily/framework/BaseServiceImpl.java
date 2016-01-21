@@ -62,7 +62,6 @@ public abstract class BaseServiceImpl<T extends BaseModel, PK extends Serializab
     public PageInfo<T> getPage(Map<String, Object> param, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<T> list = this.getBaseDao().getList(param);
-        PageInfo<T> pageInfo = new PageInfo<T>(list);
-        return pageInfo;
+        return new PageInfo<T>(list);
     }
 }

@@ -5,6 +5,7 @@ import com.uber.uberfamily.framework.BaseServiceImpl;
 import com.uber.uberfamily.framework.MyBatisService;
 import com.uber.uberfamily.model.Role;
 import com.uber.uberfamily.service.RoleService;
+import org.springframework.util.Assert;
 
 import javax.annotation.Resource;
 import java.util.Set;
@@ -27,6 +28,7 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Long, RoleDao> implem
 
     @Override
     public Set<Role> getRoleSetByUserId(Long userId) {
-        return null;
+        Assert.notNull(userId);
+        return this.getBaseDao().getRoleByUserId(userId);
     }
 }
