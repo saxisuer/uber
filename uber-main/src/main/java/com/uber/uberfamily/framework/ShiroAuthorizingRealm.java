@@ -1,5 +1,6 @@
 package com.uber.uberfamily.framework;
 
+import com.uber.uberfamily.model.Permission;
 import com.uber.uberfamily.model.Role;
 import com.uber.uberfamily.model.User;
 import com.uber.uberfamily.service.RoleService;
@@ -52,8 +53,21 @@ public class ShiroAuthorizingRealm extends AuthorizingRealm {
         if (user.getStatus().equals("0")) {
             throw new DisabledAccountException("User disabled");
         }
-        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(getRoleNames(roleService.getRoleSetByUserId(user.getId())));
+        Set<Role> userRole = roleService.getRoleSetByUserId(user.getId());
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(getRoleNames(userRole));
+        info.setStringPermissions(getPermission(userRole));
         return null;
+    }
+
+    private Set<String> getPermission(Set<Role> userRole) {
+        Set<String> results = new HashSet<String>();
+        for (Role r : userRole) {
+            Set<Permission> Permissions = r.getPermissionSet();
+            for (Permission p : Permissions) {
+                results.add(p.getCode());
+            }
+        }
+        return results;
     }
 
     private Set<String> getRoleNames(Set<Role> roles) {

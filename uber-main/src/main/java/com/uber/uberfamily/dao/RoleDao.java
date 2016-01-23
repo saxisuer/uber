@@ -19,4 +19,7 @@ public interface RoleDao extends BaseDao<Role, Long> {
 
     Set<Role> getRoleByUserId(Long userId);
 
+
+    Role getRoleById(Long id);
+
 }

@@ -5,7 +5,10 @@
 <configuration>
     <settings>
         <setting name="cacheEnabled" value="true"/>
+        <!-- 打开延迟加载的开关 -->
         <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- 将积极加载改为消极加载 按需加载 -->
+        <setting name="aggressiveLazyLoading" value="false"/>
         <setting name="multipleResultSetsEnabled" value="true"/>
         <setting name="useColumnLabel" value="true"/>
         <setting name="useGeneratedKeys" value="false"/>

@@ -18,4 +18,7 @@ public interface RoleService extends BaseService<Role, Long, RoleDao> {
 
     Set<Role> getRoleSetByUserId(Long userId);
 
+
+    Role getRoleById(Long id);
+
 }

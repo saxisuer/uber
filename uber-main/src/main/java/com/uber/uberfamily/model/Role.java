@@ -2,6 +2,8 @@ package com.uber.uberfamily.model;
 
 import com.uber.uberfamily.framework.BaseModel;
 
+import java.util.Set;
+
 /**
  * @Project uber
  * @Package com.uber.uberfamily.model
@@ -14,6 +16,8 @@ public class Role extends BaseModel {
 
     private String name;
 
+    private Set<Permission> permissionSet;
+
     public String getName() {
         return name;
     }
@@ -23,6 +27,14 @@ public class Role extends BaseModel {
     }
 
     private String permissionIds;
+
+    public Set<Permission> getPermissionSet() {
+        return permissionSet;
+    }
+
+    public void setPermissionSet(Set<Permission> permissionSet) {
+        this.permissionSet = permissionSet;
+    }
 
     @Override
     public boolean equals(Object obj) {

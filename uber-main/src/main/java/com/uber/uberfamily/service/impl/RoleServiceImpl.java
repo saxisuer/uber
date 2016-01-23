@@ -31,4 +31,10 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Long, RoleDao> implem
         Assert.notNull(userId);
         return this.getBaseDao().getRoleByUserId(userId);
     }
+
+
+    @Override
+    public Role getRoleById(Long id) {
+        return this.getBaseDao().getRoleById(id);
+    }
 }
