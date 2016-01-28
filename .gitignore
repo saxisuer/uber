@@ -36,7 +36,6 @@
 
 # Logs and databases #
 ######################
-*.log
 *.sql
 *.sqlite
 
@@ -53,3 +52,4 @@ ehthumbs.db
 Thumbs.db
 
 */target/
+*.log
