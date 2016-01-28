@@ -45,7 +45,7 @@ public abstract class BaseServiceImpl<T extends BaseModel, PK extends Serializab
 
     @Override
     public T update(T model) {
-        return this.getBaseDao().update(model);
+        return this.getBaseDao().update(model) > 0 ? model : null;
     }
 
     @Override
@@ -63,5 +63,10 @@ public abstract class BaseServiceImpl<T extends BaseModel, PK extends Serializab
         PageHelper.startPage(pageNum, pageSize);
         List<T> list = this.getBaseDao().getList(param);
         return new PageInfo<T>(list);
+    }
+
+    @Override
+    public T getByParameter(Map<String, Object> param) {
+        return this.getBaseDao().getByParameter(param);
     }
 }

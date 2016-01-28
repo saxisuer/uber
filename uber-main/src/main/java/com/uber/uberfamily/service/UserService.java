@@ -15,4 +15,5 @@ import com.uber.uberfamily.model.User;
 public interface UserService extends BaseService<User, Long, UserDao> {
 
     User getUserByName(String name);
+
 }

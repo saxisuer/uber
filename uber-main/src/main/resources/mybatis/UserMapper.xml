@@ -2,6 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.uber.uberfamily.dao.UserDao">
+
+
+    <sql id="mapWhereClause">
+        <if test="password != null">AND password = #{password,javaType=string}</if>
+        <if test="name != null">AND name = #{name,javaType=string}</if>
+        <if test="cnname != null">AND cnname = #{cnname,javaType=string}</if>
+        <if test="email != null">AND email = #{email,javaType=string}</if>
+        <if test="phone != null">AND phone = #{phone,javaType=string}</if>
+        <if test="status != null">AND status = #{status,javaType=string}</if>
+        <if test="id != null">AND id = #{id,javaType=long}</if>
+    </sql>
     <select id="getById" parameterType="long" resultType="user">
         SELECT * FROM t_auth_user
         WHERE id=#{value,javaType=long}
@@ -12,4 +23,26 @@
         WHERE name = #{value,javaType=String}
     </select>
 
+
+    <select id="getByParameter" parameterType="java.util.Map" resultType="user">
+        SELECT * FROM t_auth_user
+        <where>
+            <include refid="mapWhereClause"/>
+        </where>
+    </select>
+
+    <update id="update" parameterType="user">
+        UPDATE t_auth_user
+        <set>
+            <if test="name !=null">name = #{name,javaType=string} ,</if>
+            <if test="cnname !=null">cnname = #{cnname,javaType=string} ,</if>
+            <if test="password !=null">password = #{password,javaType=string},</if>
+            <if test="email !=null">email= #{email,javaType=string},</if>
+            <if test="phone !=null">phone = #{phone,javaType=string},</if>
+            <if test="status !=null">status = #{status,javaType=string},</if>
+        </set>
+        <where>
+            id = #{id,javaType=long}
+        </where>
+    </update>
 </mapper>

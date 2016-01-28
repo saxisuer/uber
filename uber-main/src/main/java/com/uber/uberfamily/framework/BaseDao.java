@@ -18,11 +18,14 @@ public interface BaseDao<T extends BaseModel, PK extends Serializable> {
 
     T create(T model);
 
-    T update(T model);
+    int update(T model);
 
     T load(PK id);
 
     void delete(PK id);
 
     List<T> getList(Map<String, Object> param);
+
+
+    T getByParameter(Map<String, Object> param);
 }

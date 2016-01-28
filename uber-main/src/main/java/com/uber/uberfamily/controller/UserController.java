@@ -1,7 +1,11 @@
 package com.uber.uberfamily.controller;
 
+import com.uber.uberfamily.model.User;
 import com.uber.uberfamily.service.UserService;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
@@ -33,7 +37,22 @@ public class UserController {
         Map<String, String> result = new HashMap<String, String>();
         result.put("resCode", "102004");
         String md5Oldpassword = DigestUtils.md5DigestAsHex(oldpassword.getBytes());
-
+        Map<String, Object> searchMap = new HashMap<>();
+        searchMap.put("id", this.getCurrentUser().getId());
+        searchMap.put("password", md5Oldpassword);
+        User user = userService.getByParameter(searchMap);
+        if (null != user) {
+            user.setPassword(DigestUtils.md5DigestAsHex(newpassword.getBytes()));
+            userService.update(user);
+            result.put("resCode", "0");
+        }
         return result;
+    }
+
+
+    public User getCurrentUser() {
+        Subject subject = SecurityUtils.getSubject();
+        Session session = subject.getSession();
+        return (User) session.getAttribute("userinfo");
     }
 }

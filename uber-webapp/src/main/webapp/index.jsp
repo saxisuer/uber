@@ -123,39 +123,63 @@
         var $oripass = $('#txtOriPass');
         var $newpass = $('#txtNewPass');
         var $rePass = $('#txtRePass');
-        if ($oripass.val() == '') {
-            $.messager.alert('系统提示', '请输入旧密码！', 'warning');
-            return false;
-        }
-        if ($newpass.val() == '') {
-            $.messager.alert('系统提示', '请输入新密码！', 'warning');
-            return false;
-        }
-        if ($rePass.val() == '') {
-            $.messager.alert('系统提示', '请重复输入新密码！', 'warning');
-            return false;
-        }
-        if ($newpass.val() != $rePass.val()) {
-            $.messager.alert('系统提示', '两次密码不一致！', 'warning');
-            return false;
-        }
-
-        $.post('${ctx}/user/user_changePassword?oldpassword=' + $oripass.val() + '&newpassword=' + $newpass.val(),
-                function (msg) {
-                    if (msg.resCode == '0') {
-                        $.messager.alert('系统提示', '密码修改成功，请牢记你的密码', 'info');
-                        $oripass.textbox('setValue', '');//赋值
-                        $newpass.textbox('setValue', '');//赋值
-                        $rePass.textbox('setValue', '');//赋值
-                        $('#passDialog').dialog('close');
-                    }
-                    else if (msg.resCode == '102004') {
-                        $.messager.alert('系统提示', '修改失败，旧密码错误！', 'error');
-                    }
-                    else {
-                        $.messager.alert('系统提示', '修改失败，错误原因：' + msg.errMsg, 'error');
-                    }
-                });
+        $.ajax({
+            data: {
+                'oldpassword': $oripass.val(),
+                'newpassword': $newpass.val()
+            },
+            method: 'POST',
+            url: '${ctx}/user/user_changePassword',
+            beforeSend: function () {
+                if ($oripass.val() == '') {
+                    $.messager.alert('系统提示', '请输入旧密码！', 'warning');
+                    return false;
+                }
+                if ($newpass.val() == '') {
+                    $.messager.alert('系统提示', '请输入新密码！', 'warning');
+                    return false;
+                }
+                if ($rePass.val() == '') {
+                    $.messager.alert('系统提示', '请重复输入新密码！', 'warning');
+                    return false;
+                }
+                if ($newpass.val() != $rePass.val()) {
+                    $.messager.alert('系统提示', '两次密码不一致！', 'warning');
+                    return false;
+                }
+            },
+            success: function (msg) {
+                if (msg.resCode == '0') {
+                    $.messager.alert('系统提示', '密码修改成功，请牢记你的密码', 'info');
+                    $oripass.textbox('setValue', '');//赋值
+                    $newpass.textbox('setValue', '');//赋值
+                    $rePass.textbox('setValue', '');//赋值
+                    $('#passDialog').dialog('close');
+                }
+                else if (msg.resCode == '102004') {
+                    $.messager.alert('系统提示', '修改失败，旧密码错误！', 'error');
+                }
+                else {
+                    $.messager.alert('系统提示', '修改失败，错误原因：' + msg.errMsg, 'error');
+                }
+            }
+        });
+        <%--$.post('${ctx}/user/user_changePassword?oldpassword=' + $oripass.val() + '&newpassword=' + $newpass.val(),--%>
+        <%--function (msg) {--%>
+        <%--if (msg.resCode == '0') {--%>
+        <%--$.messager.alert('系统提示', '密码修改成功，请牢记你的密码', 'info');--%>
+        <%--$oripass.textbox('setValue', '');//赋值--%>
+        <%--$newpass.textbox('setValue', '');//赋值--%>
+        <%--$rePass.textbox('setValue', '');//赋值--%>
+        <%--$('#passDialog').dialog('close');--%>
+        <%--}--%>
+        <%--else if (msg.resCode == '102004') {--%>
+        <%--$.messager.alert('系统提示', '修改失败，旧密码错误！', 'error');--%>
+        <%--}--%>
+        <%--else {--%>
+        <%--$.messager.alert('系统提示', '修改失败，错误原因：' + msg.errMsg, 'error');--%>
+        <%--}--%>
+        <%--});--%>
     };
 
     var closePassDiagFun = function () {

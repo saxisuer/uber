@@ -28,6 +28,8 @@ public interface BaseService<T extends BaseModel, PK extends Serializable, E ext
 
     List<T> getList(Map<String, Object> paramMap);
 
+    T getByParameter(Map<String, Object> param);
+
 
     PageInfo<T> getPage(Map<String, Object> param, int pageNum, int pageSize);
 

@@ -47,7 +47,7 @@ public class AuthorizeController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(User user, HttpServletRequest request) {
-        String loginMsg = "";
+        String loginMsg;
         try {
             if (user != null) {
                 UsernamePasswordToken token = new UsernamePasswordToken(
