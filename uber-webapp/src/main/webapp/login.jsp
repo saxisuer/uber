@@ -19,6 +19,7 @@
 <body>
 <div class="login-box">
     <img src="${ctx}/public/uber/logo.png" alt="">
+    <h4>${loginMsg}</h4>
     <form id="login_form" action="${ctx}/auth/login" method="post">
         <div class="input-group">
             <label for="username">账户</label>

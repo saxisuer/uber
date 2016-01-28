@@ -4,21 +4,20 @@
 <html>
 <head>
     <%@include file="/template/baseheader.jsp" %>
-
     <title>Uber family后台管理系统</title>
-    <link rel="stylesheet" type="text/css" href="<%=publicpath%>/easyui/default.css">
-    <script type="text/javascript" src="<%=publicpath%>/easyui/outlook.js"></script>
+    <link rel="stylesheet" type="text/css" href="${ctx}/public/easyui/default.css">
+    <script type="text/javascript" src="${ctx}/public/easyui/outlook.js"></script>
 </head>
 
 <body class="easyui-layout" style="overflow-y: hidden" scroll="no">
 <div region="north" split="true" border="false"
      style="overflow: hidden; height: 30px;
         background:  #08071c repeat-x center 50%;
-        line-height: 18px;color: #fff; font-family: Tahoma,Verdana,微软雅黑,新宋体;">
+        line-height: 18px;color: #fff; font-family: Tahoma,Verdana,微软雅黑,新宋体,serif;">
 		<span style="float:right; padding-right:20px;" class="head">
 		<a href="javascript:void;" class="easyui-menubutton" data-options="menu:'#sysMenus',iconCls:'icon-setting'">系统设置</a>
 		</span><span
-        style="padding-left:180px; padding-top:2px ; font-size: 16px; background: url(<%=path%>/public/uber/logo2.png) no-repeat 2px 3px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        style="padding-left:180px; padding-top:2px ; font-size: 16px; background: url(${ctx}/public/uber/logo2.png) no-repeat 2px 3px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 </div>
 <div id="sysMenus" style="width:150px;">
     <div id="editpass" data-options="iconCls:'icon-password'">修改密码</div>
@@ -28,7 +27,7 @@
 <div region="south" split="true"
      style="height: 30px; background: #08071c; ">
     <div class="footer">
-        <div style="float:right;">登录用户[<s:property value="#session.userinfo.cnname"/>]</div>
+        <div style="float:right;">登录用户[${userinfo.cnname}]</div>
     </div>
 </div>
 <div region="west" split="true" title="菜单栏" style="width:180px;"
@@ -44,7 +43,7 @@
     <div id="tabs" class="easyui-tabs" fit="true" border="false">
         <div title="控制台" style="padding:5px; text-align:center; background-color: #08091A;" id="home">
 
-            <img src="<%=publicpath%>/uber/banner.png">
+            <img src="${ctx}/public/uber/banner.png">
 
         </div>
     </div>
@@ -114,42 +113,7 @@
 </body>
 <script>
 
-    var _menus = {
-        "menus": [
-            {
-                "menuid": "1", "icon": "icon-sys", "menuname": "系统模块",
-                "menus": [
-                    {"menuname": "用户管理", "icon": "icon-users", "url": "<%=path%>/user_list"},
-                    {"menuname": "角色管理", "icon": "icon-role", "url": "<%=path%>/role_list"},
-                ]
-            }, {
-                "menuid": "2", "icon": "icon-sys", "menuname": "产品模块",
-                "menus": [{"menuname": "场景分类", "icon": "icon-nav", "url": "<%=path%>/codetable_list?codetable.rid=3c5db9143b1311e5ada91867b0206b6a"},
-                    {"menuname": "风格分类", "icon": "icon-nav", "url": "<%=path%>/codetable_list?codetable.rid=4a4da2283b1311e5ada91867b0206b6a"},
-                    {"menuname": "产品管理", "icon": "icon-nav", "url": "<%=path%>/codetable_listbrand"}
-
-                ]
-            }, {
-                "menuid": "3", "icon": "icon-sys", "menuname": "销售模块",
-                "menus": [{"menuname": "导购记录", "icon": "icon-nav", "url": "<%=path%>/shoppingrecord_list"},
-                    {"menuname": "订单记录", "icon": "icon-nav", "url": "<%=path%>/order_list"}
-                ]
-            }, {
-                "menuid": "28", "icon": "icon-sys", "menuname": "数据统计",
-                "menus": [{"menuname": "店员统计", "icon": "icon-man", "url": "<%=path%>/stat_single"},
-                    {"menuname": "店长统计", "icon": "icon-man", "url": "<%=path%>/stat_all"}
-                ]
-            }
-        ]
-    };
-
-    $.ajax({
-        url: '<%=path%>/auth/authMenus',
-        async: false,
-        success: function (data) {
-            _menus = data;
-        }
-    });
+    var _menus = {};
 
     var editPassDiagFun = function () {
         $('#passDialog').dialog('open');
@@ -176,7 +140,7 @@
             return false;
         }
 
-        $.post('<%=path%>/user/user_changePassword?oldpassword=' + $oripass.val() + '&newpassword=' + $newpass.val(),
+        $.post('${ctx}/user/user_changePassword?oldpassword=' + $oripass.val() + '&newpassword=' + $newpass.val(),
                 function (msg) {
                     if (msg.resCode == '0') {
                         $.messager.alert('系统提示', '密码修改成功，请牢记你的密码', 'info');
@@ -207,7 +171,7 @@
     var logoutFun = function () {
         $.messager.confirm('系统提示', '您确定要退出本次登录吗?', function (r) {
             if (r) {
-                location.href = '<%=path%>/auth/logout';
+                location.href = '${ctx}/auth/logout';
             }
         });
     };
@@ -219,7 +183,7 @@
         var action = opt.action,
                 params = opt.params == undefined ? '' : opt.params;
         $.ajax({
-            url: '<%=path%>/' + action,
+            url: '${ctx}/' + action,
             type: 'GET',
             data: params,
             success: function (data) {

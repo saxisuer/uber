@@ -56,7 +56,7 @@ public class ShiroAuthorizingRealm extends AuthorizingRealm {
         Set<Role> userRole = roleService.getRoleSetByUserId(user.getId());
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(getRoleNames(userRole));
         info.setStringPermissions(getPermission(userRole));
-        return null;
+        return info;
     }
 
     private Set<String> getPermission(Set<Role> userRole) {

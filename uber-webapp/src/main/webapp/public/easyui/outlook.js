@@ -1,164 +1,168 @@
-﻿$(function(){
-	InitLeftMenu();
-	tabClose();
-	tabCloseEven(); 
+﻿$(function () {
+    InitLeftMenu();
+    tabClose();
+    tabCloseEven();
 });
 
 //初始化左侧
 function InitLeftMenu() {
+    $.ajax({
+        method: 'GET',
+        url: ctx + '/auth/authMenus',
+        async: false,
+        success: function (data) {
+            _menus = data;
+            var menulist;
+            $.each(_menus.menus, function (i, n) {
+                menulist = '<ul class="accordion-menu-list">';
+                $.each(n.menus, function (j, o) {
+                    menulist += '<li><div><a href="javascript:void"  onclick="clickFun(\'' + o.menuname + '\', \'' + o.url + '\')"><span class="' + o.icon + '" ></span>' + o.menuname + '</a></div></li> ';
+                    //menulist += '<li><div><a target="mainFrame" href="' + o.url + '" ><span class="icon '+o.icon+'" ></span>' + o.menuname + '</a></div></li> ';
+                });
+                menulist += '</ul></div>';
 
-    //$(".easyui-accordion").empty();
-    var menulist;
+                $(".easyui-accordion").accordion('add', {
+                    title: n.menuname,
+                    selected: false,
+                    iconCls: n.icon,
+                    content: menulist
+                });
+            });
 
-    $.each(_menus.menus, function(i, n) {
-		menulist = '<ul class="accordion-menu-list">';
-        $.each(n.menus, function(j, o) {
-        	menulist += '<li><div><a href="javascript:void"  onclick="clickFun(\''+ o.menuname +'\', \''+o.url+'\')"><span class="'+o.icon+'" ></span>' + o.menuname + '</a></div></li> ';
-        	//menulist += '<li><div><a target="mainFrame" href="' + o.url + '" ><span class="icon '+o.icon+'" ></span>' + o.menuname + '</a></div></li> ';
-        });
-        menulist += '</ul></div>';
+            $('.easyui-accordion li a').click(function () {
+                var tabTitle = $(this).text();
+                var url = $(this).attr("href");
+                addTab(tabTitle, url);
+                $('.easyui-accordion li div').removeClass("selected");
+                $(this).parent().addClass("selected");
+            }).hover(function () {
+                $(this).parent().addClass("hover");
+            }, function () {
+                $(this).parent().removeClass("hover");
+            });
 
-    	$(".easyui-accordion").accordion('add',{
-            title: n.menuname,
-            selected: false,
-            iconCls: n.icon,
-            content:menulist,
-        });
+            $('#loginMask').hide();
+        }
     });
-	
-	$('.easyui-accordion li a').click(function(){
-		var tabTitle = $(this).text();
-		var url = $(this).attr("href");
-		addTab(tabTitle,url);
-		$('.easyui-accordion li div').removeClass("selected");
-		$(this).parent().addClass("selected");
-	}).hover(function(){
-		$(this).parent().addClass("hover");
-	},function(){
-		$(this).parent().removeClass("hover");
-	});
+    //$(".easyui-accordion").empty();
 
-	$('#loginMask').hide();
 }
 
-function clickFun(subtitle, url){
-	addTab(subtitle,'/UbfManagement'+url);
-	$('.easyui-accordion li div').removeClass("selected");
-	$(this).parent().addClass("selected");
+function clickFun(subtitle, url) {
+    addTab(subtitle, '/UbfManagement' + url);
+    $('.easyui-accordion li div').removeClass("selected");
+    $(this).parent().addClass("selected");
 }
 
-function addTab(subtitle,url){
-	if(!$('#tabs').tabs('exists',subtitle)){
-		$('#tabs').tabs('add',{
-			title:subtitle,
-			content:createFrame(url),
-			closable:true,
-			width:$('#mainPanle').width()-10,
-			height:$('#mainPanle').height()-26
-		});
-	}else{
-		$('#tabs').tabs('select',subtitle);
-	}
-	tabClose();
+function addTab(subtitle, url) {
+    if (!$('#tabs').tabs('exists', subtitle)) {
+        $('#tabs').tabs('add', {
+            title: subtitle,
+            content: createFrame(url),
+            closable: true,
+            width: $('#mainPanle').width() - 10,
+            height: $('#mainPanle').height() - 26
+        });
+    } else {
+        $('#tabs').tabs('select', subtitle);
+    }
+    tabClose();
 }
 
-function createFrame(url)
-{
-	var s = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
-	return s;
+function createFrame(url) {
+    var s = '<iframe scrolling="auto" frameborder="0"  src="' + url + '" style="width:100%;height:100%;"></iframe>';
+    return s;
 }
 
-function tabClose()
-{
-	/*双击关闭TAB选项卡*/
-	$(".tabs-inner").dblclick(function(){
-		var subtitle = $(this).children("span").text();
-		if (subtitle != '控制台'){
-			$('#tabs').tabs('close',subtitle);
-		}
-	});
+function tabClose() {
+    /*双击关闭TAB选项卡*/
+    $(".tabs-inner").dblclick(function () {
+        var subtitle = $(this).children("span").text();
+        if (subtitle != '控制台') {
+            $('#tabs').tabs('close', subtitle);
+        }
+    });
 
-	$(".tabs-inner").bind('contextmenu',function(e){
-		$('#mm').menu('show', {
-			left: e.pageX,
-			top: e.pageY,
-		});
-		
-		var subtitle =$(this).children("span").text();
-		$('#mm').data("currtab",subtitle);
-		
-		return false;
-	});
+    $(".tabs-inner").bind('contextmenu', function (e) {
+        $('#mm').menu('show', {
+            left: e.pageX,
+            top: e.pageY,
+        });
+
+        var subtitle = $(this).children("span").text();
+        $('#mm').data("currtab", subtitle);
+
+        return false;
+    });
 }
 //绑定右键菜单事件
-function tabCloseEven()
-{
-	//关闭当前
-	$('#mm-tabclose').click(function(){
-		var currtab_title = $('#mm').data("currtab");
-		if (currtab_title == '控制台'){
-			$.messager.alert('提示', "控制台不允许关闭！", 'info');
-		}
-		else{
-			$('#tabs').tabs('close',currtab_title);
-		}
-	});
-	//全部关闭
-	$('#mm-tabcloseall').click(function(){
-		$('.tabs-inner span').each(function(i,n){
-			var t = $(n).text();
-			if (t != '控制台'){
-				$('#tabs').tabs('close',t);
-			}
-		});	
-	});
-	//关闭除当前之外的TAB
-	$('#mm-tabcloseother').click(function(){
-		var currtab_title = $('#mm').data("currtab");
-		$('.tabs-inner span').each(function(i,n){
-			var t = $(n).text();
-			if(t!=currtab_title && t!='控制台')
-				$('#tabs').tabs('close',t);
-		});	
-	});
-	//关闭当前右侧的TAB
-	$('#mm-tabcloseright').click(function(){
-		var nextall = $('.tabs-selected').nextAll();
-		if(nextall.length==0){
-			//msgShow('系统提示','后边没有啦~~','error');
-			$.messager.alert('提示', "右边没有标签页", 'info');
-			return false;
-		}
-		nextall.each(function(i,n){
-			var t=$('a:eq(0) span',$(n)).text();
-			$('#tabs').tabs('close',t);
-		});
-		return false;
-	});
-	//关闭当前左侧的TAB
-	$('#mm-tabcloseleft').click(function(){
-		var prevall = $('.tabs-selected').prevAll();
-		if(prevall.length==0){
-			$.messager.alert('提示', "左边没有标签页", 'info');
-			return false;
-		}
-		prevall.each(function(i,n){
-			var t=$('a:eq(0) span',$(n)).text();
-			if(t!='控制台')
-				$('#tabs').tabs('close',t);
-		});
-		return false;
-	});
+function tabCloseEven() {
+    //关闭当前
+    $('#mm-tabclose').click(function () {
+        var currtab_title = $('#mm').data("currtab");
+        if (currtab_title == '控制台') {
+            $.messager.alert('提示', "控制台不允许关闭！", 'info');
+        }
+        else {
+            $('#tabs').tabs('close', currtab_title);
+        }
+    });
+    //全部关闭
+    $('#mm-tabcloseall').click(function () {
+        $('.tabs-inner span').each(function (i, n) {
+            var t = $(n).text();
+            if (t != '控制台') {
+                $('#tabs').tabs('close', t);
+            }
+        });
+    });
+    //关闭除当前之外的TAB
+    $('#mm-tabcloseother').click(function () {
+        var currtab_title = $('#mm').data("currtab");
+        $('.tabs-inner span').each(function (i, n) {
+            var t = $(n).text();
+            if (t != currtab_title && t != '控制台')
+                $('#tabs').tabs('close', t);
+        });
+    });
+    //关闭当前右侧的TAB
+    $('#mm-tabcloseright').click(function () {
+        var nextall = $('.tabs-selected').nextAll();
+        if (nextall.length == 0) {
+            //msgShow('系统提示','后边没有啦~~','error');
+            $.messager.alert('提示', "右边没有标签页", 'info');
+            return false;
+        }
+        nextall.each(function (i, n) {
+            var t = $('a:eq(0) span', $(n)).text();
+            $('#tabs').tabs('close', t);
+        });
+        return false;
+    });
+    //关闭当前左侧的TAB
+    $('#mm-tabcloseleft').click(function () {
+        var prevall = $('.tabs-selected').prevAll();
+        if (prevall.length == 0) {
+            $.messager.alert('提示', "左边没有标签页", 'info');
+            return false;
+        }
+        prevall.each(function (i, n) {
+            var t = $('a:eq(0) span', $(n)).text();
+            if (t != '控制台')
+                $('#tabs').tabs('close', t);
+        });
+        return false;
+    });
 
-	//退出
-	$("#mm-exit").click(function(){
-		$('#mm').menu('hide');
-	});
+    //退出
+    $("#mm-exit").click(function () {
+        $('#mm').menu('hide');
+    });
 }
 
 //弹出信息窗口 title:标题 msgString:提示信息 msgType:信息类型 [error,info,question,warning]
 function msgShow(title, msgString, msgType) {
-	$.messager.alert(title, msgString, msgType);
+    $.messager.alert(title, msgString, msgType);
 }
 
 function clockon() {
@@ -177,7 +181,7 @@ function clockon() {
     if (hour < 10) hour = "0" + hour;
     if (minu < 10) minu = "0" + minu;
     if (sec < 10) sec = "0" + sec;
-    var arr_week = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
+    var arr_week = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
     week = arr_week[day];
     var time = "";
     time = year + "年" + month + "月" + date + "日" + " " + hour + ":" + minu + ":" + sec + " " + week;

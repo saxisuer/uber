@@ -12,7 +12,7 @@
             <PatternLayout pattern="[uber] %d{yyyy-MM-dd HH:mm:ss SSS} [%-5p] %t(%c:%L) - %m%n"/>
         </Console>
 
-        <RollingFile name="file-log" fileName="${LOG_HOME}/license.log"
+        <RollingFile name="file-log" fileName="${LOG_HOME}/uber.log"
                      filePattern="${LOG_HOME}/license.log.%d{yyyy-MM-dd}" bufferSize="8192" bufferedIO="true">
             <PatternLayout>
                 <pattern>[uber] %d{yyyy-MM-dd HH:mm:ss SSS} [%-5p] %t(%c:%L) - %m%n</pattern>
@@ -29,6 +29,7 @@
     <loggers>
         <logger name="org.springframework" level="ERROR"/>
         <logger name="org.apache" level="ERROR"/>
+        <logger name="org.apache.shiro" level="{LEVEL}"/>
         <logger name="org.apache.catalina" level="ERROR"/>
         <logger name="org.quartz" level="ERROR"/>
         <logger name="com.mchange" level="ERROR"/>

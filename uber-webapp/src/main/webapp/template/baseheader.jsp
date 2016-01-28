@@ -24,5 +24,5 @@
 
 <script type="text/javascript">
     var sy = sy || {};
-    var a = '${pageContext.request.contextPath}'
+    var ctx = '${pageContext.request.contextPath}'
 </script>

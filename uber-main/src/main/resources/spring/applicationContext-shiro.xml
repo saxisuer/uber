@@ -5,6 +5,7 @@
 
     <bean id="shiroAuthRealm" class="com.uber.uberfamily.framework.ShiroAuthorizingRealm">
         <property name="cacheManager" ref="cacheManager"/>
+        <property name="authorizationCachingEnabled" value="true"/>
         <property name="credentialsMatcher">
             <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
                 <property name="hashAlgorithmName" value="MD5"/>
@@ -34,7 +35,7 @@
         <property name="filterChainDefinitions">
             <value>
                 /public/** = anon
-                /auth/login.action = anon
+                /auth/login = anon
                 /404.jsp = anon
                 /500.jsp = anon
                 /unauth.html = anon
