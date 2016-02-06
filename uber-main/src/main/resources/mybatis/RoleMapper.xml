@@ -93,4 +93,15 @@
             </if>
         </where>
     </select>
+
+
+    <delete id="deleteRoleByUserId" parameterType="long">
+        DELETE FROM t_auth_user_role WHERE user_id = #{value,javaType=long}
+    </delete>
+
+    <insert id="createUserRole" parameterType="java.util.Map">
+        insert into t_auth_user_role(role_id,user_id)VALUES (
+        #{roleId,javaType=long},#{userId,javaType=long}
+        )
+    </insert>
 </mapper>

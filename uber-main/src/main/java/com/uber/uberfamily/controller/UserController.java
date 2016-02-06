@@ -6,6 +6,7 @@ import com.uber.uberfamily.framework.util.JsonMapper;
 import com.uber.uberfamily.model.User;
 import com.uber.uberfamily.service.RoleService;
 import com.uber.uberfamily.service.UserService;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.session.Session;
@@ -101,8 +102,20 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public Map<String, String> save() {
-        Map<String, String> map = new HashMap<>();
-        return map;
+    public Map<String, String> save(User user) {
+        Map<String, String> result = new HashMap<>();
+        //进入新增
+        if (user.getId() != null || StringUtils.isBlank(user.getId().toString())) {
+            User searchUser = userService.getUserByName(user.getName());
+            if (searchUser != null) {
+                result.put("result", "ERROR");
+                result.put("str", "账号不能重复！");
+                return result;
+            }
+            user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
+        }
+        userService.save(user);
+        result.put("result", "SUCCESS");
+        return result;
     }
 }

@@ -16,4 +16,5 @@ public interface UserService extends BaseService<User, Long, UserDao> {
 
     User getUserByName(String name);
 
+    User save(User user);
 }

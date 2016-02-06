@@ -8,6 +8,7 @@ import com.uber.uberfamily.service.RoleService;
 import org.springframework.util.Assert;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -43,5 +44,18 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Long, RoleDao> implem
     @Override
     public List<Map<String, Object>> getRoleMap(Map<String, Object> paramMap) {
         return this.getBaseDao().getRoleMap(paramMap);
+    }
+
+    @Override
+    public void deleteRoleByUserId(Long userId) {
+        this.getBaseDao().deleteRoleByUserId(userId);
+    }
+
+    @Override
+    public void createUserRole(Long userId, String roleId) {
+        Map<String, Object> insertMap = new HashMap<>();
+        insertMap.put("userId", userId);
+        insertMap.put("roleId", roleId);
+        this.getBaseDao().createUserRole(insertMap);
     }
 }

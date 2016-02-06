@@ -52,4 +52,10 @@
             <include refid="mapWhereClause"/>
         </where>
     </select>
+
+    <insert id="create" parameterType="user" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_auth_user(name,cnname,password,email,phone,status)VALUES (
+        #{name},#{cnname},#{password},#{email},#{phone},#{status}
+        )
+    </insert>
 </mapper>
