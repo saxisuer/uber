@@ -1,6 +1,8 @@
 package com.uber.uberfamily.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.ps.CustomJUnit4ClassRunner;
+import com.uber.uberfamily.model.User;
 import com.uber.uberfamily.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,5 +29,13 @@ public class UserServiceImplTest {
     @Test
     public void testGetUserByName() throws Exception {
         System.out.println(userService.getUserByName("admin"));
+    }
+
+
+    @Test
+    public void testLoadPage() {
+        PageInfo<User> page = userService.getPage(null, 1, 10);
+        page.getList();
+        page.getTotal();
     }
 }

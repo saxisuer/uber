@@ -49,7 +49,7 @@ function InitLeftMenu() {
 }
 
 function clickFun(subtitle, url) {
-    addTab(subtitle, '/UbfManagement' + url);
+    addTab(subtitle, '/uber' + url);
     $('.easyui-accordion li div').removeClass("selected");
     $(this).parent().addClass("selected");
 }

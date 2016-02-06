@@ -108,7 +108,7 @@ public class AuthorizeController {
     @RequestMapping(value = "/authMenus", method = RequestMethod.GET)
     public Map<String, List<MenuGroup>> authMenus() {
         Subject subject = SecurityUtils.getSubject();
-        List<Permission> moduleGroups = permissionService.getModuleGroups();
+        List<Permission> moduleGroups = permissionService.getPermission(null);
         List<MenuGroup> groupList = new ArrayList<MenuGroup>();
         for (Permission g : moduleGroups) {
             if (subject.isPermitted(g.getCode())) {
@@ -116,7 +116,7 @@ public class AuthorizeController {
                 mg.setMenuid(Long.toString(g.getId()));
                 mg.setIcon(g.getIco());
                 mg.setMenuname(g.getName());
-                Set<Permission> menuSet = permissionService.getChildren(g.getId());
+                Set<Permission> menuSet = g.getPermissionSet();
                 List<Menus> mlist = new ArrayList<Menus>();
                 for (Permission obj : menuSet) {
                     if (subject.isPermitted(obj.getCode())) {

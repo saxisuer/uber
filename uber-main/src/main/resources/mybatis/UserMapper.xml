@@ -45,4 +45,11 @@
             id = #{id,javaType=long}
         </where>
     </update>
+
+    <select id="getList" parameterType="java.util.Map" resultType="user">
+        SELECT * FROM t_auth_user
+        <where>
+            <include refid="mapWhereClause"/>
+        </where>
+    </select>
 </mapper>

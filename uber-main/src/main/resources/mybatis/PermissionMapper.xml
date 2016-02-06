@@ -26,4 +26,52 @@
         SELECT * FROM t_auth_permission
         WHERE pid = #{value,javaType=long}
     </select>
+
+    <resultMap id="permissionMap" type="permission">
+        <id column="id" javaType="long" property="id"/>
+        <result column="code" property="code"/>
+        <result column="ico" property="ico"/>
+        <result column="name" property="name"/>
+        <result column="pid" property="pid"/>
+        <result column="sort_no" property="sortNo"/>
+        <result column="type" property="type"/>
+        <result column="url" property="url"/>
+        <collection property="permissionSet" ofType="permission" fetchType="lazy" columnPrefix="children_" resultMap="children_permission"/>
+    </resultMap>
+
+    <resultMap id="children_permission" type="permission">
+        <id column="id" javaType="long" property="id"/>
+        <result column="code" property="code"/>
+        <result column="ico" property="ico"/>
+        <result column="name" property="name"/>
+        <result column="pid" property="pid"/>
+        <result column="sort_no" property="sortNo"/>
+        <result column="type" property="type"/>
+        <result column="url" property="url"/>
+    </resultMap>
+
+    <select id="getPermission" parameterType="java.util.Map" resultMap="permissionMap">
+        SELECT
+        t.id,
+        t.code,
+        t.ico,
+        t.name,
+        t.pid,
+        t.sort_no,
+        t.type,
+        t.url,
+        children.id as children_id,
+        children.pid as children_pid,
+        children.name as children_name,
+        children.code as children_code,
+        children.sort_no as children_sortNo,
+        children.type as children_type,
+        children.url as children_url,
+        children.ico as children_ico
+        FROM t_auth_permission t, t_auth_permission children
+        <where>
+            t.id = children.pid
+            and t.TYPE = 1
+        </where>
+    </select>
 </mapper>

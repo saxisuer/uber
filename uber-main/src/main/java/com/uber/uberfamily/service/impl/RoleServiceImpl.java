@@ -8,6 +8,8 @@ import com.uber.uberfamily.service.RoleService;
 import org.springframework.util.Assert;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -18,7 +20,7 @@ import java.util.Set;
  * @USER saxisuer
  * @COMPANY ENMOTECH
  */
-@MyBatisService
+@MyBatisService("roleService")
 public class RoleServiceImpl extends BaseServiceImpl<Role, Long, RoleDao> implements RoleService {
     @Override
     @Resource(name = "roleDao")
@@ -36,5 +38,10 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Long, RoleDao> implem
     @Override
     public Role getRoleById(Long id) {
         return this.getBaseDao().getRoleById(id);
+    }
+
+    @Override
+    public List<Map<String, Object>> getRoleMap(Map<String, Object> paramMap) {
+        return this.getBaseDao().getRoleMap(paramMap);
     }
 }

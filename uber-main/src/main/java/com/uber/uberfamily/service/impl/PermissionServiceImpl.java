@@ -50,6 +50,11 @@ public class PermissionServiceImpl extends BaseServiceImpl<Permission, Long, Per
         return this.getBaseDao().getChildren(permissionId);
     }
 
+    @Override
+    public List<Permission> getPermission(Map<String, Object> paramMap) {
+        return this.getBaseDao().getPermission(paramMap);
+    }
+
 
     private void buildResultList(List<Permission> l, List<Permission> resultList, Map<String, String> m) {
         String permissionCode;

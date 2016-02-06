@@ -52,4 +52,45 @@
         where t_auth_permission.id = t_auth_role_permission.permission_id
         AND t_auth_role_permission.role_id=#{value,javaType=long}
     </select>
+
+    <select id="getList" parameterType="java.util.Map" resultType="role">
+        SELECT * FROM t_auth_role
+    </select>
+
+
+    <resultMap id="getRoleMapResult" type="java.util.HashMap">
+        <id column="ar_id" property="id" javaType="long"/>
+        <result column="ar_name" javaType="string" property="name"/>
+        <result column="pid" property="pId" javaType="long"/>
+        <result column="checked" property="checked" javaType="boolean"/>
+    </resultMap>
+    <select id="getRoleMap" parameterType="java.util.Map" resultMap="getRoleMapResult">
+        SELECT
+        ar.id AS ar_id,
+        ar.name AS ar_name,
+        'true' AS checked,
+        0 AS pid
+        FROM t_auth_role ar
+        <where>
+            <if test="userId != null">
+                ar.id IN (SELECT role_id
+                FROM t_auth_user_role
+                WHERE user_id = #{userId,jdbcType=BIGINT})
+            </if>
+        </where>
+        UNION
+        SELECT
+        ar.id AS ar_id,
+        ar.name AS ar_name,
+        'false' AS checked,
+        0 AS pid
+        FROM t_auth_role ar
+        <where>
+            <if test="userId != null">
+                ar.id not IN (SELECT role_id
+                FROM t_auth_user_role
+                WHERE user_id = #{userId,jdbcType=BIGINT})
+            </if>
+        </where>
+    </select>
 </mapper>

@@ -4,6 +4,8 @@ import com.uber.uberfamily.dao.RoleDao;
 import com.uber.uberfamily.framework.BaseService;
 import com.uber.uberfamily.model.Role;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -20,5 +22,7 @@ public interface RoleService extends BaseService<Role, Long, RoleDao> {
 
 
     Role getRoleById(Long id);
+
+    List<Map<String, Object>> getRoleMap(Map<String,Object> paramMap);
 
 }

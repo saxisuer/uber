@@ -10,6 +10,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -44,6 +47,15 @@ public class RoleServiceImplTest {
         for (Role r : roleSet) {
             System.out.println(r);
         }
+    }
+
+
+    @Test
+    public void testRoleMap() {
+        Map<String, Object> param = new HashMap<>();
+        param.put("userId", 0);
+        List l = roleService.getRoleMap(param);
+        System.out.println(l);
     }
 
 }

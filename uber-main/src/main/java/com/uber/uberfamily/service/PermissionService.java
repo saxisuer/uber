@@ -5,6 +5,7 @@ import com.uber.uberfamily.framework.BaseService;
 import com.uber.uberfamily.model.Permission;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -23,5 +24,7 @@ public interface PermissionService extends BaseService<Permission, Long, Permiss
     List<Permission> getAllPermission();
 
     Set<Permission> getChildren(Long permissionId);
+
+    List<Permission> getPermission(Map<String, Object> paramMap);
 
 }

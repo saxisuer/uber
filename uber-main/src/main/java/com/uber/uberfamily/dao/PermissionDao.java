@@ -5,6 +5,7 @@ import com.uber.uberfamily.framework.MyBatisRepository;
 import com.uber.uberfamily.model.Permission;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -21,4 +22,6 @@ public interface PermissionDao extends BaseDao<Permission, Long> {
     List<Permission> getModuleGroups();
 
     Set<Permission> getChildren(Long permissionId);
+
+    List<Permission> getPermission(Map<String, Object> map);
 }

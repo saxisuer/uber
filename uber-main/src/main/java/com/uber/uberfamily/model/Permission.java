@@ -3,6 +3,9 @@ package com.uber.uberfamily.model;
 import com.uber.uberfamily.framework.BaseModel;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @Project uber
  * @Package com.uber.uberfamily.model
@@ -26,6 +29,8 @@ public class Permission extends BaseModel {
     private String ico;
 
     private String url;
+
+    private Set<Permission> permissionSet = new HashSet<>();
 
 
     public Long getPid() {
@@ -110,6 +115,13 @@ public class Permission extends BaseModel {
         return true;
     }
 
+    public Set<Permission> getPermissionSet() {
+        return permissionSet;
+    }
+
+    public void setPermissionSet(Set<Permission> permissionSet) {
+        this.permissionSet = permissionSet;
+    }
 
     @Override
     public String toString() {

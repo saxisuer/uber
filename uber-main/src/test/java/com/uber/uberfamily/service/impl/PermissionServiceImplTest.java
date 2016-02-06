@@ -1,12 +1,18 @@
 package com.uber.uberfamily.service.impl;
 
 import com.ps.CustomJUnit4ClassRunner;
+import com.uber.uberfamily.model.Permission;
 import com.uber.uberfamily.service.PermissionService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.transaction.TransactionConfiguration;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * @Project uber
@@ -39,5 +45,45 @@ public class PermissionServiceImplTest {
     @Test
     public void getChildren() {
         System.out.println(permissionService.getChildren(10L));
+    }
+
+
+    @Test
+    public void getPermissionTest() {
+        List l = permissionService.getPermission(null);
+        System.out.println(l);
+    }
+
+
+    @Test
+    public void testTree() {
+        List<Permission> permissionList = permissionService.getList(null);
+        List<Permission> first = new ArrayList<>();
+        List<Permission> other = new ArrayList<>();
+        for (Permission p : permissionList) {
+            if (null != p.getPid()) {
+                other.add(p);
+            } else {
+                first.add(p);
+            }
+        }
+        Iterator<Permission> it = first.iterator();
+        while (it.hasNext()) {
+            build(it.next(), other);
+        }
+
+        System.out.println(first);
+    }
+
+    public void build(Permission p, List<Permission> list) {
+        Iterator<Permission> it = list.iterator();
+        while (it.hasNext()) {
+            Permission permission = it.next();
+            if (Objects.equals(permission.getPid(), p.getId())) {
+                p.getPermissionSet().add(permission);
+                it.remove();
+                build(permission, list);
+            }
+        }
     }
 }

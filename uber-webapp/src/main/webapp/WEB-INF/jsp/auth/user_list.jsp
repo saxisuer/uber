@@ -4,7 +4,7 @@
 <html>
 <head>
     <%@include file="/template/baseheader.jsp" %>
-    <base href="<%=basePath%>">
+    <base href="${ctx}">
 
     <title>用户列表</title>
     <meta http-equiv="pragma" content="no-cache">
@@ -12,20 +12,17 @@
     <meta http-equiv="expires" content="0">
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
-
 </head>
-
 <body id="body">
 <!-- 查询条件区域 -->
 <div id="search" class="easyui-panel" style="padding:5px;margin-bottom:2px;">
     <table cellpadding="1px;" style="font-size:11px;">
         <tr>
             <td>姓名</td>
-            <td><input class="easyui-textbox" type="text" id="param_cnname"/></td>
-            <td><a href="javascript:search();" class="easyui-linkbutton my-search-button" iconCls="icon-search">查询</a></td>
+            <td><label for="param_cnname"></label><input class="easyui-textbox" type="text" id="param_cnname"/></td>
+            <td><a href="javascript:void(0);" class="easyui-linkbutton my-search-button" iconCls="icon-search" onclick="search()">查询</a></td>
         </tr>
     </table>
-
 </div>
 <!-- 数据表格区域 -->
 <table id="users" style="table-layout:fixed;">
@@ -38,20 +35,16 @@
     <a href="javascript:void(0)" id="resetPassword" class="easyui-linkbutton" iconCls="icon-reset" plain="true">密码重置</a>
     <a href="javascript:void(0)" id="refresh" class="easyui-linkbutton" iconCls="icon-reload" plain="true">刷新</a>
 </div>
-
 </body>
-
 <script>
-
-
     $(function () {
         var gridDom = $('#users');
         gridDom.datagrid({
             height: $('#body').height() - $('#search').height() - 15,
             width: $('#body').width(),
             idField: 'id',
-            url: '<%=path%>/user/loadData',
-            singleSelect: false,
+            method: 'GET',
+            url: '${ctx}/user/loadData',
             selectOnCheck: true,
             checkOnSelect: true,
             nowrap: true,
@@ -69,15 +62,9 @@
             ]],
             toolbar: '#toolbar',
             pagination: true,
-            pageSize: 30,
+            pageSize: 30
         });
 
-        /*$(window).on('resize',function(){
-         $('.datagrid').hide();
-         gridDom.datagrid('resize',{height:$('#body').height()-$('#search').height()-15, width:$('body').width()});
-         $('.datagrid').show();
-         gridDom.datagrid('resize');
-         })*/
 
         //新增弹出框
         $("#add").on("click", function () {
@@ -117,10 +104,9 @@
             var r = gridDom.datagrid('getSelected');
 
             $.ajax({
-                url: '<%=path%>/user/resetPassword',
+                url: '${ctx}/user/resetPassword',
                 data: {'user.id': r.id},
                 success: function (data) {
-                    console.log(data)
                     if (data.result == "SUCCESS") {
                         $('#users').datagrid('reload');
                         $('#users').datagrid('clearSelections');
@@ -132,7 +118,6 @@
                 error: function () {
                 }
             });
-
         });
 
 
@@ -153,7 +138,7 @@
     function search() {
         console.log('aaaaa');
         $('#users').datagrid('load', {
-            param_cnname: $.trim($('#param_cnname').val()),
+            param_cnname: $.trim($('#param_cnname').val())
         });
     }
 
@@ -162,7 +147,6 @@
             url: opts.action,
             data: opts.id, //{key:valule} user.name : 12323
             success: function (data) {
-                console.log(data)
                 if (data.result == "SUCCESS") {
                     $('#users').datagrid('reload');
                     $('#users').datagrid('clearSelections');
