@@ -52,8 +52,8 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Long, RoleDao> implem
     }
 
     @Override
-    public void createUserRole(Long userId, String roleId) {
-        Map<String, Object> insertMap = new HashMap<>();
+    public void createUserRole(Long userId, Long roleId) {
+        Map<String, Long> insertMap = new HashMap<>();
         insertMap.put("userId", userId);
         insertMap.put("roleId", roleId);
         this.getBaseDao().createUserRole(insertMap);

@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.DigestUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -84,7 +85,7 @@ public class UserController {
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String editPage(User user, Model model) {
+    public String addPage(User user, Model model) {
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("userId", 0);
         List<Map<String, Object>> roleList = roleService.getRoleMap(paramMap);
@@ -100,12 +101,32 @@ public class UserController {
     }
 
 
+    @RequestMapping(value = "/edit")
+    public String editPage(User user, Model model) {
+        if (user != null && user.getId() != null) {
+            user = userService.getById(user.getId());
+            Map<String, Object> paramMap = new HashMap<>();
+            paramMap.put("userId", user.getId());
+            List<Map<String, Object>> roleList = roleService.getRoleMap(paramMap);
+            Iterator<Map<String, Object>> it = roleList.iterator();
+            List<String> roleStringList = new LinkedList<String>();
+            while (it.hasNext()) {
+                Map<String, Object> rm = it.next();
+                roleStringList.add(JsonMapper.nonDefaultMapper().toJson(rm));
+            }
+            user.setRoleList(roleStringList);
+            model.addAttribute("user", user);
+        }
+        return EDIT;
+    }
+
+
     @ResponseBody
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public Map<String, String> save(User user) {
         Map<String, String> result = new HashMap<>();
         //进入新增
-        if (user.getId() != null || StringUtils.isBlank(user.getId().toString())) {
+        if (null == user.getId() || StringUtils.isBlank(user.getId().toString())) {
             User searchUser = userService.getUserByName(user.getName());
             if (searchUser != null) {
                 result.put("result", "ERROR");
@@ -115,6 +136,26 @@ public class UserController {
             user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
         }
         userService.save(user);
+        result.put("result", "SUCCESS");
+        return result;
+    }
+
+
+    @RequestMapping(value = "/delete/{id}")
+    @ResponseBody
+    public Map<String, String> delete(@PathVariable Long id) {
+        Map<String, String> result = new HashMap<>();
+        this.userService.delete(id);
+        result.put("result", "SUCCESS");
+        return result;
+    }
+
+    @RequestMapping(value = "/resetPassword")
+    @ResponseBody
+    public Map<String, String> resetPassword(User user) {
+        Map<String, String> result = new HashMap<>();
+        user.setPassword(DigestUtils.md5DigestAsHex("12345".getBytes()));
+        userService.update(user);
         result.put("result", "SUCCESS");
         return result;
     }

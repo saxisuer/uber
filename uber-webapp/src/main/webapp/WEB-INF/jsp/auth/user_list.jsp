@@ -80,7 +80,7 @@
             var r = gridDom.datagrid('getSelected');
             parent.dataUpdate({
                 action: 'user/edit',
-                params: {'user.id': r.id},
+                params: {'id': r.id},
                 success: function () {
                     return gridDom.datagrid('reload');
                 }
@@ -92,8 +92,8 @@
             $.messager.confirm('提醒', '您确定要删除吗？', function (e) {
                 if (e) {
                     deleteUser({
-                        action: 'user/delete',
-                        id: {'user.id': r.id}
+                        action: '${ctx}/user/delete/' + r.id,
+                        id: {'id': r.id}
                     });
                 }
             });
@@ -105,7 +105,7 @@
 
             $.ajax({
                 url: '${ctx}/user/resetPassword',
-                data: {'user.id': r.id},
+                data: {'id': r.id},
                 success: function (data) {
                     if (data.result == "SUCCESS") {
                         $('#users').datagrid('reload');
@@ -145,7 +145,7 @@
     function deleteUser(opts) {
         $.ajax({
             url: opts.action,
-            data: opts.id, //{key:valule} user.name : 12323
+            //data: opts.id, //{key:valule} user.name : 12323
             success: function (data) {
                 if (data.result == "SUCCESS") {
                     $('#users').datagrid('reload');

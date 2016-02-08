@@ -58,4 +58,9 @@
         #{name},#{cnname},#{password},#{email},#{phone},#{status}
         )
     </insert>
+
+    <delete id="delete" parameterType="long">
+        DELETE FROM t_auth_user
+        WHERE id = #{VALUE}
+    </delete>
 </mapper>

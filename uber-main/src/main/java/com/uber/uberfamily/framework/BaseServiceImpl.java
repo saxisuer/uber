@@ -40,7 +40,8 @@ public abstract class BaseServiceImpl<T extends BaseModel, PK extends Serializab
 
     @Override
     public T create(T model) {
-        return this.getBaseDao().create(model);
+        this.getBaseDao().create(model);
+        return model;
     }
 
     @Override

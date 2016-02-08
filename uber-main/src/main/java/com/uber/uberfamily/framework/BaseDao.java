@@ -16,7 +16,7 @@ public interface BaseDao<T extends BaseModel, PK extends Serializable> {
 
     T getById(PK id);
 
-    T create(T model);
+    void create(T model);
 
     int update(T model);
 

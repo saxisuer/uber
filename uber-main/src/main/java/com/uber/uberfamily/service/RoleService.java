@@ -27,5 +27,5 @@ public interface RoleService extends BaseService<Role, Long, RoleDao> {
 
     void deleteRoleByUserId(Long userId);
 
-    void createUserRole(Long userId, String roleId);
+    void createUserRole(Long userId, Long roleId);
 }

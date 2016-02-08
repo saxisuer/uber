@@ -41,7 +41,7 @@
                 <div class="formgourp">
                     <label>状态：</label>
                     <div class="textbox">
-                        <select class="easyui-combobox" name="user.status" data-options="required:true">
+                        <select class="easyui-combobox" name="status" data-options="required:true">
                             <option value="1"
                                     <c:if test="user.status==1">selected="selected"</c:if>>启用
                             </option>
@@ -72,7 +72,7 @@
 
         <input type="submit" value="保存" style="display: none;"/>
         <input id="roleList" type="hidden" value='${user.roleList}'>
-        <input id="roleIds" type="hidden" name="user.roleIds">
+        <input id="roleIds" type="hidden" name="roleIds">
     </div>
 </form>
 

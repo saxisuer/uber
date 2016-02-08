@@ -7,6 +7,7 @@ import com.uber.uberfamily.model.User;
 import com.uber.uberfamily.service.RoleService;
 import com.uber.uberfamily.service.UserService;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
@@ -44,7 +45,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserDao> implem
     @Override
     public User save(User user) {
         if (user.getId() == null || StringUtils.isBlank(user.getId().toString())) {
-            this.create(user);
+            user = this.create(user);
         } else {
             this.update(user);
         }
@@ -52,9 +53,15 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserDao> implem
             roleService.deleteRoleByUserId(user.getId());
             String[] ids = user.getRoleIds().split(",");
             for (String id : ids) {
-                roleService.createUserRole(user.getId(), id);
+                roleService.createUserRole(user.getId(), NumberUtils.toLong(id));
             }
         }
         return user;
+    }
+
+    @Override
+    public void delete(Long id) {
+        super.delete(id);
+        roleService.deleteRoleByUserId(id);
     }
 }
