@@ -19,8 +19,13 @@
     <table cellpadding="1px;" style="font-size:11px;">
         <tr>
             <td>姓名</td>
-            <td><label for="param_cnname"></label><input class="easyui-textbox" type="text" id="param_cnname"/></td>
-            <td><a href="javascript:void(0);" class="easyui-linkbutton my-search-button" iconCls="icon-search" onclick="search()">查询</a></td>
+            <td><label for="param_cnname"></label><input class="easyui-validatebox" type="text" id="param_cnname"/></td>
+            <td>
+                <a href="javascript:void(0);" class="easyui-linkbutton my-search-button" iconCls="icon-search" onclick='search1()'>查询</a>
+            </td>
+            <td>
+                <a href="javascript:void(0);" class="easyui-linkbutton my-search-button" iconCls="icon-clear" onclick='reset()'>重置</a>
+            </td>
         </tr>
     </table>
 </div>
@@ -35,7 +40,6 @@
     <a href="javascript:void(0)" id="resetPassword" class="easyui-linkbutton" iconCls="icon-reset" plain="true">密码重置</a>
     <a href="javascript:void(0)" id="refresh" class="easyui-linkbutton" iconCls="icon-reload" plain="true">刷新</a>
 </div>
-</body>
 <script>
     $(function () {
         var gridDom = $('#users');
@@ -135,10 +139,9 @@
         }
     }
 
-    function search() {
-        console.log('aaaaa');
+    function search1() {
         $('#users').datagrid('load', {
-            param_cnname: $.trim($('#param_cnname').val())
+            cnname: $.trim($('#param_cnname').val())
         });
     }
 
@@ -159,6 +162,10 @@
         });
     }
 
+    function reset() {
+        $('#param_cnname').val("");
+        $('#users').datagrid('load',{});
+    }
 </script>
-
+</body>
 </html>

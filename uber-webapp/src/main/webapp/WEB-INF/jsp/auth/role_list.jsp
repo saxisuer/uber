@@ -4,7 +4,6 @@
 <html>
 <head>
     <%@include file="/template/baseheader.jsp" %>
-    <base href="<%=basePath%>">
 
     <title>用户列表</title>
     <meta http-equiv="pragma" content="no-cache">
@@ -32,13 +31,13 @@
 
 
     $(function () {
+        var $_body = $('#body');
         var gridDom = $('#roles');
         gridDom.datagrid({
-            height: $('#body').height() - $('#search').height(),
-            width: $('#body').width(),
+            height: $_body.height() - $('#search').height(),
+            width: $_body.width(),
             idField: 'id',
-            url: '<%=path%>/role/loadData',
-            singleSelect: false,
+            url: '${ctx}/role/loadData',
             selectOnCheck: true,
             checkOnSelect: true,
             nowrap: true,
@@ -52,7 +51,7 @@
             ]],
             toolbar: '#toolbar',
             pagination: true,
-            pageSize: 30,
+            pageSize: 30
         });
 
         //新增弹出框
@@ -78,7 +77,6 @@
         //删除
         $("#delete").on("click", function () {
             var r = gridDom.datagrid('getSelected');
-
             $.messager.confirm('提醒', '您确定要删除吗？', function (e) {
                 if (e) {
                     deleteRole({
@@ -104,7 +102,7 @@
 
     function search() {
         gridDom.datagrid('load', {
-            param_cnname: $.trim($('#param_cnname').val()),
+            param_cnname: $.trim($('#param_cnname').val())
         });
     }
 
@@ -113,7 +111,6 @@
             url: opts.action,
             data: opts.id,
             success: function (data) {
-                console.log(data)
                 if (data.result == "SUCCESS") {
                     $("#roles").datagrid('reload');
                     $("#roles").datagrid('clearSelections');
@@ -125,49 +122,6 @@
             }
         });
     }
-
-    /*
-     ** 弹窗更新grid数据
-     */
-    /*function dataUpdate(opt){
-     var action = opt.action,
-     id = opt.id==undefined ? '' : opt.id;
-     console.log( '<%=path%>/role/'+action)
-     $.ajax({
-     url: 'role/add',
-     type: 'GET',
-     data: {'role.id': id},
-     success: function(data){
-     if(data.result=="500"){alert('error:'+500)}
-     var dialog = $('#wUpdate');
-     dialog.find('#wContainer').html(data);
-     dialog.window('open');
-     $('#wOK').one('click',function(){
-     var form = $("form:first");
-     form.find('input[type="submit"]').trigger('click');
-     setPermissionIds();
-     dialog.find('form').ajaxSubmit({
-     success: function(data){
-     if(data.result=="SUCCESS"){
-     opt.success();
-     dialog.window('close');
-     }else{
-     alert('保存失败！');
-     dialog.window('close');
-     }
-     }
-     });
-     });
-     $('#wCancel').on('click',function(){
-     dialog.window('close');
-     });
-     },
-     error: function() {
-     alert('加载出错！')
-     }
-     });
-     }*/
-
 </script>
 
 </html>

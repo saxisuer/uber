@@ -1,8 +1,10 @@
 package com.uber.uberfamily.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.ps.CustomJUnit4ClassRunner;
 import com.uber.uberfamily.model.Role;
 import com.uber.uberfamily.service.RoleService;
+import org.apache.commons.beanutils.BeanUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,6 +59,15 @@ public class RoleServiceImplTest {
         param.put("userId", 0);
         List l = roleService.getRoleMap(param);
         System.out.println(l);
+    }
+
+    @Test
+    public void testPage() throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+        Role role = new Role();
+        role.setName("a");
+        Map map = BeanUtils.describe(role);
+        PageInfo<Role> pageInfo = roleService.getPage(map, 1, 10);
+        System.out.println(pageInfo.getTotal());
     }
 
 }

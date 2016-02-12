@@ -5,6 +5,7 @@ import com.uber.uberfamily.framework.BaseServiceImpl;
 import com.uber.uberfamily.framework.MyBatisService;
 import com.uber.uberfamily.model.Permission;
 import com.uber.uberfamily.service.PermissionService;
+import org.apache.commons.collections.MapUtils;
 
 import javax.annotation.Resource;
 import java.util.*;
@@ -53,6 +54,15 @@ public class PermissionServiceImpl extends BaseServiceImpl<Permission, Long, Per
     @Override
     public List<Permission> getPermission(Map<String, Object> paramMap) {
         return this.getBaseDao().getPermission(paramMap);
+    }
+
+    @Override
+    public List<Map<String, Object>> getPermissionMap(Map<String, Object> param) {
+        if (null == param || MapUtils.isEmpty(param)) {
+            param = new HashMap<String, Object>();
+            param.put("roleId", -1L);
+        }
+        return this.getBaseDao().getPermissionMap(param);
     }
 
 

@@ -2,6 +2,8 @@ package com.uber.uberfamily.model;
 
 import com.uber.uberfamily.framework.BaseModel;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -32,6 +34,8 @@ public class Role extends BaseModel {
         return permissionSet;
     }
 
+    private List<String> permissionList = new LinkedList<>();
+
     public void setPermissionSet(Set<Permission> permissionSet) {
         this.permissionSet = permissionSet;
     }
@@ -60,5 +64,13 @@ public class Role extends BaseModel {
         result = prime * result
                 + ((name == null) ? 0 : name.hashCode());
         return result;
+    }
+
+    public List<String> getPermissionList() {
+        return permissionList;
+    }
+
+    public void setPermissionList(List<String> permissionList) {
+        this.permissionList = permissionList;
     }
 }

@@ -6,6 +6,7 @@ import com.uber.uberfamily.framework.util.JsonMapper;
 import com.uber.uberfamily.model.User;
 import com.uber.uberfamily.service.RoleService;
 import com.uber.uberfamily.service.UserService;
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 /**
@@ -78,8 +80,9 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "/loadData", method = RequestMethod.GET)
-    public DataStore<User> getPageData(User user, int page, int rows) {
-        PageInfo<User> pageInfo = userService.getPage(null, page, rows);
+    public DataStore<User> getPageData(User user, int page, int rows) throws IllegalAccessException, NoSuchMethodException,
+            InvocationTargetException {
+        PageInfo<User> pageInfo = userService.getPage(BeanUtils.describe(user), page, rows);
         return new DataStore<>(pageInfo.getTotal(), pageInfo.getList());
     }
 

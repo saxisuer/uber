@@ -3,6 +3,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.uber.uberfamily.dao.RoleDao">
 
+    <sql id="mapWhereClause">
+        <if test="name != null">and name = #{name,javaType=string}</if>
+    </sql>
+
     <resultMap id="roleMap" type="Role">
         <id property="id" column="ar_id"/>
         <result column="ar_name" property="name"/>
@@ -53,11 +57,6 @@
         AND t_auth_role_permission.role_id=#{value,javaType=long}
     </select>
 
-    <select id="getList" parameterType="java.util.Map" resultType="role">
-        SELECT * FROM t_auth_role
-    </select>
-
-
     <resultMap id="getRoleMapResult" type="java.util.HashMap">
         <id column="ar_id" property="id" javaType="long"/>
         <result column="ar_name" javaType="string" property="name"/>
@@ -104,4 +103,12 @@
         #{roleId,javaType=long},#{userId,javaType=long}
         )
     </insert>
+
+
+    <select id="getList" resultType="role" parameterType="java.util.Map">
+        SELECT * FROM t_auth_role
+        <where>
+            <include refid="mapWhereClause"/>
+        </where>
+    </select>
 </mapper>

@@ -86,4 +86,12 @@ public class PermissionServiceImplTest {
             }
         }
     }
+
+
+    @Test
+    public void testPermissionMapList() {
+        List l = permissionService.getPermissionMap(null);
+
+        System.out.println(l);
+    }
 }

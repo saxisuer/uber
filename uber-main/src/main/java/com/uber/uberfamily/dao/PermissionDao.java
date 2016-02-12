@@ -24,4 +24,6 @@ public interface PermissionDao extends BaseDao<Permission, Long> {
     Set<Permission> getChildren(Long permissionId);
 
     List<Permission> getPermission(Map<String, Object> map);
+
+    List<Map<String, Object>> getPermissionMap(Map<String, Object> param);
 }

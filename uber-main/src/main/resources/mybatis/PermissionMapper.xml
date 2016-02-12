@@ -74,4 +74,37 @@
             and t.TYPE = 1
         </where>
     </select>
+
+
+    <resultMap id="permissionZtreeMap" type="java.util.HashMap">
+        <id javaType="long" column="id" property="id"/>
+        <result column="pid" javaType="long" property="pid"/>
+        <result column="name" property="name" javaType="string"/>
+        <result column="checked" property="checked" javaType="boolean"/>
+        <result column="open" property="open" javaType="boolean"/>
+    </resultMap>
+
+    <select id="getPermissionMap" parameterType="long" resultMap="permissionZtreeMap">
+        SELECT
+          id,
+          ifnull(pid, 0) AS pid,
+          name,
+          'true'        AS checked,
+          'false'        AS open
+        FROM t_auth_permission
+        WHERE id IN (SELECT permission_id
+                     FROM t_auth_role_permission
+                     WHERE role_id = #{value,javaType=long})
+        UNION
+          SELECT
+            id,
+            ifnull(pid, 0) AS pid,
+            name,
+            'false'        AS checked,
+            'false'        AS open
+          FROM t_auth_permission
+          WHERE id not IN (SELECT permission_id
+                       FROM t_auth_role_permission
+                       WHERE role_id = #{value,javaType=long})
+    </select>
 </mapper>
