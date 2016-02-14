@@ -3,6 +3,8 @@ package com.uber.uberfamily.framework;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.log4j.Logger;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +27,9 @@ public abstract class BaseServiceImpl<T extends BaseModel, PK extends Serializab
     protected final Logger logger = Logger.getLogger(this.getClass().getName());
 
     protected E baseDao;
+
+    @Autowired
+    private SqlSessionTemplate batchSqlSession;
 
     @Override
     public E getBaseDao() {
@@ -69,5 +74,13 @@ public abstract class BaseServiceImpl<T extends BaseModel, PK extends Serializab
     @Override
     public T getByParameter(Map<String, Object> param) {
         return this.getBaseDao().getByParameter(param);
+    }
+
+
+    @Override
+    public void batchInsert(String sqlMapper, List<Map<String, Object>> params) {
+        for (Map<String, Object> map : params) {
+            batchSqlSession.insert(sqlMapper, map);
+        }
     }
 }

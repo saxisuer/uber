@@ -3,6 +3,9 @@ package com.uber.uberfamily.service;
 import com.uber.uberfamily.dao.PermissionDao;
 import com.uber.uberfamily.framework.BaseService;
 import com.uber.uberfamily.model.Permission;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -28,5 +31,9 @@ public interface PermissionService extends BaseService<Permission, Long, Permiss
     List<Permission> getPermission(Map<String, Object> paramMap);
 
     List<Map<String, Object>> getPermissionMap(Map<String, Object> param);
+
+    void batchInsert(Long id, String permissionIds);
+
+    void deletePermissionRoleByRoleId(Long roleId);
 
 }

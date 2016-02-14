@@ -23,9 +23,13 @@ public interface RoleService extends BaseService<Role, Long, RoleDao> {
 
     Role getRoleById(Long id);
 
-    List<Map<String, Object>> getRoleMap(Map<String,Object> paramMap);
+    List<Map<String, Object>> getRoleMap(Map<String, Object> paramMap);
 
     void deleteRoleByUserId(Long userId);
 
     void createUserRole(Long userId, Long roleId);
+
+    Role getRoleByName(String name);
+
+    Role save(Role role);
 }

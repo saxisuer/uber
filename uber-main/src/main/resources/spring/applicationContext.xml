@@ -51,7 +51,6 @@
     <bean id="persistenceExceptionTranslationPostProcessor"
           class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
     <tx:annotation-driven transaction-manager="transactionManager"/>
-
     <!-- AOP-->
     <aop:aspectj-autoproxy/>
 
@@ -70,7 +69,12 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.uber.uberfamily.dao"/>
         <property name="annotationClass" value="com.uber.uberfamily.framework.MyBatisRepository"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
+    <bean id="batchSqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+        <constructor-arg index="1" value="BATCH"/>
+    </bean>
 
 </beans>

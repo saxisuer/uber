@@ -19,6 +19,8 @@ import java.util.Set;
 @MyBatisRepository
 public interface PermissionDao extends BaseDao<Permission, Long> {
 
+    void createPermissionRole(Map<String, Object> paramMap);
+
     List<Permission> getModuleGroups();
 
     Set<Permission> getChildren(Long permissionId);
@@ -26,4 +28,6 @@ public interface PermissionDao extends BaseDao<Permission, Long> {
     List<Permission> getPermission(Map<String, Object> map);
 
     List<Map<String, Object>> getPermissionMap(Map<String, Object> param);
+
+    void deletePermissionRoleByRoleId(Long roleId);
 }

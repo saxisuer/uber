@@ -6,6 +6,11 @@ import com.uber.uberfamily.framework.MyBatisService;
 import com.uber.uberfamily.model.Permission;
 import com.uber.uberfamily.service.PermissionService;
 import org.apache.commons.collections.MapUtils;
+import org.apache.commons.lang3.math.NumberUtils;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import javax.annotation.Resource;
 import java.util.*;
@@ -63,6 +68,27 @@ public class PermissionServiceImpl extends BaseServiceImpl<Permission, Long, Per
             param.put("roleId", -1L);
         }
         return this.getBaseDao().getPermissionMap(param);
+    }
+
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED)
+    public void batchInsert(Long roleId, String permissionIds) {
+        Assert.notNull(roleId);
+        String[] ids = permissionIds.split(",");
+        List<Map<String, Object>> insertList = new ArrayList<Map<String, Object>>();
+        for (String permissionId : ids) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("roleId", roleId);
+            map.put("permissionId", NumberUtils.toLong(permissionId));
+            insertList.add(map);
+        }
+        this.batchInsert("com.uber.uberfamily.dao.PermissionDao.createPermissionRole", insertList);
+    }
+
+    @Override
+    public void deletePermissionRoleByRoleId(Long roleId) {
+        this.getBaseDao().deletePermissionRoleByRoleId(roleId);
     }
 
 

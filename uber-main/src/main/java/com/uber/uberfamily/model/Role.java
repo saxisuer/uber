@@ -73,4 +73,12 @@ public class Role extends BaseModel {
     public void setPermissionList(List<String> permissionList) {
         this.permissionList = permissionList;
     }
+
+    public String getPermissionIds() {
+        return permissionIds;
+    }
+
+    public void setPermissionIds(String permissionIds) {
+        this.permissionIds = permissionIds;
+    }
 }

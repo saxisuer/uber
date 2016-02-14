@@ -46,6 +46,10 @@
         <collection property="permissionSet" ofType="Permission" select="selectPermission" column="id" fetchType="lazy"/>
     </resultMap>
 
+    <insert id="create" parameterType="role" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert INTO t_auth_role(name) VALUES (#{name,javaType=string})
+    </insert>
+
     <select id="getRoleById" parameterType="long" resultMap="roleSelectMap">
         SELECT * FROM t_auth_role
         where id =#{value,javaType=long}
@@ -110,5 +114,10 @@
         <where>
             <include refid="mapWhereClause"/>
         </where>
+    </select>
+
+    <select id="getRoleByName" parameterType="string" resultType="role">
+        SELECT * FROM t_auth_role
+        where name = #{name,javaType=string}
     </select>
 </mapper>

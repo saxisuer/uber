@@ -70,4 +70,13 @@ public class RoleServiceImplTest {
         System.out.println(pageInfo.getTotal());
     }
 
+
+    @Test
+    public void testSave() {
+        Role role = new Role();
+        role.setName("aaa");
+        role.setPermissionIds("1,2,3,4,5");
+        roleService.save(role);
+    }
+
 }

@@ -80,8 +80,8 @@
             $.messager.confirm('提醒', '您确定要删除吗？', function (e) {
                 if (e) {
                     deleteRole({
-                        action: 'role/delete',
-                        id: {'role.id': r.id}
+                        action: '${ctx}role/delete/' + r.id,
+                        id: {'id': r.id}
                     });
                 }
             });
@@ -109,7 +109,6 @@
     function deleteRole(opts) {
         $.ajax({
             url: opts.action,
-            data: opts.id,
             success: function (data) {
                 if (data.result == "SUCCESS") {
                     $("#roles").datagrid('reload');

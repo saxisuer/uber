@@ -34,4 +34,6 @@ public interface RoleDao extends BaseDao<Role, Long> {
     void deleteRoleByUserId(Long id);
 
     void createUserRole(Map<String, Long> insertMap);
+
+    Role getRoleByName(String name);
 }

@@ -107,4 +107,15 @@
                        FROM t_auth_role_permission
                        WHERE role_id = #{value,javaType=long})
     </select>
+
+
+    <insert id="createPermissionRole" parameterType="java.util.Map">
+        insert into t_auth_role_permission(role_id, permission_id) VALUES (
+        #{roleId,javaType=long},#{permissionId,javaType=long}
+        )
+    </insert>
+
+    <delete id="deletePermissionRoleByRoleId" parameterType="long">
+        DELETE from t_auth_role_permission WHERE role_id = #{value,javaType=long}
+    </delete>
 </mapper>

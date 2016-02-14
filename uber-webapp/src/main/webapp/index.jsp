@@ -15,7 +15,7 @@
         background:  #08071c repeat-x center 50%;
         line-height: 18px;color: #fff; font-family: Tahoma,Verdana,微软雅黑,新宋体,serif;">
 		<span style="float:right; padding-right:20px;" class="head">
-		<a href="javascript:void;" class="easyui-menubutton" data-options="menu:'#sysMenus',iconCls:'icon-setting'">系统设置</a>
+		<a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#sysMenus',iconCls:'icon-setting'">系统设置</a>
 		</span><span
         style="padding-left:180px; padding-top:2px ; font-size: 16px; background: url(${ctx}/public/uber/logo2.png) no-repeat 2px 3px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 </div>
@@ -164,22 +164,6 @@
                 }
             }
         });
-        <%--$.post('${ctx}/user/user_changePassword?oldpassword=' + $oripass.val() + '&newpassword=' + $newpass.val(),--%>
-        <%--function (msg) {--%>
-        <%--if (msg.resCode == '0') {--%>
-        <%--$.messager.alert('系统提示', '密码修改成功，请牢记你的密码', 'info');--%>
-        <%--$oripass.textbox('setValue', '');//赋值--%>
-        <%--$newpass.textbox('setValue', '');//赋值--%>
-        <%--$rePass.textbox('setValue', '');//赋值--%>
-        <%--$('#passDialog').dialog('close');--%>
-        <%--}--%>
-        <%--else if (msg.resCode == '102004') {--%>
-        <%--$.messager.alert('系统提示', '修改失败，旧密码错误！', 'error');--%>
-        <%--}--%>
-        <%--else {--%>
-        <%--$.messager.alert('系统提示', '修改失败，错误原因：' + msg.errMsg, 'error');--%>
-        <%--}--%>
-        <%--});--%>
     };
 
     var closePassDiagFun = function () {

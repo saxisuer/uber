@@ -4,7 +4,10 @@ import com.uber.uberfamily.dao.RoleDao;
 import com.uber.uberfamily.framework.BaseServiceImpl;
 import com.uber.uberfamily.framework.MyBatisService;
 import com.uber.uberfamily.model.Role;
+import com.uber.uberfamily.service.PermissionService;
 import com.uber.uberfamily.service.RoleService;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 import javax.annotation.Resource;
@@ -23,6 +26,10 @@ import java.util.Set;
  */
 @MyBatisService("roleService")
 public class RoleServiceImpl extends BaseServiceImpl<Role, Long, RoleDao> implements RoleService {
+
+    @Autowired
+    private PermissionService permissionService;
+
     @Override
     @Resource(name = "roleDao")
     public void setBaseDao(RoleDao roleDao) {
@@ -53,9 +60,30 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Long, RoleDao> implem
 
     @Override
     public void createUserRole(Long userId, Long roleId) {
+        Assert.notNull(userId, "用户 ID 不能为空");
         Map<String, Long> insertMap = new HashMap<>();
         insertMap.put("userId", userId);
         insertMap.put("roleId", roleId);
         this.getBaseDao().createUserRole(insertMap);
+    }
+
+    @Override
+    public Role getRoleByName(String name) {
+        Assert.notNull(name);
+        return this.getBaseDao().getRoleByName(name);
+    }
+
+    @Override
+    public Role save(Role role) {
+        if (null == role.getId() || StringUtils.isBlank(role.getId().toString())) {
+            role = this.create(role);
+        } else {
+            this.update(role);
+        }
+        if (StringUtils.isNotBlank(role.getPermissionIds())) {
+            permissionService.deletePermissionRoleByRoleId(role.getId());
+            permissionService.batchInsert(role.getId(), role.getPermissionIds());
+        }
+        return role;
     }
 }
