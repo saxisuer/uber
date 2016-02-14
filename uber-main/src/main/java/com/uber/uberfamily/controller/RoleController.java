@@ -38,6 +38,8 @@ public class RoleController {
 
     private static String ADD = "WEB-INF/jsp/auth/role_add";
 
+    private static String EDIT = "WEB-INF/jsp/auth/role_edit";
+
     @Autowired
     private RoleService roleService;
 
@@ -60,8 +62,8 @@ public class RoleController {
 
     @RequestMapping(value = "/add")
     public ModelAndView addPage(Role role) {
-        List<Map<String, Object>> roleList = permissionService.getPermissionMap(null);
-        Iterator<Map<String, Object>> it = roleList.iterator();
+        List<Map<String, Object>> permissionList = permissionService.getPermissionMap(null);
+        Iterator<Map<String, Object>> it = permissionList.iterator();
         List<String> permissiontringList = new ArrayList<>();
         while (it.hasNext()) {
             Map<String, Object> rm = it.next();
@@ -69,6 +71,22 @@ public class RoleController {
         }
         role.setPermissionList(permissiontringList);
         return new ModelAndView(ADD, "role", role);
+    }
+
+    @RequestMapping(value = "/edit")
+    public ModelAndView editPage(Role role) {
+        if (null != role && null != role.getId()) {
+            role = roleService.getRoleById(role.getId());
+            List<Map<String, Object>> permissionList = permissionService.getPermissionMap(role.getId());
+            Iterator<Map<String, Object>> it = permissionList.iterator();
+            List<String> permissiontringList = new ArrayList<>();
+            while (it.hasNext()) {
+                Map<String, Object> rm = it.next();
+                permissiontringList.add(JsonMapper.nonDefaultMapper().toJson(rm));
+            }
+            role.setPermissionList(permissiontringList);
+        }
+        return new ModelAndView(EDIT, "role", role);
     }
 
     @ResponseBody

@@ -17,7 +17,7 @@
 
 <body>
 <form action="${pageContext.request.contextPath}/role/save" method="post">
-    <input type="hidden" name="id" value="#{role.id}"/>
+    <input type="hidden" name="id" value="${role.id}"/>
     <div class="user-form">
         <h2>编辑角色</h2>
         <div class="yui3-g">
@@ -47,7 +47,9 @@
         },
         data: {
             simpleData: {
-                enable: true
+                enable: true,
+                pIdKey: "pid",
+                rootPId: 0
             }
         }
     };

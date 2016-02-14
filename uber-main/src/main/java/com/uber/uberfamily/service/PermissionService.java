@@ -30,7 +30,7 @@ public interface PermissionService extends BaseService<Permission, Long, Permiss
 
     List<Permission> getPermission(Map<String, Object> paramMap);
 
-    List<Map<String, Object>> getPermissionMap(Map<String, Object> param);
+    List<Map<String, Object>> getPermissionMap(Long roleId);
 
     void batchInsert(Long id, String permissionIds);
 

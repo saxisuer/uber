@@ -89,6 +89,7 @@
           id,
           ifnull(pid, 0) AS pid,
           name,
+          sort_no,
           'true'        AS checked,
           'false'        AS open
         FROM t_auth_permission
@@ -100,12 +101,14 @@
             id,
             ifnull(pid, 0) AS pid,
             name,
+            sort_no,
             'false'        AS checked,
             'false'        AS open
           FROM t_auth_permission
           WHERE id not IN (SELECT permission_id
                        FROM t_auth_role_permission
                        WHERE role_id = #{value,javaType=long})
+        ORDER BY sort_no
     </select>
 
 

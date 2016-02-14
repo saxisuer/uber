@@ -86,4 +86,10 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Long, RoleDao> implem
         }
         return role;
     }
+
+    @Override
+    public void delete(Long id) {
+        super.delete(id);
+        permissionService.deletePermissionRoleByRoleId(id);
+    }
 }

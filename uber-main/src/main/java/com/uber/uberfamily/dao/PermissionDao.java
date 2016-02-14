@@ -27,7 +27,7 @@ public interface PermissionDao extends BaseDao<Permission, Long> {
 
     List<Permission> getPermission(Map<String, Object> map);
 
-    List<Map<String, Object>> getPermissionMap(Map<String, Object> param);
+    List<Map<String, Object>> getPermissionMap(Long roleId);
 
     void deletePermissionRoleByRoleId(Long roleId);
 }

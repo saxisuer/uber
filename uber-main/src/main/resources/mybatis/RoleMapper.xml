@@ -120,4 +120,18 @@
         SELECT * FROM t_auth_role
         where name = #{name,javaType=string}
     </select>
+
+    <delete id="delete" parameterType="long">
+        DELETE  from t_auth_role where id=#{id,javaType=long}
+    </delete>
+
+    <update id="update" parameterType="role">
+        UPDATE t_auth_role
+        <set>
+            <if test="name !=null">name = #{name,javaType=string},</if>
+        </set>
+        <where>
+            id = #{id,javaType=long}
+        </where>
+    </update>
 </mapper>

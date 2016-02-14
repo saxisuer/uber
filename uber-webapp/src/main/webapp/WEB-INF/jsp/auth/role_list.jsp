@@ -68,7 +68,7 @@
             var r = gridDom.datagrid('getSelected');
             parent.dataUpdate({
                 action: 'role/edit',
-                params: {'role.id': r.id},
+                params: {'id': r.id},
                 success: function () {
                     return gridDom.datagrid('reload');
                 }
@@ -80,7 +80,7 @@
             $.messager.confirm('提醒', '您确定要删除吗？', function (e) {
                 if (e) {
                     deleteRole({
-                        action: '${ctx}role/delete/' + r.id,
+                        action: '${ctx}/role/delete/' + r.id,
                         id: {'id': r.id}
                     });
                 }
