@@ -2,13 +2,12 @@ package com.uber.uberfamily.service.impl;
 
 import com.uber.uberfamily.dao.BaseCardDao;
 import com.uber.uberfamily.framework.BaseServiceImpl;
+import com.uber.uberfamily.framework.MyBatisService;
 import com.uber.uberfamily.model.BaseCard;
 import com.uber.uberfamily.service.BaseCardService;
-import com.uber.uberfamily.framework.MyBatisService;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -19,7 +18,7 @@ import java.util.Map;
  * @USER saxisuer
  * @COMPANY ENMOTECH
  */
-@MyBatisService
+@MyBatisService("baseCardService")
 public class BaseCardServiceImpl extends BaseServiceImpl<BaseCard, Long, BaseCardDao> implements BaseCardService {
 
 
@@ -27,5 +26,10 @@ public class BaseCardServiceImpl extends BaseServiceImpl<BaseCard, Long, BaseCar
     @Resource(name = "baseCardDao")
     public void setBaseDao(BaseCardDao baseCardDao) {
         this.baseDao = baseCardDao;
+    }
+
+    @Override
+    public void saveExcelData(List<BaseCard> insertList) {
+        this.insertBatch("com.uber.uberfamily.dao.BaseCardDao.batchInsert", insertList);
     }
 }

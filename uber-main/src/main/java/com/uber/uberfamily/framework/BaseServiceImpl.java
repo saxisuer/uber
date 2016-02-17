@@ -83,4 +83,11 @@ public abstract class BaseServiceImpl<T extends BaseModel, PK extends Serializab
             batchSqlSession.insert(sqlMapper, map);
         }
     }
+
+    @Override
+    public void insertBatch(String sqlMapper, List<T> params) {
+        for (T t : params) {
+            batchSqlSession.insert(sqlMapper, t);
+        }
+    }
 }

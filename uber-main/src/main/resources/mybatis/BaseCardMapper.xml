@@ -12,4 +12,13 @@
     <select id="getList" parameterType="java.util.Map" resultType="baseCard">
         SELECT * FROM t_base_card
     </select>
+
+    <delete id="delete" parameterType="long">
+        delete from t_base_card WHERE id= #{value,javaType=long}
+    </delete>
+
+    <insert id="batchInsert" parameterType="baseCard">
+        INSERT into t_base_card(uuid, cardNoLogical, cardNoPhysical, createTime, createByWho)
+        VALUES (#{uuid},#{cardNoLogical},#{cardNoPhysical},#{createTime},#{createByWho})
+    </insert>
 </mapper>

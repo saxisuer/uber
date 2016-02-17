@@ -4,6 +4,8 @@ import com.uber.uberfamily.dao.BaseCardDao;
 import com.uber.uberfamily.framework.BaseService;
 import com.uber.uberfamily.model.BaseCard;
 
+import java.util.List;
+
 /**
  * @Project uber
  * @Package com.uber.uberfamily.service
@@ -14,4 +16,5 @@ import com.uber.uberfamily.model.BaseCard;
  */
 public interface BaseCardService extends BaseService<BaseCard, Long, BaseCardDao> {
 
+    void saveExcelData(List<BaseCard> insertList);
 }

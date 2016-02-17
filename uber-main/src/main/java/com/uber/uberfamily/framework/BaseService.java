@@ -34,4 +34,7 @@ public interface BaseService<T extends BaseModel, PK extends Serializable, E ext
     PageInfo<T> getPage(Map<String, Object> param, int pageNum, int pageSize);
 
     void batchInsert(String sqlMapper, List<Map<String, Object>> params);
+
+    void insertBatch(String sqlMapper, List<T> params);
+
 }
