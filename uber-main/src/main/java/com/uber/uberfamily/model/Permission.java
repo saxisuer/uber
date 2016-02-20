@@ -3,8 +3,8 @@ package com.uber.uberfamily.model;
 import com.uber.uberfamily.framework.BaseModel;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Project uber
@@ -30,7 +30,7 @@ public class Permission extends BaseModel {
 
     private String url;
 
-    private Set<Permission> permissionSet = new HashSet<>();
+    private List<Permission> permissionSet = new ArrayList<>();
 
 
     public Long getPid() {
@@ -115,11 +115,11 @@ public class Permission extends BaseModel {
         return true;
     }
 
-    public Set<Permission> getPermissionSet() {
+    public List<Permission> getPermissionSet() {
         return permissionSet;
     }
 
-    public void setPermissionSet(Set<Permission> permissionSet) {
+    public void setPermissionSet(List<Permission> permissionSet) {
         this.permissionSet = permissionSet;
     }
 

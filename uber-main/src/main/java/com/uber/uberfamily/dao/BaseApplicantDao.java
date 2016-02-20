@@ -4,6 +4,8 @@ import com.uber.uberfamily.framework.BaseDao;
 import com.uber.uberfamily.framework.MyBatisRepository;
 import com.uber.uberfamily.model.BaseApplicant;
 
+import java.util.Map;
+
 /**
  * @Project uber
  * @Package com.uber.uberfamily.dao
@@ -14,5 +16,7 @@ import com.uber.uberfamily.model.BaseApplicant;
  */
 @MyBatisRepository("baseApplicantDao")
 public interface BaseApplicantDao extends BaseDao<BaseApplicant, Long> {
+
+    Map sp_issueThisCard(Map<String,String> paramMap);
 
 }

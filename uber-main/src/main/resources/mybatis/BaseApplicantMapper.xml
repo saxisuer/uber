@@ -3,7 +3,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.uber.uberfamily.dao.BaseApplicantDao">
 
+    <sql id="mapWhereClause">
+        <if test="mobile != null">and mobile = #{mobile}</if>
+        <if test="contactMan != null">and contactMan = #{contactMan}</if>
+        <if test="cardNoLogical != null">and cardNoLogical = #{cardNoLogical}</if>
+        <if test="isDelivered != null">and isDelivered = #{isDelivered}</if>
+        <if test="isIssued != null">and isIssued = #{isIssued}</if>
+    </sql>
+
     <select id="getList" resultType="baseApplicant" parameterType="java.util.Map">
         SELECT * FROM t_base_applicant
+        <where>
+            <include refid="mapWhereClause"/>
+        </where>
+    </select>
+
+
+    <select id="sp_issueThisCard" statementType="CALLABLE" parameterType="java.util.Map" resultType="java.util.HashMap">
+        call sp_issueThisCard(#{userAcc},#{operatorAcc})
     </select>
 </mapper>

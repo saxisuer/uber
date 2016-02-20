@@ -22,7 +22,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Project uber
@@ -116,7 +119,7 @@ public class AuthorizeController {
                 mg.setMenuid(Long.toString(g.getId()));
                 mg.setIcon(g.getIco());
                 mg.setMenuname(g.getName());
-                Set<Permission> menuSet = g.getPermissionSet();
+                List<Permission> menuSet = g.getPermissionSet();
                 List<Menus> mlist = new ArrayList<Menus>();
                 for (Permission obj : menuSet) {
                     if (subject.isPermitted(obj.getCode())) {

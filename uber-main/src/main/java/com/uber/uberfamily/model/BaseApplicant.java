@@ -20,6 +20,8 @@ public class BaseApplicant extends BaseModel {
 
     private String cardNoPhysical;
 
+    private String cardNoLogical;
+
     private String contactMan;
 
     private String telAreaCode;
@@ -222,5 +224,13 @@ public class BaseApplicant extends BaseModel {
 
     public void setLockedByWho(String lockedByWho) {
         this.lockedByWho = lockedByWho;
+    }
+
+    public String getCardNoLogical() {
+        return cardNoLogical;
+    }
+
+    public void setCardNoLogical(String cardNoLogical) {
+        this.cardNoLogical = cardNoLogical;
     }
 }

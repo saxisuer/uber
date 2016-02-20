@@ -9,6 +9,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @Project uber
  * @Package com.uber.uberfamily.service.impl
@@ -33,5 +36,15 @@ public class BaseApplicantServiceImplTest {
         int page = 1;
         int row = 10;
         this.baseApplicantService.getPage(null, page, row);
+    }
+
+
+    @Test
+    public void testCall() {
+        Map<String, String> para = new HashMap<String, String>();
+        para.put("userAcc", "aaa");
+        para.put("operatorAcc", "operatorAcc");
+        Map result = this.baseApplicantService.getBaseDao().sp_issueThisCard(para);
+        System.out.println(result);
     }
 }

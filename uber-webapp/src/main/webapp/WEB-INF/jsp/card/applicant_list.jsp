@@ -54,6 +54,7 @@
             height: $('#body').height() - $('#search').height() - 15,
             width: $('#body').width(),
             idField: 'id',
+            method: 'GET',
             url: '${ctx}/applicant/loadApplicantData',
             singleSelect: false,
             selectOnCheck: true,

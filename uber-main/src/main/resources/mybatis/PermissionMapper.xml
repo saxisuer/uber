@@ -64,7 +64,7 @@
         children.pid as children_pid,
         children.name as children_name,
         children.code as children_code,
-        children.sort_no as children_sortNo,
+        children.sort_no as children_sort_no,
         children.type as children_type,
         children.url as children_url,
         children.ico as children_ico
@@ -73,6 +73,7 @@
             t.id = children.pid
             and t.TYPE = 1
         </where>
+        ORDER BY t.sort_no asc, children.sort_no asc
     </select>
 
 
