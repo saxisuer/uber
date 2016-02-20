@@ -90,13 +90,31 @@ public class BaseApplicantController {
         String[] userAccounts = userAccs.split(",");
         for (String id : userAccounts) {
             try {
-                baseApplicantService.issueThisCard(id, ((User) SecurityUtils.getSubject().getSession().getAttribute("userinfo")).getName());
+                baseApplicantService.issueThisCard(id, getUserinfo());
             } catch (Exception e) {
                 resultMap.put("result", id + ":" + e.getMessage());
                 return resultMap;
             }
         }
         return resultMap;
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/writeDeliverMark")
+    public Map<String, String> writeDeliverMark(String userAcc, String operatorAcc) {
+        Map<String, String> resultMap = new HashMap<String, String>();
+        String[] ids = userAcc.split(",");
+        for (String id : ids) {
+            baseApplicantService.sp_writeDeliverMark(id, getUserinfo());
+        }
+
+        resultMap.put("result", "SUCCESS");
+        return resultMap;
+    }
+
+    private String getUserinfo() {
+        return ((User) SecurityUtils.getSubject().getSession().getAttribute("userinfo")).getName();
     }
 
 }

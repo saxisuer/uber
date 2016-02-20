@@ -70,5 +70,14 @@ public class BaseApplicantServiceImpl extends BaseServiceImpl<BaseApplicant, Lon
         return l;
     }
 
+    @Override
+    public void sp_writeDeliverMark(String userAcc, String operatorAcc) {
+        Map<String, String> paramMap = new HashMap<String, String>();
+        paramMap.put("userAcc", userAcc);
+        paramMap.put("isDelivered", "1");
+        paramMap.put("operatorAcc", operatorAcc);
+        this.getBaseDao().sp_writeDeliverMark(paramMap);
+    }
+
 
 }

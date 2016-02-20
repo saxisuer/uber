@@ -22,4 +22,8 @@
     <select id="sp_issueThisCard" statementType="CALLABLE" parameterType="java.util.Map" resultType="java.util.HashMap">
         call sp_issueThisCard(#{userAcc},#{operatorAcc})
     </select>
+
+    <select id="sp_writeDeliverMark" statementType="CALLABLE" parameterType="java.util.Map">
+        call sp_writeDeliverMark(#{userAcc},#{isDelivered},#{operatorAcc})
+    </select>
 </mapper>

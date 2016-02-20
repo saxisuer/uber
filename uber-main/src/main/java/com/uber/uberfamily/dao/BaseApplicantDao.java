@@ -17,6 +17,8 @@ import java.util.Map;
 @MyBatisRepository("baseApplicantDao")
 public interface BaseApplicantDao extends BaseDao<BaseApplicant, Long> {
 
-    Map sp_issueThisCard(Map<String,String> paramMap);
+    Map sp_issueThisCard(Map<String, String> paramMap);
+
+    void sp_writeDeliverMark(Map<String, String> paramMap);
 
 }

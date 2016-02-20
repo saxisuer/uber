@@ -25,4 +25,6 @@ public interface BaseApplicantService extends BaseService<BaseApplicant, Long, B
     PageInfo<BaseApplicant> loadDeliveryData(Map<String, Object> paramMap, int page, int rows);
 
     Map issueThisCard(String id, String userinfo) throws Exception;
+
+    void sp_writeDeliverMark(String userAcc, String operatorAcc);
 }
