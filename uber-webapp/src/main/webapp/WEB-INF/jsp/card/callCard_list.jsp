@@ -70,8 +70,8 @@
         $("#loss").on("click", function () {
             var r = $('#callCard').datagrid('getSelected');
             editCardStatus({
-                action: 'callcard/setCardLoss',
-                id: {'callCard.cardNoLogical': r.cardNoLogical}
+                action: '${ctx}/callcard/setCardLoss',
+                id: {'cardNoLogical': r.cardNoLogical}
             });
         });
 
@@ -79,8 +79,8 @@
         $("#damaged").on("click", function () {
             var r = $('#callCard').datagrid('getSelected');
             editCardStatus({
-                action: 'callcard/setDamaged',
-                id: {'callCard.cardNoLogical': r.cardNoLogical}
+                action: '${ctx}/callcard/setDamaged',
+                id: {'cardNoLogical': r.cardNoLogical}
             });
         });
 
@@ -88,8 +88,8 @@
         $("#returnCard").on("click", function () {
             var r = $('#callCard').datagrid('getSelected');
             editCardStatus({
-                action: 'callcard/setReturnCard',
-                id: {'callCard.cardNoLogical': r.cardNoLogical}
+                action: '${ctx}/callcard/setReturnCard',
+                id: {'cardNoLogical': r.cardNoLogical}
             });
         });
 
@@ -97,8 +97,8 @@
         $("#exceptionLock").on("click", function () {
             var r = $('#callCard').datagrid('getSelected');
             editCardStatus({
-                action: 'callcard/setExceptionLock',
-                id: {'callCard.cardNoLogical': r.cardNoLogical}
+                action: '${ctx}/callcard/setExceptionLock',
+                id: {'cardNoLogical': r.cardNoLogical}
             });
         });
 
@@ -106,8 +106,8 @@
         $("#exceptionUnLock").on("click", function () {
             var r = $('#callCard').datagrid('getSelected');
             editCardStatus({
-                action: 'callcard/setExceptionUnLock',
-                id: {'callCard.cardNoLogical': r.cardNoLogical}
+                action: '${ctx}/callcard/setExceptionUnLock',
+                id: {'cardNoLogical': r.cardNoLogical}
             });
         });
 
@@ -137,10 +137,8 @@
             url: opts.action,
             data: opts.id, //{key:valule} user.name : 12323
             success: function (data) {
-                console.log(data)
                 if (data.result.state == '0') {
-                    //reload
-                    alert('操作成功')
+                    alert('操作成功');
                     $('#callCard').datagrid('reload');
                 } else {
                     alert(data.result.info)

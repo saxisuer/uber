@@ -102,13 +102,12 @@ public class BaseApplicantController {
 
     @ResponseBody
     @RequestMapping(value = "/writeDeliverMark")
-    public Map<String, String> writeDeliverMark(String userAcc, String operatorAcc) {
+    public Map<String, String> writeDeliverMark(String userAccs, String operatorAcc) {
         Map<String, String> resultMap = new HashMap<String, String>();
-        String[] ids = userAcc.split(",");
+        String[] ids = userAccs.split(",");
         for (String id : ids) {
             baseApplicantService.sp_writeDeliverMark(id, getUserinfo());
         }
-
         resultMap.put("result", "SUCCESS");
         return resultMap;
     }

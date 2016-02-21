@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uber.uberfamily.dao.CallCardDao">
+
+    <select id="getList" parameterType="java.util.Map" resultType="callCard">
+        SELECT * FROM t_call_card
+    </select>
+
+    <resultMap id="setLossResultMap" type="java.util.HashMap">
+        <result column="state" property="state"/>
+        <result column="CODE" property="code"/>
+        <result column="info" property="info" javaType="string"/>
+    </resultMap>
+    <select id="sp_setLoss" statementType="CALLABLE" resultMap="setLossResultMap">
+      CALL sp_setLoss(#{cardNoLogical},#{operatorAcc})
+    </select>
+
+
+    <select id="sp_setDamaged" statementType="CALLABLE" resultMap="setLossResultMap">
+        CALL sp_setDamaged(#{cardNoLogical},#{operatorAcc})
+    </select>
+
+    <select id="sp_setReturnCard" statementType="CALLABLE" resultMap="setLossResultMap">
+        CALL sp_setReturnCard(#{cardNoLogical},#{operatorAcc})
+    </select>
+
+    <select id="sp_setExceptionLock" statementType="CALLABLE" resultMap="setLossResultMap">
+        CALL sp_setExceptionLock(#{cardNoLogical},#{operatorAcc})
+    </select>
+
+    <select id="sp_setExceptionUnLock" statementType="CALLABLE" resultMap="setLossResultMap">
+         CALL sp_setExceptionUnLock(#{cardNoLogical},#{operatorAcc})
+    </select>
+</mapper>
