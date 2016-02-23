@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uber.uberfamily.dao.DeviceInfoDao">
+
+
+    <select id="getList" resultType="deviceInfo" parameterType="java.util.Map">
+        SELECT * FROM t_device_info
+    </select>
+
+    <update id="update" parameterType="deviceInfo">
+        UPDATE t_device_info
+        <set>
+            <if test="deviceUUID != null">deviceUUID = #{deviceUUID},</if>
+            <if test="latitude != null">latitude = #{latitude},</if>
+            <if test="longtitude != null">longtitude = #{longtitude},</if>
+            <if test="state != null">state = #{state},</if>
+            <if test="installationDate != null">installationDate = #{installationDate},</if>
+            <if test="city != null">city = #{city},</if>
+            <if test="province != null">province = #{province},</if>
+            <if test="address != null">address = #{address},</if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+    <insert id="create" parameterType="deviceInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into t_device_info( province, city, address, latitude, longtitude, installationDate, state, deviceUUID)
+        VALUES (#{province},#{city},#{address},#{latitude},#{longtitude},#{installationDate},#{state},#{deviceUUID})
+    </insert>
+
+    <select id="getById" parameterType="long" resultType="deviceInfo">
+        SELECT * from t_device_info
+        <where>
+            id= #{value}
+        </where>
+    </select>
+
+
+    <delete id="delete" parameterType="long">
+        delete from t_device_info where id=#{value,javaType=long}
+    </delete>
+</mapper>

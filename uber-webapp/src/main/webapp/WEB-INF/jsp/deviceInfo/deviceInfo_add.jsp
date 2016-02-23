@@ -1,98 +1,93 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
-<%@ taglib prefix="s" uri="/struts-tags"%>	
-
+<%@ page language="java" pageEncoding="utf-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>设备信息</title>
-    
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-  </head>
-  
-  <body>
-	<s:form namespace="/deviceInfo" action="/deviceinfo/save" method="post" theme="simple">
-	<s:token />
-	<s:hidden name="deviceInfo.id" value="%{deviceInfo.id}" />
-	<div class="user-form">
-		<h2>新增设备</h2>
-		<div class="yui3-g">
-			<div class="yui3-u-1-2">
-				<div class="formgourp">
-					<label>设备ID：</label>
-					<div class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="deviceInfo.deviceUUID" value="<s:property value="deviceInfo.deviceUUID"/>"></div>
-				</div>
-				
-				<div class="formgourp">
-					<label>市：</label>
-					<div class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="deviceInfo.city" value="<s:property value="deviceInfo.city"/>"></div>
-				</div>
-				
-				<div class="formgourp">
-					<label>纬度：</label>
-					<div class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="deviceInfo.latitude" value="<s:property value="deviceInfo.latitude"/>"></div>
-				</div>
-				
-				<div class="formgourp">
-					<label>安装日期：</label>
-					<div  class="textbox">
-					<input id="date" class="easyui-datebox" name="deviceInfo.installationDate" value="<s:property value="deviceInfo.installationDate"/>">
-					</div>
-				</div>
-				
-			</div>
-			<div class="yui3-u-1-2">
-				<div class="formgourp">
-					<label>省：</label>
-					<div  class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="deviceInfo.province" value="<s:property value="deviceInfo.province"/>"></div>
-				</div>
-				<div class="formgourp">
-					<label>地址：</label>
-					<div  class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="deviceInfo.address" value="<s:property value="deviceInfo.address"/>"></div>
-				</div>
-				<div class="formgourp">
-					<label>经度：</label>
-					<div  class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="deviceInfo.longtitude" value="<s:property value="deviceInfo.longtitude"/>"></div>
-				</div>
-				<div class="formgourp">
-					<label>状态：</label>
-					<!-- <div  class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="deviceInfo.state" value="<s:property value="deviceInfo.state"/>"></div> -->
-					<div class="textbox">
-						<select class="easyui-combobox" name="deviceInfo.state" data-options="required:true">
-						    <option value="1" <s:if test="deviceInfo.state==1">selected="selected"</s:if>>启用</option>
-							<option value="0" <s:if test="deviceInfo.state==0">selected="selected"</s:if>>禁用</option>
-						</select>
-					</div>
-				</div>
-			</div>
-		</div>
+<head>
+    <base href="${pageContext.request.contextPath}">
 
-	    
-	    <s:submit value="保存" style="display: none;"/>
-	    	            <s:actionmessage />
-						<s:actionerror />
-	</div>
-	</s:form>
-	
-	<SCRIPT type="text/javascript">
-		dataFormated();
-		$('#date').datebox();
-		var date = new Date().Format('yyyy-MM-dd');
-		$('#date').datebox('setValue', date);
-		/*
-		** 获取ztree选择的ids
-		*/
-		function setZtreeIds() {
-			//为空
-		}
-		//-->
-	</SCRIPT>
-  </body>
+    <title>设备信息</title>
+
+</head>
+
+<body>
+<form action="${pageContext.request.contextPath}/deviceinfo/save" method="post">
+    <input type="hidden" name="id"/>
+    <div class="user-form">
+        <h2>新增设备</h2>
+        <div class="yui3-g">
+            <div class="yui3-u-1-2">
+                <div class="formgourp">
+                    <label>设备ID：</label>
+                    <div class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="deviceUUID"
+                    /></div>
+                </div>
+
+                <div class="formgourp">
+                    <label>市：</label>
+                    <div class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="city"
+                    /></div>
+                </div>
+
+                <div class="formgourp">
+                    <label>纬度：</label>
+                    <div class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="latitude"
+                    /></div>
+                </div>
+
+                <div class="formgourp">
+                    <label>安装日期：</label>
+                    <div class="textbox">
+                        <input id="date" class="easyui-datebox" name="deviceInfo.installationDate"/>
+                    </div>
+                </div>
+
+            </div>
+            <div class="yui3-u-1-2">
+                <div class="formgourp">
+                    <label>省：</label>
+                    <div class="textbox">
+                        <input class="textbox-text validatebox-text textbox-prompt" name="province"/></div>
+                </div>
+                <div class="formgourp">
+                    <label>地址：</label>
+                    <div class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="address"
+                    /></div>
+                </div>
+                <div class="formgourp">
+                    <label>经度：</label>
+                    <div class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="longtitude"
+                    /></div>
+                </div>
+                <div class="formgourp">
+                    <label>状态：</label>
+                    <!-- <div  class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="deviceInfo.state" value="<s:property value="deviceInfo.state"/>"></div> -->
+                    <div class="textbox">
+                        <select class="easyui-combobox" name="state" data-options="required:true">
+                            <option value="1" <c:if test="deviceInfo.state==1">selected="selected"</c:if>>启用</option>
+                            <option value="0" <c:if test="deviceInfo.state==0">selected="selected"</c:if>>禁用</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <input type="submit" value="保存" style="display: none;"/>
+    </div>
+</form>
+
+<SCRIPT type="text/javascript">
+    dataFormated();
+    $('#date').datebox();
+    var date = new Date().Format('yyyy-MM-dd');
+    $('#date').datebox('setValue', date);
+    /*
+     ** 获取ztree选择的ids
+     */
+    function setZtreeIds() {
+        //为空
+    }
+    //-->
+</SCRIPT>
+</body>
 </html>
