@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uber.uberfamily.dao.CallLogDao">
+
+    <sql id="mapWhereClause">
+        <if test="cardNoPhysical != null">and t.cardNoPhysical = #{cardNoPhysical}</if>
+        <if test="userAcc != null">and t.userAcc = #{userAcc}</if>
+        <if test="deviceUUID != null">and t.deviceUUID = #{deviceUUID}</if>
+        <if test="callTime != null">and DATE_FORMAT(t.callTime,'%Y-%m-%d') = #{callTime}</if>
+        <if test="pickupTime != null">and DATE_FORMAT(t.pickupTime,'%Y-%m-%d') = #{pickupTime}</if>
+    </sql>
+
+    <select id="getDTOList" parameterType="java.util.Map" resultType="com.uber.uberfamily.vo.CallLogDTO">
+        SELECT
+        t.*,
+        t1.address
+        FROM
+        t_call_log t,
+        t_device_info t1
+        <where>
+            t.deviceUUID = t1.deviceUUID
+            <include refid="mapWhereClause"/>
+        </where>
+
+    </select>
+</mapper>

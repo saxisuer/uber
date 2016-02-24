@@ -92,11 +92,11 @@
 
     function search() {
         $('#callLog').datagrid('load', {
-            param_uuid: $.trim($('#param_uuid').val()),
-            param_userAcc: $.trim($('#param_userAcc').val()),
-            param_cardNoPhisycal: $.trim($('#param_cardNoPhisycal').val()),
-            param_callTime: $.trim($('#param_callTime').datebox('getValue')),
-            param_pickupTime: $.trim($('#param_pickupTime').datebox('getValue'))
+            deviceUUID: $.trim($('#param_uuid').val()),
+            userAcc: $.trim($('#param_userAcc').val()),
+            cardNoPhysical: $.trim($('#param_cardNoPhisycal').val()),
+            callTime: $.trim($('#param_callTime').datebox('getValue')),
+            pickupTime: $.trim($('#param_pickupTime').datebox('getValue'))
         });
     }
 
