@@ -3,9 +3,9 @@ jQuery.extend({
     createUploadIframe: function (id, uri) {
         //create frame
         var frameId = 'jUploadFrame' + id;
-
+        var io;
         if (window.ActiveXObject) {
-            var io = document.createElement('<iframe id="' + frameId + '" name="' + frameId + '" />');
+            io = document.createElement('<iframe id="' + frameId + '" name="' + frameId + '" />');
             if (typeof uri == 'boolean') {
                 io.src = 'javascript:false';
             }
@@ -14,7 +14,7 @@ jQuery.extend({
             }
         }
         else {
-            var io = document.createElement('iframe');
+            io = document.createElement('iframe');
             io.id = frameId;
             io.name = frameId;
         }
@@ -58,7 +58,7 @@ jQuery.extend({
         }
         var requestDone = false;
         // Create the request object
-        var xml = {}
+        var xml = {};
         if (s.global)
             jQuery.event.trigger("ajaxSend", [xml, s]);
         // Wait for a response to come back
@@ -111,7 +111,7 @@ jQuery.extend({
                 if (s.complete)
                     s.complete(xml, status);
 
-                jQuery(io).unbind()
+                jQuery(io).unbind();
 
                 setTimeout(function () {
                     try {
@@ -122,12 +122,12 @@ jQuery.extend({
                         jQuery.handleError(s, xml, null, e);
                     }
 
-                }, 100)
+                }, 100);
 
                 xml = null
 
             }
-        }
+        };
         // Timeout checker
         if (s.timeout > 0) {
             setTimeout(function () {
@@ -180,5 +180,5 @@ jQuery.extend({
         //alert($('param', data).each(function(){alert($(this).attr('value'));}));
         return data;
     }
-})
+});
 

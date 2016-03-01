@@ -70,7 +70,7 @@
         //新增弹出框
         $("#add").on("click", function () {
             parent.dataUpdate({
-                action: '${ctx}/deviceinfo/add',
+                action: 'deviceinfo/add',
                 success: function () {
                     return gridDom.datagrid('reload');
                 }
@@ -80,7 +80,7 @@
         $("#edit").on("click", function () {
             var r = gridDom.datagrid('getSelected');
             parent.dataUpdate({
-                action: '${ctx}/deviceinfo/edit',
+                action: 'deviceinfo/edit',
                 params: {'id': r.id},
                 success: function () {
                     return gridDom.datagrid('reload');
@@ -115,11 +115,9 @@
     }
 
     function formatDate(val, row) {
-        if (typeof(val) == "string") {
-            return val.substring(0, 10);
-        } else {
-            return val;
-        }
+        dataFormated();
+        var v = new Date(val);
+        return v.Format('yyyy-MM-dd');
 
     }
 

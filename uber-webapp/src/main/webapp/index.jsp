@@ -7,6 +7,7 @@
     <title>Uber family后台管理系统</title>
     <link rel="stylesheet" type="text/css" href="${ctx}/public/easyui/default.css">
     <script type="text/javascript" src="${ctx}/public/easyui/outlook.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/public/jquery/filemanager.js"></script>
 </head>
 
 <body class="easyui-layout" style="overflow-y: hidden" scroll="no">
@@ -207,7 +208,6 @@
                     setZtreeIds();
                     dialog.find('form').ajaxSubmit({
                         success: function (data) {
-                            console.log(data);
                             if (data.result == "SUCCESS") {
                                 opt.success();
                                 dialog.window('close');
@@ -238,9 +238,79 @@
         $('#editpass').click(editPassDiagFun);
         $('#closePassDiagBtn').click(closePassDiagFun);
         $('#changePassBtn').click(changePassDiagFun);
-
         $('#loginOut').click(logoutFun);
     });
+
+
+    function uploadFileForm(opt) {
+        var action = opt.action,
+                params = opt.params == undefined ? '' : opt.params;
+        $.ajax({
+            url: '${ctx}/' + action,
+            type: 'GET',
+            data: params,
+            success: function (data) {
+                if (data.result == "500") {
+                    alert('error:' + 500)
+                }
+                var dialog = $('#wUpdate');
+                dialog.find('#wContainer').html(data);
+                dialog.window('open');
+                $('#wOK').one('click', function () {
+                    setZtreeIds();
+                    dialog.find('form').form('submit', {
+                        onSubmit: function () {
+                            var input_id = dialog.find('form').find('input:first');
+                            var imgval = $('#fileField').filebox('getValue');
+                            if (input_id.val() == "") {
+                                if ("" == imgval) {
+                                    Common.showBySite('温馨提示', '请选择文件！');
+                                    return false;
+                                } else {
+                                    if (-1 == imgval.indexOf('.mp4')) {
+                                        Common.showBySite('温馨提示', '请选择正确的文件格式(.mp4)!');
+                                        return false;
+                                    }
+                                }
+                            } else {
+                                if (imgval != "") {
+                                    if (-1 == imgval.indexOf('.mp4')) {
+                                        Common.showBySite('温馨提示', '请选择正确的文件格式(.mp4)!');
+                                        return false;
+                                    }
+                                }
+                            }
+                            var isValid = dialog.find('form').form('validate');
+                            if (isValid) {
+                                fileManager_Main.resetPercent(imgval);
+                            }
+                            return isValid;
+                        },
+                        success: function (data) {
+                            data = eval('(' + data + ')');
+                            if (data.result == "SUCCESS") {
+                                opt.success();
+                                dialog.window('close');
+                            } else if (data.result == "ERROR") {
+                                alert(data.str);
+                                dialog.window('close');
+                            } else {
+                                alert('保存失败！');
+                                dialog.window('close');
+                            }
+                        }
+                    });
+                });
+                $('#wCancel').on('click', function () {
+                    dialog.window('close');
+                });
+            },
+            error: function () {
+                alert('加载出错！')
+            }
+        });
+    }
+
 
 </script>
 </html>

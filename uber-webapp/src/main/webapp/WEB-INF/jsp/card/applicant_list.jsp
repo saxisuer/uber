@@ -136,11 +136,9 @@
     }
 
     function formatDate(val, row) {
-        if (typeof(val) == "string") {
-            return val.substring(0, 10);
-        } else {
-            return val;
-        }
+        dataFormated();
+        var v = new Date(val);
+        return v.Format('yyyy-MM-dd');
     }
 
 </script>

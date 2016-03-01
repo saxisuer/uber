@@ -84,4 +84,11 @@
         <constructor-arg index="1" value="BATCH"/>
     </bean>
 
+    <bean id="customerPropertiesLoader" class="com.uber.uberfamily.framework.util.CustomerPropertiesLoader">
+        <property name="locations">
+            <list>
+                <value>classpath:upload.properties</value>
+            </list>
+        </property>
+    </bean>
 </beans>

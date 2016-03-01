@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uber.uberfamily.dao.FileListDao">
+
+
+    <select id="getList" resultType="fileList" parameterType="java.util.Map">
+        SELECT * FROM t_ad_fileList
+    </select>
+
+
+    <insert id="create" parameterType="fileList" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_ad_fileList(fileUUID, company, uniqueFileName, fileName, filePostfix, fileTitle, fileSize,  fileVersion, md5Check,
+        uploadByWho, uploadTime, isUploaded, startTime, endTime, boardcastMode, isAudited, auditTime,fileLevel)
+        VALUES (#{fileUUID},#{company},#{uniqueFileName},#{fileName},#{filePostfix},#{fileTitle},#{fileSize},#{fileVersion},
+        #{md5Check},#{uploadByWho},#{uploadTime},#{isUploaded},#{startTime},#{endTime},#{boardcastMode},#{isAudited},#{auditTime},#{fileLevel})
+    </insert>
+
+
+    <select id="getById" parameterType="long" resultType="fileList">
+        SELECT * FROM t_ad_fileList
+        WHERE id= #{value}
+    </select>
+
+    <update id="update" parameterType="fileList">
+        update t_ad_fileList
+        <set>
+          <if test="uniqueFileName != null">uniqueFileName = #{uniqueFileName},</if>
+          <if test="fileName != null">fileName = #{fileName},</if>
+          <if test="filePostfix != null">filePostfix = #{filePostfix},</if>
+          <if test="fileTitle != null">fileTitle = #{fileTitle},</if>
+          <if test="fileSize != null">fileSize = #{fileSize},</if>
+          <if test="md5Check != null">md5Check = #{md5Check},</if>
+          <if test="uploadTime != null">uploadTime = #{uploadTime},</if>
+          <if test="startTime != null">startTime = #{startTime},</if>
+          <if test="endTime != null">endTime = #{endTime},</if>
+          <if test="fileLevel != null">fileLevel = #{fileLevel},</if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+</mapper>

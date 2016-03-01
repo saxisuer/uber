@@ -60,7 +60,7 @@
                 {field: 'lockedTime', title: '锁定时间', width: 100, halign: 'center', align: 'left'},
                 {field: 'lockedByWho', title: '锁定者', width: 100, halign: 'center', align: 'center'},
                 {field: 'isIssued', title: '是否已发行', width: 100, halign: 'center', align: 'center', formatter: formatStatus},
-                {field: 'issueTime', title: '发行时间', width: 100, halign: 'center', align: 'center'},
+                {field: 'issueTime', title: '发行时间', width: 100, halign: 'center', align: 'center', formatter: formatDate},
                 {field: 'issuedByWho', title: '发行人员', width: 100, halign: 'center', align: 'center'},
                 {field: 'createTime', title: '创建时间', width: 100, halign: 'center', align: 'center'},
                 {field: 'createByWho', title: '创建人员', width: 100, halign: 'center', align: 'center'}
@@ -69,6 +69,13 @@
             pagination: true,
             pageSize: 30
         });
+
+        function formatDate(val, row) {
+            dataFormated();
+            var v = new Date(val);
+            return v.Format('yyyy-MM-dd');
+
+        }
 
         //上传
         $('#import').on("change", function (e) {

@@ -45,8 +45,8 @@
                     <label>状态：</label>
                     <div class="textbox">
                         <select class="easyui-combobox" name="status" data-options="required:true">
-                            <option value="1" <c:if test="user.status==1">selected="selected"</c:if>>启用</option>
-                            <option value="0" <c:if test="user.status==0">selected="selected"</c:if>>禁用</option>
+                            <option value="1" <c:if test="${user.status == 1}">selected="selected"</c:if>>启用</option>
+                            <option value="0" <c:if test="${user.status == 0}">selected="selected"</c:if>>禁用</option>
                         </select>
                     </div>
                 </div>

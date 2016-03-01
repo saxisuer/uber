@@ -1,135 +1,139 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" pageEncoding="utf-8" %>
 
-<%@ taglib prefix="s" uri="/struts-tags"%>	
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'index.jsp' starting page</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-  </head>
-  
-  <body>
-	<s:form  namespace="/filelist" action="/filelist/save" method="post" theme="simple">
-	<s:token />
-	<s:hidden name="fileList.id" value="%{fileList.id}" />
-	<s:hidden name="fileList.fileUUID" value="%{fileList.fileUUID}" />
-	<s:hidden name="fileList.uniqueFileName" value="%{fileList.uniqueFileName}" />
-	<s:hidden name="fileList.md5Check" value="%{fileList.md5Check}" />
-	<s:hidden name="fileList.fileVersion" value="%{fileList.fileVersion}" />
-	
-	<div class="user-form">
-		<h2>编辑广告</h2>
-		<div class="yui3-g">
-			<div class="yui3-u-1-2">
-				<div class="formgourp">
-					<label>公司名称：</label>
-					<div class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="fileList.company" value="<s:property value="fileList.company"/>"></div>
-				</div>
-				
-				<div class="formgourp">
-					<label>开播时间：</label>
-					<input id="date" class="easyui-datetimebox" name="fileList.startTime" value="<s:date name="fileList.startTime" format="yyyy-MM-dd HH:mm:ss" /> ">
-				</div>
-				
-				<div class="formgourp">
-					<input id="import" type="file" name="file">  
-				</div>
-			</div>
-			
-			<div class="yui3-u-1-2">
-				<div class="formgourp">
-					<label>文件标题：</label>
-					<input isabled="true"　readOnly="true" class="textbox-text validatebox-text textbox-prompt" name="fileList.fileTitle" value="<s:property value="fileList.fileTitle"/>">
-				</div>
-				
-				<div class="formgourp">
-					<label>停播时间：</label>
-					<input id="date2" class="easyui-datetimebox" name="fileList.endTime" value="<s:date name="fileList.endTime" format="yyyy-MM-dd HH:mm:ss" /> ">
-				</div>
-				
-				<div class="formgourp">
-					<label>文件名称：</label>
-					<input id="fileName" class="easyui-datebox" name="fileList.fileName" value="<s:property value="fileList.fileName"/>">
-				</div>
-			</div>
-		</div>
-		<!-- 
-		<div  class="formgourp">
-			<label>备注：</label>
-			<textarea name="fileList.note" value="<s:property value="fileList.note"/>"  style="width:100%; height:60px;" />				
-		</div>
-	     -->
-	    <s:submit value="保存" style="display: none;"/>
-	    	            <s:actionmessage />
-						<s:actionerror />
-						
-						
-	</div>
-	</s:form>
-	<!-- 
-	<iframe id='target_upload' name='target_upload' src=''
-			style='display: none'></iframe>
-   <form action="/filelist/fileUpload" id="uploadForm" enctype="multipart/form-data" method="post" target="target_upload">
-   <input type="file" name="upload"> <input type="button" id="subButton" value="上传">
-   </form>
-   <div id="progress">
-   <div id="title"><span id="text">上传进度</span><div id="close">X</div></div>
-   <div id="progressBar">
-   	<div id="uploaded"></div>
-   	</div>
-   	<div id="info"></div>
-   </div>
-    -->	  
-	
-	<SCRIPT type="text/javascript">
-		dataFormated();
-		$('#date').datetimebox();
-		$('#date2').datetimebox();
+<head>
 
-		/*
-		** 获取ztree选择的ids
-		*/
-		function setZtreeIds() {
-			//为空
-		}
-		
-		$('#import').on("change",function(e){
-			var src=e.target || window.event.srcElement;
-			var filename=src.value;
-			$('#fileName').val(filename.substring( filename.lastIndexOf('\\')+1 ));
-		});
-		
-		//上传
-	//	$('#uploadBtn').on('click', function() {  
-    //    $.ajaxFileUpload({  
-    //        url:'filelist/fileUpload',  
-    //        secureuri:false,  
-    //        fileElementId:'fileId',//file标签的id  
-    //        dataType: 'text',//返回数据的类型  
-    //        success: function (data, status) {  
-    //        	alert("111");  
-    //        },  
-    //        error: function (data, status, e) {  
-    //           alert(e);  
-    //        }  
-    //    });  
-    //	}); 
-		
-		//-->
-	</SCRIPT>
-  </body>
+    <!--
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    -->
+    <script type="text/javascript" src="${pageContext.request.contextPath}/public/jquery/filemanager.js"></script>
+</head>
+
+<body>
+<form action="${pageContext.request.contextPath}/filelist/updateData" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="${fileList.id}"/>
+    <input type="hidden" name="fileUUID" value="${fileList.fileUUID}"/>
+    <input type="hidden" name="uniqueFileName" value="${fileList.uniqueFileName}"/>
+    <input type="hidden" name="md5Check" value="${fileList.md5Check}"/>
+    <input type="hidden" name="fileVersion" value="${fileList.fileVersion}"/>
+    <input type="hidden" name="filePostfix" value="${fileList.filePostfix}"/>
+
+    <div id="p" class="easyui-progressbar" data-options="value:60" style="width:400px;"></div>
+    <div class="user-form">
+        <h2>编辑广告</h2>
+        <div class="yui3-g">
+            <div class="yui3-u-1-2">
+                <div class="formgourp">
+                    <label>公司名称：</label>
+                    <div class="textbox">
+                        <input class="easyui-validatebox textbox-text" data-options="required:true,validType:['length[0,20]']"
+                               name="company"
+                               value="${fileList.company}"/>
+                    </div>
+                </div>
+
+                <div class="formgourp">
+                    <label>开播时间：</label>
+                    <input id="date" class="easyui-datetimebox" name="startTime"
+                           value='<fmt:formatDate value="${fileList.startTime}"  pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>'
+                           data-options="editable:false,required:true"/>
+                </div>
+
+                <div class="formgourp">
+                    <label>文件名称：</label>
+                    <input id="fileName" class="easyui-validatebox textbox-text" name="fileName" value="${fileList.fileName}"/>
+                </div>
+            </div>
+
+            <div class="yui3-u-1-2">
+                <div class="formgourp">
+                    <label>文件标题：</label>
+                    <div class="textbox">
+                        <input class="easyui-validatebox textbox-text" name="fileTitle" value="${fileList.fileTitle}"/>
+                    </div>
+                </div>
+
+                <div class="formgourp">
+                    <label>停播时间：</label>
+                    <input id="date2" class="easyui-datetimebox" name="endTime"
+                           data-options="editable:false,required:true"
+                           value='<fmt:formatDate value="${fileList.endTime}"  pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>'/>
+                </div>
+            </div>
+            <div class="yui3-u-1-2">
+                <div class="formgourp">
+                    <label>广告级别:</label>
+                    <select class="easyui-combobox" name="fileLevel">
+                        <option value="3" <c:if test="${fileList.fileLevel==3}">selected="selected"</c:if>>CITY</option>
+                        <option value="2" <c:if test="${fileList.fileLevel==2}">selected="selected"</c:if>>GROUP</option>
+                        <option value="1" <c:if test="${fileList.fileLevel==1}">selected="selected"</c:if>>CUSTOMER</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <input type="button" value="保存" style="display: none;"/>
+        <div class="user-form">
+            <div class="yui3-g">
+                <div class="yui3-u-1">
+                    <div class="formgourp">
+                        <label>
+                            <span style="color: RED; ">*</span>文件上传：
+                        </label>
+                        <input id="fileField" name="file" type="text" style="width:200px"/>
+                        <br>
+                        <br>
+                        <div id="prosbar" class="easyui-progressbar" style="width: 520px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<SCRIPT type="text/javascript">
+    dataFormated();
+    $('#date').datetimebox();
+    $('#date2').datetimebox();
+    $('#downBtn').linkbutton();
+    $('#upBtn').linkbutton();
+    $('#fileField').filebox({
+        buttonText: '选择文件',
+        buttonAlign: 'right'
+    });
+
+    /*
+     ** 获取ztree选择的ids
+     */
+    function setZtreeIds() {
+        //为空
+    }
+
+    $('#import').on("change", function (e) {
+        var src = e.target || window.event.srcElement;
+        var filename = src.value;
+        $('#fileName').val(filename.substring(filename.lastIndexOf('\\') + 1));
+    });
+
+    //上传
+    //	$('#uploadBtn').on('click', function() {
+    //    $.ajaxFileUpload({
+    //        url:'filelist/fileUpload',
+    //        secureuri:false,
+    //        fileElementId:'fileId',//file标签的id
+    //        dataType: 'text',//返回数据的类型
+    //        success: function (data, status) {
+    //        	alert("111");
+    //        },
+    //        error: function (data, status, e) {
+    //           alert(e);
+    //        }
+    //    });
+    //	});
+
+    //-->
+</SCRIPT>
+</body>
 </html>
