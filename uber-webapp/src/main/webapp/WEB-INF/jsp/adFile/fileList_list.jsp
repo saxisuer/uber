@@ -22,13 +22,15 @@
 <div id="toolbar">
     <a href="javascript:void(0)" id="add" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>
     <a href="javascript:void(0)" id="edit" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
+    <a href="javascript:void(0)" id="set" class="easyui-linkbutton" iconCls="icon-edit" plain="true">设置</a>
     <a href="javascript:void(0)" id="delete" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
     <a href="javascript:void(0)" id="refresh" class="easyui-linkbutton" iconCls="icon-reload" plain="true">刷新</a>
 </div>
-</body>
-
-<script>
-
+<div id="deviceInfoDiv">
+    <table id="deviceInfoTable">
+    </table>
+</div>
+<script type="text/javascript">
     $(function () {
         var gridDom = $('#fileLists');
         gridDom.datagrid({
@@ -48,6 +50,7 @@
                 {field: 'ck', checkbox: true},
                 {field: 'company', title: '公司名称', width: 100, halign: 'center', align: 'left'},
                 {field: 'fileTitle', title: '文件标题', width: 100, halign: 'center', align: 'left'},
+                {field: 'fileLevel', title: '广告级别', width: 100, halign: 'center', align: 'left', hidden: true},
                 {field: 'uploadByWho', title: '文件上传者', width: 100, halign: 'center', align: 'left'},
                 {field: 'uploadTime', title: '上传时间', width: 100, halign: 'center', align: 'left', formatter: formatDate},
                 {field: 'startTime', title: '开播时间', width: 100, halign: 'center', align: 'left', formatter: formatDate},
@@ -85,6 +88,32 @@
                 }
             });
         });
+        $('#deviceInfoTable').datagrid({
+            //idField: 'id',
+            url: '${ctx}/deviceinfo/loadData',
+            selectOnCheck: true,
+            checkOnSelect: true,
+            nowrap: true,
+            height: 300,
+            fitColumns: false,
+            rownumbers: true,
+            showPageList: false,
+            singleSelect: false,
+            columns: [[
+                {field: 'ck', checkbox: true},
+                {field: 'deviceUUID', title: '设备ID', halign: 'center', align: 'left'},
+                {field: 'province', title: '省', halign: 'center', align: 'left'},
+                {field: 'city', title: '市', halign: 'center', align: 'left'},
+                {field: 'address', title: '地址', halign: 'center', align: 'left'},
+                {field: 'installationDate', title: '注册日期', halign: 'center', align: 'left', formatter: formatDate},
+                {field: 'state', title: '状态', halign: 'center', align: 'left', formatter: formatStatus}
+            ]],
+            pagination: true,
+            pageSize: 30
+        });
+        $("#set").on('click', function () {
+            $("#deviceInfoDiv").dialog('open');
+        });
         //删除
         $("#delete").on("click", function () {
             var r = gridDom.datagrid('getSelected');
@@ -101,6 +130,70 @@
         //刷新
         $("#refresh").on("click", function () {
             gridDom.datagrid('reload');
+        });
+        $("#deviceInfoDiv").dialog({
+            title: '设备列表',
+            closed: true,
+            model: true,
+            width: 550,
+            minimizable: true,
+            maximizable: true,
+            collapsible: true,
+            draggable: true,
+            resizable: true,
+            top: 50,
+            buttons: [{
+                text: '绑定',
+                iconCls: 'icon-save',
+                handler: function () {
+                    var deviceSelection = $('#deviceInfoTable').datagrid('getSelections');
+                    var deviceId = [];
+                    $.each(deviceSelection, function (i, v) {
+                        deviceId.push(v.id);
+                    });
+                    var r = gridDom.datagrid('getSelected');
+                    console.log(r);
+                    $.ajax({
+                        method: 'GET',
+                        url: '${ctx}/filelist/bindDeviceInfo',
+                        data: {
+                            'deviceIds': deviceId.join(','),
+                            'fileListId': r.id,
+                            'fileListLevel': r.fileLevel
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            if (data.result == 'success') {
+                                $.messager.show({
+                                    title: '提示',
+                                    msg: '绑定广告成功',
+                                    showType: 'slide'
+                                })
+                            }
+                            $('#deviceInfoTable').datagrid('clearSelections');
+                            $("#deviceInfoDiv").dialog('close');
+                        }
+                    })
+                }
+            }, {
+                text: '取消',
+                iconCls: 'icon-cancel',
+                handler: function () {
+                    $('#deviceInfoTable').datagrid('clearSelections');
+                    $("#deviceInfoDiv").dialog('close');
+                }
+            }],
+            onBeforeOpen: function () {
+                var r = gridDom.datagrid('getSelected');
+                if (null == r) {
+                    $.messager.show({
+                        title: '提示',
+                        msg: '尚未选择广告文件',
+                        showType: 'slide'
+                    });
+                    return false;
+                }
+            }
         });
     });
 
@@ -141,5 +234,5 @@
         });
     }
 </script>
-
+</body>
 </html>

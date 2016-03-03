@@ -10,14 +10,12 @@ import com.uber.uberfamily.service.FileListService;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,10 +24,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @Project uber
@@ -145,7 +140,8 @@ public class FileListController {
         FileList fileListOld = fileListService.getById(fileList.getId());
         if (null != file && file.getSize() > 0) {
             String savePath = PropertiestUtil.pro.get("uploadPath").toString();
-            FileUtils.forceDeleteOnExit(new File(savePath + File.separator + fileListOld.getUniqueFileName()));
+            File oldFile = new File(savePath + File.separator + fileListOld.getUniqueFileName());
+            FileUtils.forceDelete(oldFile);
             logger.info(file.getContentType());
             logger.info(file.getOriginalFilename());
             logger.info(file.getName());
@@ -178,5 +174,40 @@ public class FileListController {
         return result;
     }
 
+
+    @RequestMapping(value = "/bindDeviceInfo")
+    @ResponseBody
+    public HashMap<String, String> bindDeviceInfo(String deviceIds, String fileListId, String fileListLevel) {
+        HashMap<String, String> result = new HashMap<>();
+        String[] deviceId = deviceIds.split(",");
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        for (String d : deviceId) {
+            Map<String, Object> m = new HashMap<>();
+            m.put("fileListId", fileListId);
+            m.put("deviceId", d);
+            m.put("fileListLevel", fileListLevel);
+            list.add(m);
+        }
+        fileListService.bindDeviceInfo(list);
+        result.put("result", "success");
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getFileByDeviceInfo/{deviceId}")
+    public Map<String, String> getFileByDeviceInfo(@PathVariable Long deviceId) {
+        Map<String, String> result = new HashMap<>();
+        FileList fileList = fileListService.getFileForDevice(deviceId);
+        if (null != fileList) {
+            String downLoadFilePath = PropertiestUtil.pro.get("uploadPath").toString() + File.separator + fileList.getUniqueFileName();
+            result.put("savePath", downLoadFilePath);
+            result.put("fileName", fileList.getFileName());
+            result.put("startTime", DateFormatUtils.format(fileList.getStartTime(), "yyyy-MM-dd HH:mm:ss"));
+            result.put("endTime", DateFormatUtils.format(fileList.getEndTime(), "yyyy-MM-dd HH:mm:ss"));
+        } else {
+            result.put("error", "no file find");
+        }
+        return result;
+    }
 
 }

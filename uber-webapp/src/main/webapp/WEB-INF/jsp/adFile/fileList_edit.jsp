@@ -116,23 +116,6 @@
         var filename = src.value;
         $('#fileName').val(filename.substring(filename.lastIndexOf('\\') + 1));
     });
-
-    //上传
-    //	$('#uploadBtn').on('click', function() {
-    //    $.ajaxFileUpload({
-    //        url:'filelist/fileUpload',
-    //        secureuri:false,
-    //        fileElementId:'fileId',//file标签的id
-    //        dataType: 'text',//返回数据的类型
-    //        success: function (data, status) {
-    //        	alert("111");
-    //        },
-    //        error: function (data, status, e) {
-    //           alert(e);
-    //        }
-    //    });
-    //	});
-
     //-->
 </SCRIPT>
 </body>

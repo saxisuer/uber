@@ -6,8 +6,11 @@ import com.uber.uberfamily.framework.MyBatisService;
 import com.uber.uberfamily.model.FileList;
 import com.uber.uberfamily.service.FileListService;
 import org.apache.log4j.Logger;
+import org.springframework.util.Assert;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Project uber
@@ -29,4 +32,17 @@ public class FileListServiceImpl extends BaseServiceImpl<FileList, Long, FileLis
         this.baseDao = baseDao;
     }
 
+    @Override
+    public void bindDeviceInfo(List<Map<String, Object>> list) {
+        for (Map<String, Object> m : list) {
+            this.getBaseDao().deleteDeviceInfoRel(m);
+            this.getBaseDao().insertDeviceInfoRel(m);
+        }
+    }
+
+    @Override
+    public FileList getFileForDevice(Long deviceId) {
+        Assert.notNull(deviceId);
+        return this.getBaseDao().getFileForDevice(deviceId);
+    }
 }

@@ -25,19 +25,41 @@
     <update id="update" parameterType="fileList">
         update t_ad_fileList
         <set>
-          <if test="uniqueFileName != null">uniqueFileName = #{uniqueFileName},</if>
-          <if test="fileName != null">fileName = #{fileName},</if>
-          <if test="filePostfix != null">filePostfix = #{filePostfix},</if>
-          <if test="fileTitle != null">fileTitle = #{fileTitle},</if>
-          <if test="fileSize != null">fileSize = #{fileSize},</if>
-          <if test="md5Check != null">md5Check = #{md5Check},</if>
-          <if test="uploadTime != null">uploadTime = #{uploadTime},</if>
-          <if test="startTime != null">startTime = #{startTime},</if>
-          <if test="endTime != null">endTime = #{endTime},</if>
-          <if test="fileLevel != null">fileLevel = #{fileLevel},</if>
+            <if test="uniqueFileName != null">uniqueFileName = #{uniqueFileName},</if>
+            <if test="fileName != null">fileName = #{fileName},</if>
+            <if test="filePostfix != null">filePostfix = #{filePostfix},</if>
+            <if test="fileTitle != null">fileTitle = #{fileTitle},</if>
+            <if test="fileSize != null">fileSize = #{fileSize},</if>
+            <if test="md5Check != null">md5Check = #{md5Check},</if>
+            <if test="uploadTime != null">uploadTime = #{uploadTime},</if>
+            <if test="startTime != null">startTime = #{startTime},</if>
+            <if test="endTime != null">endTime = #{endTime},</if>
+            <if test="fileLevel != null">fileLevel = #{fileLevel},</if>
         </set>
         <where>
             id = #{id}
         </where>
     </update>
+
+    <delete id="deleteDeviceInfoRel" parameterType="java.util.Map">
+        DELETE FROM t_filelist_deviceInfo
+        WHERE device_info_id = #{deviceId}
+        AND file_list_level = #{fileListLevel}
+    </delete>
+
+    <insert id="insertDeviceInfoRel" parameterType="java.util.Map">
+        insert into t_filelist_deviceInfo(device_info_id,file_list_level,file_list_id)VALUES
+        (#{deviceId},#{fileListLevel},#{fileListId})
+    </insert>
+
+    <select id="getFileForDevice" parameterType="long" resultType="fileList">
+        SELECT *
+        FROM t_ad_fileList
+        WHERE id = (SELECT file_list_id
+                    FROM t_filelist_deviceInfo
+                    WHERE device_info_id = #{VALUE}
+                    ORDER BY file_list_id ASC
+                    LIMIT 0, 1
+        )
+    </select>
 </mapper>
