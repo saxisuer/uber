@@ -7,6 +7,8 @@ import com.uber.uberfamily.model.DeviceInfo;
 import com.uber.uberfamily.service.DeviceInfoService;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Project uber
@@ -22,5 +24,10 @@ public class DeviceInfoServiceImpl extends BaseServiceImpl<DeviceInfo, Long, Dev
     @Resource(name = "deviceInfoDao")
     public void setBaseDao(DeviceInfoDao baseDao) {
         this.baseDao = baseDao;
+    }
+
+    @Override
+    public HashMap<String, Object> statistic(Map<String, Object> param) {
+        return this.getBaseDao().statistic(param);
     }
 }

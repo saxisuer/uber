@@ -89,4 +89,10 @@ public class DeviceInfoController {
         result.put("result", "SUCCESS");
         return result;
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/statistic")
+    public HashMap<String, Object> statistic(Map<String, Object> param) {
+        return this.deviceInfoService.statistic(param);
+    }
 }

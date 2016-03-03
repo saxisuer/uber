@@ -41,4 +41,28 @@
     <delete id="delete" parameterType="long">
         delete from t_device_info where id=#{value,javaType=long}
     </delete>
+
+
+    <resultMap id="statisticMap" type="java.util.HashMap">
+        <id column="deviceUUID" javaType="string"/>
+        <result column="address" javaType="string"/>
+        <result column="count" javaType="long"/>
+    </resultMap>
+
+    <select id="statistic" parameterType="java.util.Map" resultMap="statisticMap">
+        SELECT
+          t1.deviceUUID,
+          t1.address,
+          ifnull(t2.count, 0) AS count
+        FROM (
+               SELECT
+                 tdi.deviceUUID,
+                 concat(tdi.province, tdi.city, tdi.address) AS address
+               FROM t_device_info tdi) t1 LEFT JOIN (SELECT
+                                                       count(deviceUUID) count,
+                                                       deviceUUID
+                                                     FROM t_call_log
+                                                     GROUP BY deviceUUID) t2
+            ON t1.deviceUUID = t2.deviceUUID
+    </select>
 </mapper>

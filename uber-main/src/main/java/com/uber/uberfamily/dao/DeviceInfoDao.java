@@ -4,6 +4,9 @@ import com.uber.uberfamily.framework.BaseDao;
 import com.uber.uberfamily.framework.MyBatisRepository;
 import com.uber.uberfamily.model.DeviceInfo;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @Project uber
  * @Package com.uber.uberfamily.dao
@@ -14,4 +17,7 @@ import com.uber.uberfamily.model.DeviceInfo;
  */
 @MyBatisRepository("deviceInfoDao")
 public interface DeviceInfoDao extends BaseDao<DeviceInfo, Long> {
+
+
+    HashMap<String,Object> statistic(Map<String,Object> param);
 }
