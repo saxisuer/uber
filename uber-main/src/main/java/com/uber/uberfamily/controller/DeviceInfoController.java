@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -92,7 +93,7 @@ public class DeviceInfoController {
 
     @ResponseBody
     @RequestMapping(value = "/statistic")
-    public HashMap<String, Object> statistic(Map<String, Object> param) {
+    public List<HashMap<String, Object>> statistic(Map<String, Object> param) {
         return this.deviceInfoService.statistic(param);
     }
 }

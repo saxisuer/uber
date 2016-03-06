@@ -33,8 +33,15 @@
             <td>司机到达时间</td>
             <td><input id="param_pickupTime" class="easyui-datebox"/></td>
             <td><a href="javascript:search();" class="easyui-linkbutton my-search-button" iconCls="icon-search">查询</a></td>
+            <td><a href="javascript:showWindow();" class="easyui-linkbutton my-search-button" iconCls="icon-view">查看统计图</a></td>
+
         </tr>
     </table>
+
+
+    <div id="statisticwindow">
+        <div id="container" style="min-width: 310px; height: 300px; margin: 0 auto; width: 850px;"></div>
+    </div>
 
 </div>
 
@@ -45,13 +52,27 @@
 <div id="toolbar">
     <a href="javascript:void(0)" id="refresh" class="easyui-linkbutton" iconCls="icon-reload" plain="true">刷新</a>
 </div>
-
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 </body>
 
 <script>
-
-
     $(function () {
+        $('#statisticwindow').dialog({
+            title: '统计图',
+            closed: true,
+            model: true,
+            width: $('#body').width() - 100,
+            minimizable: true,
+            maximizable: true,
+            collapsible: true,
+            draggable: true,
+            resizable: true,
+            top: 50,
+            onBeforeOpen: function () {
+                loadstatistic();
+            }
+        });
         var gridDom = $('#callLog');
         gridDom.datagrid({
             height: $('#body').height() - $('#search').height() - 15,
@@ -100,12 +121,77 @@
         });
     }
 
+    function showWindow() {
+        $('#statisticwindow').dialog('open')
+    }
     function formatDate(val, row) {
         if (typeof(val) == "string") {
             return val.substring(0, 10);
         } else {
             return val;
         }
+    }
+
+    function loadstatistic() {
+        $.ajax({
+            url: '${ctx}/deviceinfo/statistic',
+            success: function (data) {
+                console.log(data);
+                var categories = [];
+                var da = [];
+                $.each(data, function (i, v) {
+                    console.log(v);
+                    categories.push(v.uuid);
+                    da.push(v.callCount);
+                });
+                $('#container').highcharts({
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: '叫车统计图'
+                    },
+                    subtitle: {
+                        text: 'Uber station'
+                    },
+                    exporting: {
+                        enabled: false
+                    },
+                    xAxis: {
+                        categories: categories,
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '呼叫 (次)'
+                        }
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0;font-size: 5px;">呼叫: </td>' +
+                        '<td style="padding:0"><b>{point.y:.0f} 次</b></td></tr>',
+
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0
+                        }
+                    },
+                    series: [{
+                        name: 'station',
+                        data: da
+                    }]
+                });
+            }
+        });
     }
 
 </script>

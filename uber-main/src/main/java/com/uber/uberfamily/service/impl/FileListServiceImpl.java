@@ -45,4 +45,10 @@ public class FileListServiceImpl extends BaseServiceImpl<FileList, Long, FileLis
         Assert.notNull(deviceId);
         return this.getBaseDao().getFileForDevice(deviceId);
     }
+
+    @Override
+    public void delete(Long id) {
+        this.getBaseDao().deleteDeviceInfoRelByFileId(id);
+        super.delete(id);
+    }
 }

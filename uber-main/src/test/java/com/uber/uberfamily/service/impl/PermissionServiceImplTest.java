@@ -1,6 +1,7 @@
 package com.uber.uberfamily.service.impl;
 
 import com.ps.CustomJUnit4ClassRunner;
+import com.uber.uberfamily.framework.util.JsonMapper;
 import com.uber.uberfamily.model.Permission;
 import com.uber.uberfamily.service.PermissionService;
 import org.junit.Test;
@@ -72,7 +73,7 @@ public class PermissionServiceImplTest {
             build(it.next(), other);
         }
 
-        System.out.println(first);
+        System.out.println(JsonMapper.nonDefaultMapper().toJson(first));
     }
 
     public void build(Permission p, List<Permission> list) {

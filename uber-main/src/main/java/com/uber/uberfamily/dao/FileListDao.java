@@ -22,4 +22,6 @@ public interface FileListDao extends BaseDao<FileList, Long> {
     void insertDeviceInfoRel(Map<String, Object> map);
 
     FileList getFileForDevice(Long deviceId);
+
+    void deleteDeviceInfoRelByFileId(Long fileListId);
 }

@@ -8,12 +8,12 @@
 </head>
 
 <body>
-<form action="${pageContext.request.contextPath}/filelist/updateData" method="POST" enctype="multipart/form-data">
-    <input type="text" name="id" value="${fileList.id}"/>
-    <input type="text" name="fileUUID" value="${fileList.fileUUID}"/>
-    <input type="text" name="uniqueFileName" value="${fileList.uniqueFileName}"/>
-    <input type="text" name="md5Check" value="${fileList.md5Check}"/>
-    <input type="text" name="fileVersion" value="${fileList.fileVersion}"/>
+<form action="${pageContext.request.contextPath}/filelist/save" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="${fileList.id}"/>
+    <input type="hidden" name="fileUUID" value="${fileList.fileUUID}"/>
+    <input type="hidden" name="uniqueFileName" value="${fileList.uniqueFileName}"/>
+    <input type="hidden" name="md5Check" value="${fileList.md5Check}"/>
+    <input type="hidden" name="fileVersion" value="${fileList.fileVersion}"/>
 
     <div id="p" class="easyui-progressbar" data-options="value:60" style="width:400px;"></div>
     <div class="user-form">
@@ -49,11 +49,11 @@
             <div class="yui3-u-1-2">
                 <div class="formgourp">
                     <label>广告级别:</label>
-                        <select class="easyui-combobox" name="fileLevel" data-options="required:true">
-                            <option value="3" <c:if test="fileList.fileLevel==3">selected="selected"</c:if>>CITY</option>
-                            <option value="2" <c:if test="fileList.fileLevel==2">selected="selected"</c:if>>GROUP</option>
-                            <option value="1" <c:if test="fileList.fileLevel==1">selected="selected"</c:if>>CUSTOMER</option>
-                        </select>
+                    <select class="easyui-combobox" name="fileLevel" data-options="required:true">
+                        <option value="3" <c:if test="fileList.fileLevel==3">selected="selected"</c:if>>CITY</option>
+                        <option value="2" <c:if test="fileList.fileLevel==2">selected="selected"</c:if>>GROUP</option>
+                        <option value="1" <c:if test="fileList.fileLevel==1">selected="selected"</c:if>>CUSTOMER</option>
+                    </select>
                 </div>
             </div>
         </div>

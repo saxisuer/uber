@@ -8,6 +8,7 @@ import com.uber.uberfamily.service.DeviceInfoService;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,7 +28,7 @@ public class DeviceInfoServiceImpl extends BaseServiceImpl<DeviceInfo, Long, Dev
     }
 
     @Override
-    public HashMap<String, Object> statistic(Map<String, Object> param) {
+    public List<HashMap<String, Object>> statistic(Map<String, Object> param) {
         return this.getBaseDao().statistic(param);
     }
 }

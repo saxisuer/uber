@@ -11,6 +11,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @Project uber
  * @Package com.uber.uberfamily.service.impl
@@ -38,8 +40,8 @@ public class DeviceInfoServiceImplTest {
 
 
     @Test
-    public void test2(){
-        DeviceInfo d = deviceInfoService.getById(8L);
-        System.out.println(d.toString());
+    public void test2() {
+        List l = deviceInfoService.statistic(null);
+        System.out.println(l);
     }
 }

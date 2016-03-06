@@ -5,6 +5,7 @@ import com.uber.uberfamily.framework.BaseService;
 import com.uber.uberfamily.model.DeviceInfo;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,6 +19,6 @@ import java.util.Map;
 public interface DeviceInfoService extends BaseService<DeviceInfo, Long, DeviceInfoDao> {
 
 
-    HashMap<String, Object> statistic(Map<String, Object> param);
+    List<HashMap<String, Object>> statistic(Map<String, Object> param);
 
 }

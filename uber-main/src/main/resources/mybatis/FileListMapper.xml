@@ -47,6 +47,11 @@
         AND file_list_level = #{fileListLevel}
     </delete>
 
+    <delete id="deleteDeviceInfoRelByFileId" parameterType="long">
+        DELETE FROM t_filelist_deviceInfo
+        where file_list_id = #{value}
+    </delete>
+
     <insert id="insertDeviceInfoRel" parameterType="java.util.Map">
         insert into t_filelist_deviceInfo(device_info_id,file_list_level,file_list_id)VALUES
         (#{deviceId},#{fileListLevel},#{fileListId})

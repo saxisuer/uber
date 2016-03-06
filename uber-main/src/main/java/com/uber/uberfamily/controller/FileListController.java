@@ -81,7 +81,9 @@ public class FileListController {
 
     @ResponseBody
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public Map<String, Object> save(FileList fileList, @RequestParam(value = "file", required = false) MultipartFile file) throws IOException {
+    public Map<String, Object> save(FileList fileList, @RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request)
+            throws
+            IOException {
         Map<String, Object> result = new HashMap<String, Object>();
         if (null != file && file.getSize() > 0) {
             logger.info(file.getContentType());
@@ -95,6 +97,9 @@ public class FileListController {
             fileList.setFileName(file.getOriginalFilename());
             fileList.setFileSize(file.getSize());
             String savePath = PropertiestUtil.pro.get("uploadPath").toString();
+            String context = request.getSession().getServletContext().getRealPath("");
+            savePath = context + savePath;
+            logger.info(savePath);
             File targetFile = new File(savePath + File.separator + fileList.getUniqueFileName());
             if (!targetFile.exists()) {
                 targetFile.mkdirs();
@@ -135,11 +140,15 @@ public class FileListController {
 
     @RequestMapping(value = "/updateData", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, String> updateData(FileList fileList, @RequestParam(value = "file", required = false) MultipartFile file) throws IOException {
+    public Map<String, String> updateData(FileList fileList, @RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest
+            request) throws
+            IOException {
         Map<String, String> result = new HashMap<String, String>();
         FileList fileListOld = fileListService.getById(fileList.getId());
         if (null != file && file.getSize() > 0) {
             String savePath = PropertiestUtil.pro.get("uploadPath").toString();
+            String context = request.getSession().getServletContext().getRealPath("");
+            savePath = context + savePath;
             File oldFile = new File(savePath + File.separator + fileListOld.getUniqueFileName());
             FileUtils.forceDelete(oldFile);
             logger.info(file.getContentType());
@@ -193,13 +202,25 @@ public class FileListController {
         return result;
     }
 
+
+    @ResponseBody
+    @RequestMapping(value = "/delete/{id}")
+    public Map<String, String> delete(@PathVariable Long id) {
+        Map<String, String> result = new HashMap<String, String>();
+        this.fileListService.delete(id);
+        return result;
+    }
+
     @ResponseBody
     @RequestMapping(value = "/getFileByDeviceInfo/{deviceId}")
-    public Map<String, String> getFileByDeviceInfo(@PathVariable Long deviceId) {
+    public Map<String, String> getFileByDeviceInfo(@PathVariable Long deviceId, HttpServletRequest request) {
         Map<String, String> result = new HashMap<>();
         FileList fileList = fileListService.getFileForDevice(deviceId);
         if (null != fileList) {
-            String downLoadFilePath = PropertiestUtil.pro.get("uploadPath").toString() + File.separator + fileList.getUniqueFileName();
+            String savePath = File.separator + PropertiestUtil.pro.get("uploadPath").toString();
+            String context = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+            String downLoadFilePath = context + savePath + File.separator + fileList.getUniqueFileName();
+            logger.info(downLoadFilePath);
             result.put("savePath", downLoadFilePath);
             result.put("fileName", fileList.getFileName());
             result.put("startTime", DateFormatUtils.format(fileList.getStartTime(), "yyyy-MM-dd HH:mm:ss"));

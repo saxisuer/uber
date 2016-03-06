@@ -44,16 +44,16 @@
 
 
     <resultMap id="statisticMap" type="java.util.HashMap">
-        <id column="deviceUUID" javaType="string"/>
-        <result column="address" javaType="string"/>
-        <result column="count" javaType="long"/>
+        <result column="uuid" javaType="String" property="uuid"/>
+        <result column="address" javaType="String" property="address"/>
+        <result column="callCount" javaType="Long" property="callCount"/>
     </resultMap>
 
     <select id="statistic" parameterType="java.util.Map" resultMap="statisticMap">
         SELECT
-          t1.deviceUUID,
-          t1.address,
-          ifnull(t2.count, 0) AS count
+          t1.deviceUUID as uuid,
+          t1.address as address,
+          ifnull(t2.count, 0) AS callCount
         FROM (
                SELECT
                  tdi.deviceUUID,
