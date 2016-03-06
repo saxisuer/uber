@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uber.uberfamily.dao.DeviceGroupDao">
+
+    <select id="getList" parameterType="java.util.Map" resultType="deviceGroup">
+      SELECT t_device_group.* ,t_city.city_name_cn
+        from t_device_group left JOIN t_city ON t_device_group.city_code= t_city.city_code
+    </select>
+
+    <insert id="create" parameterType="deviceGroup" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_device_group( group_name, group_desc, city_code) VALUES(#{groupName},#{groupDesc},${cityCode})
+    </insert>
+
+
+    <update id="update" parameterType="deviceGroup">
+        UPDATE t_device_group
+        <set>
+            <if test="groupName !=null">group_name = #{groupName},</if>
+            <if test="groupDesc !=null">group_desc=#{groupDesc},</if>
+        </set>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+
+
+    <delete id="delete" parameterType="long">
+        DELETE FROM t_device_group WHERE id = #{VALUE}
+    </delete>
+
+    <resultMap id="comboMap" type="java.util.HashMap">
+        <result property="id" javaType="long" column="id"/>
+        <result column="group_name" javaType="string" property="groupName"/>
+        <result column="city_code" javaType="long" property="cityCode"/>
+    </resultMap>
+
+    <select id="getDeviceGroupCombo" parameterType="long" resultMap="comboMap">
+        SELECT id,group_name,city_code from t_device_group
+        <where>
+            <if test="_parameter !=null">AND city_code=#{VALUE,javaType=long}</if>
+        </where>
+    </select>
+
+    <select id="getById" parameterType="long" resultType="deviceGroup">
+        SELECT t_device_group.* ,t_city.city_name_cn
+        from t_device_group left JOIN t_city ON t_device_group.city_code= t_city.city_code
+        <where>
+            t_device_group.id=#{VALUE}
+        </where>
+    </select>
+</mapper>

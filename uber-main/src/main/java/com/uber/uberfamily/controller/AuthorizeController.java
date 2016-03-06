@@ -6,6 +6,7 @@ import com.uber.uberfamily.service.PermissionService;
 import com.uber.uberfamily.service.UserService;
 import com.uber.uberfamily.vo.MenuGroup;
 import com.uber.uberfamily.vo.Menus;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.DisabledAccountException;
@@ -17,6 +18,7 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -106,6 +108,11 @@ public class AuthorizeController {
         return INPUT;
     }
 
+    @RequestMapping(value = "/errors")
+    public String showError() throws Exception {
+        throw new Exception("aaaaa");
+    }
+
     @RequiresAuthentication
     @ResponseBody
     @RequestMapping(value = "/authMenus", method = RequestMethod.GET)
@@ -138,4 +145,17 @@ public class AuthorizeController {
         menus.put("menus", groupList);
         return menus;
     }
+
+
+    @ResponseBody
+    @ExceptionHandler(Exception.class)
+    public Map<String, String> showException(Exception ex) {
+        Map<String, String> result = new HashMap<String, String>();
+        String errorMessage = ExceptionUtils.getRootCauseMessage(ex);
+        result.put("result", "ERROR");
+        result.put("str", errorMessage);
+        return result;
+    }
+
+
 }

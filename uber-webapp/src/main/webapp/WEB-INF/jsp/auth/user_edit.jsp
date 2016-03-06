@@ -64,6 +64,14 @@
                                                 value="${user.email}"/>
                     </div>
                 </div>
+
+
+                <div class="formgourp">
+                    <label for="cityCodeCombox">所属城市</label>
+                    <div class="textbox">
+                        <input id="cityCodeCombox" class="easyui-combobox" name="cityCode" data-options="required:true" value="${user.cityCode}"/>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -95,6 +103,13 @@
     var zNodes = eval('(' + $('#roleList').val() + ')');
     $(document).ready(function () {
         $.fn.zTree.init($("#treeUser"), setting, zNodes);
+
+        $('#cityCodeCombox').combobox({
+            url:'${pageContext.request.contextPath}/city/getCityListForCombo',
+            method:'GET',
+            valueField:'cityCode',
+            textField:'cityNameCn'
+        })
     });
 
     /*

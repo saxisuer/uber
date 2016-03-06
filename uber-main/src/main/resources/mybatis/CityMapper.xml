@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uber.uberfamily.dao.CityDao">
+
+    <insert id="create" parameterType="city" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_city(city_name, city_code, city_name_cn) VALUES (#{cityName},#{cityCode},#{cityNameCn})
+    </insert>
+
+
+    <update id="update" parameterType="city">
+        UPDATE t_city
+        <set>
+            <if test="cityName !=null">city_name = #{cityName},</if>
+            <if test="cityCode !=null">city_code = #{cityCode},</if>
+            <if test="cityNameCn !=null">city_name_cn = #{cityNameCn},</if>
+        </set>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+
+
+    <delete id="delete" parameterType="long">
+        DELETE FROM T_CITY
+        WHERE id=#{value}
+    </delete>
+
+    <select id="getList" parameterType="java.util.Map" resultType="city">
+        SELECT * from t_city
+        ORDER BY city_name
+    </select>
+
+    <select id="getById" parameterType="long" resultType="city">
+        SELECT * FROM t_city
+        <where>
+            id=#{value}
+        </where>
+    </select>
+
+    <resultMap id="comboMap" type="java.util.HashMap">
+        <result column="city_code" javaType="long" property="cityCode"/>
+        <result column="city_name_cn" javaType="string" property="cityNameCn"/>
+    </resultMap>
+
+    <select id="getCityListForCombo" resultMap="comboMap">
+        select city_code,city_name_cn from t_city
+        order by city_name
+    </select>
+</mapper>

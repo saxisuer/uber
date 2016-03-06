@@ -5,7 +5,13 @@
 
 
     <select id="getList" resultType="deviceInfo" parameterType="java.util.Map">
-        SELECT * FROM t_device_info
+        SELECT
+          t_device_info.*,
+          t_city.city_name_cn,
+          t_device_group.group_name
+        FROM t_device_info
+          LEFT JOIN t_city ON t_device_info.city_code = t_city.city_code
+          LEFT JOIN t_device_group ON t_device_info.device_group_id = t_device_group.id
     </select>
 
     <update id="update" parameterType="deviceInfo">
@@ -19,6 +25,8 @@
             <if test="city != null">city = #{city},</if>
             <if test="province != null">province = #{province},</if>
             <if test="address != null">address = #{address},</if>
+            <if test="cityCode != null">city_code = #{cityCode},</if>
+            <if test="deviceGroupId != null">device_group_id = #{deviceGroupId},</if>
         </set>
         <where>
             id = #{id}
@@ -26,8 +34,8 @@
     </update>
 
     <insert id="create" parameterType="deviceInfo" useGeneratedKeys="true" keyProperty="id">
-        insert into t_device_info( province, city, address, latitude, longtitude, installationDate, state, deviceUUID)
-        VALUES (#{province},#{city},#{address},#{latitude},#{longtitude},#{installationDate},#{state},#{deviceUUID})
+        insert into t_device_info( province, city, address, latitude, longtitude, installationDate, state, deviceUUID,city_code,device_group_id)
+        VALUES (#{province},#{city},#{address},#{latitude},#{longtitude},#{installationDate},#{state},#{deviceUUID},#{cityCode},#{deviceGroupId})
     </insert>
 
     <select id="getById" parameterType="long" resultType="deviceInfo">

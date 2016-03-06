@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="INFO" monitorInterval="60">
     <properties>
-        <property name="LOG_HOME">${sys:catalina.home}/logs/license/</property>
+        <property name="LOG_HOME">${sys:catalina.home}/logs/uber/</property>
         <property name="STAT_NAME">stat</property>
         <property name="SERVER_NAME">global</property>
         <property name="LEVEL">DEBUG</property>
@@ -13,7 +13,7 @@
         </Console>
 
         <RollingFile name="file-log" fileName="${LOG_HOME}/uber.log"
-                     filePattern="${LOG_HOME}/license.log.%d{yyyy-MM-dd}" bufferSize="8192" bufferedIO="true">
+                     filePattern="${LOG_HOME}/uber.log.%d{yyyy-MM-dd}" bufferSize="8192" bufferedIO="true">
             <PatternLayout>
                 <pattern>[uber] %d{yyyy-MM-dd HH:mm:ss SSS} [%-5p] %t(%c:%L) - %m%n</pattern>
             </PatternLayout>

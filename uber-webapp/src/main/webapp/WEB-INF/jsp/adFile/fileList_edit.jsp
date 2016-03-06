@@ -63,16 +63,20 @@
                            data-options="editable:false,required:true"
                            value='<fmt:formatDate value="${fileList.endTime}"  pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>'/>
                 </div>
+                <div class="formgourp">
+                    <label>广告级别：</label>
+                    <%--<select class="easyui-combobox" name="fileLevel">--%>
+                        <%--<option value="3" <c:if test="${fileList.fileLevel==3}">selected="selected"</c:if>>CITY</option>--%>
+                        <%--<option value="2" <c:if test="${fileList.fileLevel==2}">selected="selected"</c:if>>GROUP</option>--%>
+                        <%--<option value="1" <c:if test="${fileList.fileLevel==1}">selected="selected"</c:if>>CUSTOMER</option>--%>
+                    <%--</select>--%>
+                    <span><c:if test="${fileList.fileLevel==3}">CITY</c:if></span>
+                    <span><c:if test="${fileList.fileLevel==2}">GROUP</c:if></span>
+                    <span><c:if test="${fileList.fileLevel==1}">CUSTOMER</c:if></span>
+                </div>
             </div>
             <div class="yui3-u-1-2">
-                <div class="formgourp">
-                    <label>广告级别:</label>
-                    <select class="easyui-combobox" name="fileLevel">
-                        <option value="3" <c:if test="${fileList.fileLevel==3}">selected="selected"</c:if>>CITY</option>
-                        <option value="2" <c:if test="${fileList.fileLevel==2}">selected="selected"</c:if>>GROUP</option>
-                        <option value="1" <c:if test="${fileList.fileLevel==1}">selected="selected"</c:if>>CUSTOMER</option>
-                    </select>
-                </div>
+
             </div>
         </div>
         <input type="button" value="保存" style="display: none;"/>

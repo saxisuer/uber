@@ -54,8 +54,8 @@
             columns: [[
                 {field: 'ck', checkbox: true},
                 {field: 'deviceUUID', title: '设备ID', width: 100, halign: 'center', align: 'left'},
-                {field: 'province', title: '省', width: 100, halign: 'center', align: 'left'},
-                {field: 'city', title: '市', width: 100, halign: 'center', align: 'left'},
+                {field: 'groupName', title: '设备组', width: 100, halign: 'center', align: 'left'},
+                {field: 'cityNameCn', title: '市', width: 100, halign: 'center', align: 'left'},
                 {field: 'address', title: '地址', width: 100, halign: 'center', align: 'left'},
                 {field: 'latitude', title: '纬度', width: 100, halign: 'center', align: 'left'},
                 {field: 'longtitude', title: '经度', width: 100, halign: 'center', align: 'left'},

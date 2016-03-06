@@ -47,6 +47,13 @@ public class DeviceInfo extends BaseModel {
     private Long fileListId;
 
 
+    private Long cityCode;
+    private String cityNameCn;
+
+    private Long deviceGroupId;
+    private String groupName;
+
+
     public String getUuid() {
         return uuid;
     }
@@ -141,5 +148,37 @@ public class DeviceInfo extends BaseModel {
 
     public void setFileListId(Long fileListId) {
         this.fileListId = fileListId;
+    }
+
+    public Long getCityCode() {
+        return cityCode;
+    }
+
+    public void setCityCode(Long cityCode) {
+        this.cityCode = cityCode;
+    }
+
+    public String getCityNameCn() {
+        return cityNameCn;
+    }
+
+    public void setCityNameCn(String cityNameCn) {
+        this.cityNameCn = cityNameCn;
+    }
+
+    public Long getDeviceGroupId() {
+        return deviceGroupId;
+    }
+
+    public void setDeviceGroupId(Long deviceGroupId) {
+        this.deviceGroupId = deviceGroupId;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 }

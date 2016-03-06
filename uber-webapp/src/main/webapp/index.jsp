@@ -209,7 +209,7 @@
                     dialog.find('form').ajaxSubmit({
                         success: function (data) {
                             if (data.result == "SUCCESS") {
-                                opt.success();
+                                opt.success(data);
                                 dialog.window('close');
                             } else if (data.result == "ERROR") {
                                 alert(data.str);

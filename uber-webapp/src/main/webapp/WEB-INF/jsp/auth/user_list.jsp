@@ -62,6 +62,7 @@
                 {field: 'cnname', title: '姓名', width: 100, halign: 'center', align: 'left'},
                 {field: 'phone', title: '联系电话', width: 100, halign: 'center', align: 'left'},
                 {field: 'email', title: '邮箱', width: 100, halign: 'center', align: 'left'},
+                {field: 'cityNameCn', title: '所属城市', width: 100, halign: 'center', align: 'left'},
                 {field: 'status', title: '状态', width: 100, halign: 'center', align: 'center', formatter: formatStatus}
             ]],
             toolbar: '#toolbar',
@@ -164,7 +165,7 @@
 
     function reset() {
         $('#param_cnname').val("");
-        $('#users').datagrid('load',{});
+        $('#users').datagrid('load', {});
     }
 </script>
 </body>

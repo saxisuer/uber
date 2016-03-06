@@ -12,6 +12,7 @@
         <if test="phone != null">AND phone = #{phone,javaType=string}</if>
         <if test="status != null">AND status = #{status,javaType=string}</if>
         <if test="id != null">AND id = #{id,javaType=long}</if>
+        <if test="cityCode != null">AND city_code = #{cityCode,javaType=long}</if>
     </sql>
     <select id="getById" parameterType="long" resultType="user">
         SELECT * FROM t_auth_user
@@ -40,6 +41,7 @@
             <if test="email !=null">email= #{email,javaType=string},</if>
             <if test="phone !=null">phone = #{phone,javaType=string},</if>
             <if test="status !=null">status = #{status,javaType=string},</if>
+            <if test="cityCode != null">city_code = #{cityCode,javaType=long},</if>
         </set>
         <where>
             id = #{id,javaType=long}
@@ -47,15 +49,17 @@
     </update>
 
     <select id="getList" parameterType="java.util.Map" resultType="user">
-        SELECT * FROM t_auth_user
+        SELECT t_auth_user.*,t_city.city_name_cn
+        FROM t_auth_user
+        LEFT JOIN t_city ON t_auth_user.city_code = t_city.city_code
         <where>
             <include refid="mapWhereClause"/>
         </where>
     </select>
 
     <insert id="create" parameterType="user" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO t_auth_user(name,cnname,password,email,phone,status)VALUES (
-        #{name},#{cnname},#{password},#{email},#{phone},#{status}
+        INSERT INTO t_auth_user(name,cnname,password,email,phone,status,city_code)VALUES (
+        #{name},#{cnname},#{password},#{email},#{phone},#{status},#{cityCode,javaType=long}
         )
     </insert>
 

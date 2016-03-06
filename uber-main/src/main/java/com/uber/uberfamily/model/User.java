@@ -36,6 +36,13 @@ public class User extends BaseModel {
 
     private String roleIds;
 
+    /**
+     * 用户现在关联城市
+     */
+    private Long cityCode;
+
+    private String cityNameCn;
+
 
     public String getName() {
         return name;
@@ -107,6 +114,22 @@ public class User extends BaseModel {
 
     public void setRoleIds(String roleIds) {
         this.roleIds = roleIds;
+    }
+
+    public Long getCityCode() {
+        return cityCode;
+    }
+
+    public void setCityCode(Long cityCode) {
+        this.cityCode = cityCode;
+    }
+
+    public String getCityNameCn() {
+        return cityNameCn;
+    }
+
+    public void setCityNameCn(String cityNameCn) {
+        this.cityNameCn = cityNameCn;
     }
 
     @Override

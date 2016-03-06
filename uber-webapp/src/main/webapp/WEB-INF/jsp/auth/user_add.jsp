@@ -15,7 +15,7 @@
 
 <body>
 <form action="${pageContext.request.contextPath}/user/save" method="post">
-    <input name="user.id" value="${user.id}" type="hidden"/>
+    <input name="id" value="${user.id}" type="hidden"/>
     <div class="user-form">
         <h2>新增用户</h2>
         <div class="yui3-g">
@@ -55,16 +55,23 @@
             <div class="yui3-u-1-2">
                 <div class="formgourp">
                     <label>电话：</label>
-                    <div  class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="phone" value='${user.phone}'/>
+                    <div class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="phone" value='${user.phone}'/>
                     </div>
                 </div>
                 <div class="formgourp">
                     <label>邮箱：</label>
-                    <div  class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="email" value='${user.email}'></div>
+                    <div class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="email" value='${user.email}'></div>
                 </div>
                 <div class="formgourp">
                     <label>密码确认：</label>
                     <div class="textbox"><input id="confirmPwd" class="textbox-text validatebox-text textbox-prompt" type="password"></div>
+                </div>
+
+                <div class="formgourp">
+                    <label for="cityCodeCombox">所属城市</label>
+                    <div class="textbox">
+                        <input id="cityCodeCombox" class="easyui-combobox" name="cityCode" data-options="required:true"/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -101,6 +108,13 @@
                 alert('用户名和密码不一致！');
             }
         });
+
+        $('#cityCodeCombox').combobox({
+            url:'${pageContext.request.contextPath}/city/getCityListForCombo',
+            method:'GET',
+            valueField:'cityCode',
+            textField:'cityNameCn'
+        })
     });
 
     /*

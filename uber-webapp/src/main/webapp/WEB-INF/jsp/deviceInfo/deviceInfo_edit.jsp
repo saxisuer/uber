@@ -16,7 +16,7 @@
 <form action="${pageContext.request.contextPath}/deviceinfo/save" method="POST">
     <input type="hidden" name="id" value="${deviceInfo.id}"/>
     <div class="user-form">
-        <h2>新增设备</h2>
+        <h2>更新设备</h2>
         <div class="yui3-g">
             <div class="yui3-u-1-2">
                 <div class="formgourp">
@@ -26,10 +26,16 @@
                 </div>
 
                 <div class="formgourp">
-                    <label>市：</label>
-                    <div class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="city"
-                                                value="${deviceInfo.city}"/></div>
+                    <label>所属设备组：</label>
+                    <div class="textbox">
+                        <input id="deviceGroupId" name="deviceGroupId" value="${deviceInfo.deviceGroupId}"/></div>
                 </div>
+
+                <%--<div class="formgourp">--%>
+                <%--<label>市：</label>--%>
+                <%--<div class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="city"--%>
+                <%--value="${deviceInfo.city}"/></div>--%>
+                <%--</div>--%>
 
                 <div class="formgourp">
                     <label>纬度：</label>
@@ -47,10 +53,16 @@
 
             </div>
             <div class="yui3-u-1-2">
+                <%--<div class="formgourp">--%>
+                <%--<label>省：</label>--%>
+                <%--<div class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="province"--%>
+                <%--value="${deviceInfo.province}"/></div>--%>
+                <%--</div>--%>
                 <div class="formgourp">
-                    <label>省：</label>
-                    <div class="textbox"><input class="textbox-text validatebox-text textbox-prompt" name="province"
-                                                value="${deviceInfo.province}"/></div>
+                    <label>市：</label>
+                    <div class="textbox">
+                        <input id="cityCodeCombox" name="cityCode" value="${deviceInfo.cityCode}" data-options="required:true"/>
+                    </div>
                 </div>
                 <div class="formgourp">
                     <label>地址：</label>
@@ -80,7 +92,37 @@
 </form>
 
 
-<SCRIPT type="text/javascript">
+<script type="text/javascript">
+
+    $(function () {
+        $('#cityCodeCombox').combobox({
+            url: '${pageContext.request.contextPath}/city/getCityListForCombo',
+            method: 'GET',
+            valueField: 'cityCode',
+            editable: false,
+            textField: 'cityNameCn',
+            onSelect: function (record) {
+                $('#deviceGroupId').combobox('clear');
+                $('#deviceGroupId').combobox('reload', '${pageContext.request.contextPath}/deviceGroup/getCombobo?cityCode=' +
+                        $('#cityCodeCombox').combobox('getValue'));
+            }
+        });
+
+        $('#deviceGroupId').combobox({
+            url: '${pageContext.request.contextPath}/deviceGroup/getCombobo',
+            method: 'GET',
+            required: true,
+            valueField: 'id',
+            editable: false,
+            textField: 'groupName',
+            queryParams: {'cityCode': $('#cityCodeCombox').combobox('getValue')},
+            onSelect: function (record) {
+                $('#cityCodeCombox').combobox('setValue', record.cityCode);
+            }
+        })
+    });
+
+
     $('#date').datebox();
     var dateStr = $('#dateStr').val();
     $('#date').datebox('setValue', dateStr);
@@ -91,6 +133,6 @@
         //为空
     }
     //-->
-</SCRIPT>
+</script>
 </body>
 </html>
