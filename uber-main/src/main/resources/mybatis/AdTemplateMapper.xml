@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uber.uberfamily.dao.AdTemplateDao">
+
+    <select id="getList" parameterType="java.util.Map" resultType="adTemplate">
+        SELECT * from t_ad_file_template
+    </select>
+
+
+    <resultMap id="adTemplateMap" type="adTemplate">
+        <id column="id" javaType="long" property="id"/>
+        <result column="template_name" property="templateName"/>
+        <result column="template_desc" property="templateDesc"/>
+        <result column="creator" property="creator"/>
+        <result column="create_time" property="createTime"/>
+        <collection property="adFileIds" ofType="long" fetchType="lazy" column="ad_file_id">
+            <result column="ad_file_id"/>
+        </collection>
+    </resultMap>
+
+    <select id="getById" parameterType="long" resultMap="adTemplateMap">
+        SELECT
+        t_ad_file_template.*,
+        t_ad_template_file_rel.ad_file_id as ad_file_id
+        FROM t_ad_file_template, t_ad_template_file_rel
+        <where>
+            t_ad_file_template.id =
+            t_ad_template_file_rel.ad_temp_id
+            AND t_ad_file_template.id = #{value}
+        </where>
+    </select>
+</mapper>
