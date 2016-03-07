@@ -18,8 +18,8 @@
 <div id="search" class="easyui-panel" style="padding:5px;margin-bottom:2px;">
     <table cellpadding="1px;" style="font-size:11px;">
         <tr>
-            <td>姓名</td>
-            <td><label for="param_cnname"></label><input class="easyui-validatebox" type="text" id="param_cnname"/></td>
+            <td>设备组名</td>
+            <td><label for="param_groupName"></label><input class="easyui-validatebox" type="text" id="param_groupName"/></td>
             <td>
                 <a href="javascript:void(0);" class="easyui-linkbutton my-search-button" iconCls="icon-search" onclick='search1()'>查询</a>
             </td>
@@ -57,8 +57,8 @@
             singleSelect: true,
             columns: [[
                 {field: 'ck', checkbox: true},
-                {field: 'groupName', title: '设备名称', width: 100, halign: 'center', align: 'left'},
-                {field: 'groupDesc', title: '设备备注', width: 100, halign: 'center', align: 'left'},
+                {field: 'groupName', title: '设备组名称', width: 100, halign: 'center', align: 'left'},
+                {field: 'groupDesc', title: '设备组备注', width: 100, halign: 'center', align: 'left'},
                 {field: 'cityNameCn', title: '所属城市', width: 100, halign: 'center', align: 'left'}
             ]],
             toolbar: '#toolbar',
@@ -72,6 +72,10 @@
             parent.dataUpdate({
                 action: 'deviceGroup/add',
                 success: function () {
+                    $.messager.show({
+                        title: '提示',
+                        msg: '新增成功'
+                    });
                     return gridDom.datagrid('reload');
                 }
             });
@@ -83,7 +87,13 @@
                 action: 'deviceGroup/edit/' + r.id,
                 params: {'id': r.id},
                 success: function () {
+                    $.messager.show({
+                        title: '提示',
+                        msg: '修改成功'
+                    });
                     return gridDom.datagrid('reload');
+                },
+                onSubmit: function (dialog) {
                 }
             });
         });
@@ -108,7 +118,7 @@
 
     function search1() {
         $('#users').datagrid('load', {
-            cnname: $.trim($('#param_cnname').val())
+            groupName: $.trim($('#param_groupName').val())
         });
     }
 
@@ -129,7 +139,7 @@
     }
 
     function reset() {
-        $('#param_cnname').val("");
+        $('#param_groupName').val("");
         $('#users').datagrid('load', {});
     }
 </script>

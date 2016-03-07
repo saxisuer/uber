@@ -94,7 +94,6 @@
 
 <!-- 弹窗模板 -->
 <div id="wUpdate" class="easyui-window" title="更新数据"
-     data-options="modal:true,closed:true,iconCls:'icon-save',minimizable:false,maximizable:false,collapsible:false"
      style="width:600px;height:400px;padding:5px;">
     <div class="easyui-layout" data-options="fit:true">
         <div id="wContainer" data-options="region:'center'" style="padding:10px;">
@@ -191,6 +190,10 @@
     function dataUpdate(opt) {
         var action = opt.action,
                 params = opt.params == undefined ? '' : opt.params;
+        var onSub = opt.onSubmit == undefined ? function () {
+            console.log("no submit function");
+            return true;
+        } : opt.onSubmit;
         $.ajax({
             url: '${ctx}/' + action,
             type: 'GET',
@@ -202,12 +205,12 @@
                 var dialog = $('#wUpdate');
                 dialog.find('#wContainer').html(data);
                 dialog.window('open');
-                $('#wOK').one('click', function () {
-                    /*var form = $("form:first");
-                     form.find('input[type="submit"]').trigger('click');*/
+                $('#wOK').off('click');
+                $('#wOK').on('click', function () {
                     setZtreeIds();
-                    dialog.find('form').ajaxSubmit({
+                    dialog.find('form').form('submit', {
                         success: function (data) {
+                            data = eval('(' + data + ')');
                             if (data.result == "SUCCESS") {
                                 opt.success(data);
                                 dialog.window('close');
@@ -218,10 +221,14 @@
                                 alert('保存失败！');
                                 dialog.window('close');
                             }
+                        },
+                        onSubmit: function () {
+                            return onSub(dialog);
                         }
                     });
                 });
                 $('#wCancel').on('click', function () {
+                    $('#wOK').off('click');
                     dialog.window('close');
                 });
             },
@@ -239,6 +246,15 @@
         $('#closePassDiagBtn').click(closePassDiagFun);
         $('#changePassBtn').click(changePassDiagFun);
         $('#loginOut').click(logoutFun);
+        $('#wUpdate').window({
+            title: '更新数据',
+            modal: true,
+            closed: true,
+            iconCls: 'icon-save',
+            minimizable: false,
+            maximizable: false,
+            collapsible: false
+        })
     });
 
 

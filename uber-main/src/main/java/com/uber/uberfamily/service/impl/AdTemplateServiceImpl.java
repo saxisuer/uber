@@ -3,10 +3,14 @@ package com.uber.uberfamily.service.impl;
 import com.uber.uberfamily.dao.AdTemplateDao;
 import com.uber.uberfamily.framework.BaseServiceImpl;
 import com.uber.uberfamily.framework.MyBatisService;
+import com.uber.uberfamily.framework.util.JsonMapper;
 import com.uber.uberfamily.model.AdTemplate;
 import com.uber.uberfamily.service.AdTemplateService;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.Assert;
 
 import javax.annotation.Resource;
+import java.util.*;
 
 /**
  * @Project uber
@@ -24,5 +28,67 @@ public class AdTemplateServiceImpl extends BaseServiceImpl<AdTemplate, Long, AdT
     @Resource(name = "adTemplateDao")
     public void setBaseDao(AdTemplateDao baseDao) {
         this.baseDao = baseDao;
+    }
+
+
+    @Override
+    public AdTemplate getById(Long id) {
+        AdTemplate adTemplate = this.baseDao.getById(id);
+        for (Map<String, Object> o : adTemplate.getAdFileList()) {
+            adTemplate.getAdFileString().add(JsonMapper.nonDefaultMapper().toJson(o));
+        }
+        return adTemplate;
+    }
+
+
+    @Override
+    public AdTemplate create(AdTemplate model) {
+        this.baseDao.create(model);
+        if (StringUtils.isNotEmpty(model.getAdFileIds())) {
+            List<String> fileIds = Arrays.asList(model.getAdFileIds().split(","));
+            List<Map<String, Object>> mapList = new ArrayList<Map<String, Object>>();
+            makeInsrtList(model, fileIds, mapList);
+            this.createRel(mapList);
+        }
+        return model;
+    }
+
+    private void makeInsrtList(AdTemplate model, List<String> fileIds, List<Map<String, Object>> mapList) {
+        for (String fileId : fileIds) {
+            Map<String, Object> ins = new HashMap<String, Object>();
+            ins.put("tempId", model.getId());
+            ins.put("fileId", fileId);
+            mapList.add(ins);
+        }
+    }
+
+    @Override
+    public AdTemplate update(AdTemplate model) {
+        this.baseDao.update(model);
+        if (StringUtils.isNotEmpty(model.getAdFileIds())) {
+            this.deleteRelByTempId(model.getId());
+            List<String> fileIds = Arrays.asList(model.getAdFileIds().split(","));
+            List<Map<String, Object>> mapList = new ArrayList<Map<String, Object>>();
+            makeInsrtList(model, fileIds, mapList);
+            this.createRel(mapList);
+        }
+        return model;
+    }
+
+    @Override
+    public void deleteRelByTempId(Long id) {
+        Assert.notNull(id);
+        this.baseDao.deleteRelByTempId(id);
+    }
+
+    @Override
+    public void createRel(List<Map<String, Object>> insertList) {
+        this.baseDao.createRel(insertList);
+    }
+
+    @Override
+    public void delete(Long id) {
+        this.deleteRelByTempId(id);
+        super.delete(id);
     }
 }

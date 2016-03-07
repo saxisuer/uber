@@ -28,6 +28,9 @@
 
     <select id="getList" parameterType="java.util.Map" resultType="city">
         SELECT * from t_city
+        <where>
+            <if test="cityNameCn !=null">AND city_name_cn like "%"#{cityNameCn}"%" or city_name like "%"#{cityNameCn}"%"</if>
+        </where>
         ORDER BY city_name
     </select>
 

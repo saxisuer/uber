@@ -18,8 +18,8 @@
 <div id="search" class="easyui-panel" style="padding:5px;margin-bottom:2px;">
     <table cellpadding="1px;" style="font-size:11px;">
         <tr>
-            <td>姓名</td>
-            <td><label for="param_cnname"></label><input class="easyui-validatebox" type="text" id="param_cnname"/></td>
+            <td>城市名称</td>
+            <td><label for="param_cityNameCn"></label><input class="easyui-validatebox" type="text" id="param_cityNameCn"/></td>
             <td>
                 <a href="javascript:void(0);" class="easyui-linkbutton my-search-button" iconCls="icon-search" onclick='search1()'>查询</a>
             </td>
@@ -120,7 +120,7 @@
 
     function search1() {
         $('#users').datagrid('load', {
-            cnname: $.trim($('#param_cnname').val())
+            cityNameCn: $.trim($('#param_cityNameCn').val())
         });
     }
 
@@ -142,7 +142,7 @@
     }
 
     function reset() {
-        $('#param_cnname').val("");
+        $('#param_cityNameCn').val("");
         $('#users').datagrid('load', {});
     }
 </script>

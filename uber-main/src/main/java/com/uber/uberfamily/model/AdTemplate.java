@@ -2,8 +2,10 @@ package com.uber.uberfamily.model;
 
 import com.uber.uberfamily.framework.BaseModel;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Project uber
@@ -20,7 +22,12 @@ public class AdTemplate extends BaseModel {
     private Date createTime;
     private String creator;
 
-    private List<Long> adFileIds;
+    private Long fileCount;
+    private List<Map<String, Object>> adFileList;
+
+    private List<String> adFileString = new ArrayList<>();
+
+    private String adFileIds;
 
 
     public String getTemplateName() {
@@ -55,12 +62,35 @@ public class AdTemplate extends BaseModel {
         this.creator = creator;
     }
 
+    public List<Map<String, Object>> getAdFileList() {
+        return adFileList;
+    }
 
-    public List<Long> getAdFileIds() {
+    public void setAdFileList(List<Map<String, Object>> adFileList) {
+        this.adFileList = adFileList;
+    }
+
+    public List<String> getAdFileString() {
+        return adFileString;
+    }
+
+    public void setAdFileString(List<String> adFileString) {
+        this.adFileString = adFileString;
+    }
+
+    public String getAdFileIds() {
         return adFileIds;
     }
 
-    public void setAdFileIds(List<Long> adFileIds) {
+    public void setAdFileIds(String adFileIds) {
         this.adFileIds = adFileIds;
+    }
+
+    public Long getFileCount() {
+        return fileCount;
+    }
+
+    public void setFileCount(Long fileCount) {
+        this.fileCount = fileCount;
     }
 }

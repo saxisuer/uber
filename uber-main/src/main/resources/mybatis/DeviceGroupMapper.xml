@@ -4,8 +4,11 @@
 <mapper namespace="com.uber.uberfamily.dao.DeviceGroupDao">
 
     <select id="getList" parameterType="java.util.Map" resultType="deviceGroup">
-      SELECT t_device_group.* ,t_city.city_name_cn
+        SELECT t_device_group.* ,t_city.city_name_cn
         from t_device_group left JOIN t_city ON t_device_group.city_code= t_city.city_code
+        <where>
+            <if test="groupName !=null">AND t_device_group.group_name like "%"#{groupName}"%"</if>
+        </where>
     </select>
 
     <insert id="create" parameterType="deviceGroup" useGeneratedKeys="true" keyProperty="id">

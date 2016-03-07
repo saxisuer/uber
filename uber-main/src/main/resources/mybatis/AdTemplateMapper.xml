@@ -4,9 +4,32 @@
 <mapper namespace="com.uber.uberfamily.dao.AdTemplateDao">
 
     <select id="getList" parameterType="java.util.Map" resultType="adTemplate">
-        SELECT * from t_ad_file_template
+        SELECT
+        *,
+        (SELECT count(ad_file_id)
+        FROM t_ad_template_file_rel
+        WHERE ad_temp_id = t_ad_file_template.id) file_count
+        FROM t_ad_file_template
+        <where>
+            <if test="templateName !=null">and template_name LIKE "%"#{templateName}"%"</if>
+        </where>
     </select>
 
+    <insert id="create" useGeneratedKeys="true" keyProperty="id" parameterType="adTemplate">
+        insert into t_ad_file_template ( template_name, template_desc, create_time, creator) values
+        (#{templateName},#{templateDesc},#{createTime,jdbcType=TIME,javaType=Date},#{creator})
+    </insert>
+
+    <update id="update" parameterType="adTemplate">
+        UPDATE t_ad_file_template
+        <set>
+            <if test="templateName !=null">template_name = #{templateName},</if>
+            <if test="templateDesc !=null">template_desc = #{templateDesc},</if>
+        </set>
+        <where>
+            id=#{id}
+        </where>
+    </update>
 
     <resultMap id="adTemplateMap" type="adTemplate">
         <id column="id" javaType="long" property="id"/>
@@ -14,20 +37,37 @@
         <result column="template_desc" property="templateDesc"/>
         <result column="creator" property="creator"/>
         <result column="create_time" property="createTime"/>
-        <collection property="adFileIds" ofType="long" fetchType="lazy" column="ad_file_id">
-            <result column="ad_file_id"/>
+        <collection property="adFileList" ofType="java.util.Map" fetchType="lazy">
+            <result column="ad_file_id" property="fileId" javaType="long"/>
+            <result column="ad_file_file_title" property="fileTitle" javaType="string"/>
         </collection>
     </resultMap>
 
     <select id="getById" parameterType="long" resultMap="adTemplateMap">
         SELECT
         t_ad_file_template.*,
-        t_ad_template_file_rel.ad_file_id as ad_file_id
-        FROM t_ad_file_template, t_ad_template_file_rel
+        t_ad_template_file_rel.ad_file_id AS ad_file_id,
+        t_ad_fileList.fileTitle AS ad_file_file_title
+        FROM t_ad_file_template, t_ad_template_file_rel, t_ad_fileList
         <where>
-            t_ad_file_template.id =
-            t_ad_template_file_rel.ad_temp_id
+            t_ad_file_template.id = t_ad_template_file_rel.ad_temp_id
+            AND t_ad_template_file_rel.ad_file_id = t_ad_fileList.id
             AND t_ad_file_template.id = #{value}
         </where>
     </select>
+
+    <delete id="deleteRelByTempId" parameterType="long">
+        delete from t_ad_template_file_rel WHERE ad_temp_id = #{value}
+    </delete>
+
+    <insert id="createRel" parameterType="java.util.ArrayList">
+        INSERT INTO t_ad_template_file_rel(ad_temp_id,ad_file_id)VALUES
+        <foreach collection="list" separator="," item="item">
+            (#{item.tempId},#{item.fileId})
+        </foreach>
+    </insert>
+
+    <delete id="delete" parameterType="long">
+        delete from t_ad_file_template WHERE id=#{value}
+    </delete>
 </mapper>
