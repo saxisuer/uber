@@ -29,6 +29,16 @@
 <!-- 数据表格区域 -->
 <table id="users" style="table-layout:fixed;">
 </table>
+<div id="cityDialog">
+    <table id="city" style="table-layout:fixed;"></table>
+</div>
+<div id="groupDialog">
+    <table id="group" style="table-layout:fixed;"></table>
+</div>
+
+<div id="deviceDialog">
+    <table id="device" style="table-layout:fixed;"></table>
+</div>
 <!-- 表格顶部工具栏 -->
 <div id="toolbar">
     <a href="javascript:void(0)" id="add" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>
@@ -65,6 +75,62 @@
             pageSize: 30
         });
 
+        $('#cityDialog').dialog({
+            height: 350,
+            close: true,
+            title: 'cityDialog',
+            closed: true,
+            modal: true,
+            width: 550,
+            minimizable: true,
+            maximizable: true,
+            collapsible: true,
+            draggable: true,
+            resizable: true,
+            onOpen: function () {
+            }
+        });
+        $('#city').datagrid({
+            idField: 'id',
+            method: 'POST',
+            url: '${ctx}/city/loadData',
+            selectOnCheck: true,
+            checkOnSelect: true,
+            nowrap: true,
+            fitColumns: true,
+            rownumbers: true,
+            showPageList: false,
+            singleSelect: true,
+            columns: [[
+                {field: 'ck', checkbox: true},
+                {field: 'cityName', title: '城市发音', width: 100, halign: 'center', align: 'left'},
+                {field: 'cityNameCn', title: '城市名称', width: 100, halign: 'center', align: 'left'}
+            ]]
+        });
+        $('#groupDialog').dialog({
+            close: true,
+            title: 'groupDialog',
+            closed: true,
+            modal: true,
+            width: 550,
+            minimizable: true,
+            maximizable: true,
+            collapsible: true,
+            draggable: true,
+            resizable: true
+        });
+        $('#deviceDialog').dialog({
+            close: true,
+            title: 'deviceDialog',
+            closed: true,
+            modal: true,
+            width: 550,
+            minimizable: true,
+            maximizable: true,
+            collapsible: true,
+            draggable: true,
+            resizable: true
+        });
 
         //新增弹出框
         $("#add").on("click", function () {
@@ -112,22 +178,35 @@
                 }
             });
         });
-
-
-        function gridFormatter(value, rowData, rowIndex) {
-            var rowId = rowData.id;
-            var url = "";
-            url += "<a title='城市绑定' onclick='javascript:void(" + rowId + ")'>城市绑定 </a>&nbsp;&nbsp;";
-            url += "<a title='设备组绑定' onclick='javascript:void(" + rowId + ")'>设备组绑定 </a>";
-            url += "<a title='设备绑定' onclick='javascript:void(" + rowId + ")'>设备绑定 </a>";
-            return url;
-        }
-
         //刷新
         $("#refresh").on("click", function () {
             gridDom.datagrid('reload');
         });
     });
+
+    function gridFormatter(value, rowData, rowIndex) {
+        var rowId = rowData.id;
+        var url = "";
+        url += "<button title='城市绑定' onclick='bindCity(" + rowId + ")'>城市绑定 </button>&nbsp;";
+        url += "<button title='设备组绑定' onclick='bindGroup(" + rowId + ")'>设备组绑定 </button>&nbsp;";
+        url += "<button title='设备绑定' onclick='bindDeviceInfo(" + rowId + ")'>设备绑定 </button>";
+        return url;
+    }
+
+
+    function bindCity(rowId) {
+        $('#city').datagrid('load', {
+            tempId: rowId
+        });
+        $('#cityDialog').dialog('open');
+    }
+    function bindGroup(rowId) {
+        $('#groupDialog').dialog('open');
+    }
+
+    function bindDeviceInfo(rowId) {
+        $('#deviceDialog').dialog('open');
+    }
 
     function formatStatus(val, row) {
         if (val == 1) {

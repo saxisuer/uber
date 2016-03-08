@@ -53,13 +53,10 @@
         t_ad_fileList.fileTitle AS ad_file_file_title,
         t_city.city_code AS ad_file_city_code
         FROM t_ad_file_template
-        LEFT JOIN (t_ad_template_file_rel, t_ad_fileList, t_ad_template_city_rel, t_city)
-        ON
-        (t_ad_file_template.id = t_ad_template_file_rel.ad_temp_id
-        AND t_ad_template_file_rel.ad_file_id = t_ad_fileList.id
-        AND t_ad_file_template.id = t_ad_template_city_rel.ad_temp_id
-        AND t_city.city_code =
-        t_ad_template_city_rel.city_code)
+        LEFT JOIN t_ad_template_file_rel ON t_ad_template_file_rel.ad_temp_id = t_ad_file_template.id
+        RIGHT JOIN t_ad_fileList ON t_ad_template_file_rel.ad_file_id = t_ad_fileList.id
+        LEFT JOIN t_ad_template_city_rel ON t_ad_file_template.id = t_ad_template_city_rel.ad_temp_id
+        LEFT JOIN t_city ON t_city.city_code = t_ad_template_city_rel.city_code
         <where>
             t_ad_file_template.id = #{value}
         </where>

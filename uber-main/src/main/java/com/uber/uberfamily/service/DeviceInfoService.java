@@ -1,5 +1,6 @@
 package com.uber.uberfamily.service;
 
+import com.github.pagehelper.PageInfo;
 import com.uber.uberfamily.dao.DeviceInfoDao;
 import com.uber.uberfamily.framework.BaseService;
 import com.uber.uberfamily.model.DeviceInfo;
@@ -21,4 +22,5 @@ public interface DeviceInfoService extends BaseService<DeviceInfo, Long, DeviceI
 
     List<HashMap<String, Object>> statistic(Map<String, Object> param);
 
+    PageInfo<DeviceInfo> getListByTempId(Long tempId);
 }

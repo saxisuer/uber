@@ -37,6 +37,7 @@ public class AdTemplateServiceImpl extends BaseServiceImpl<AdTemplate, Long, AdT
         for (Map<String, Object> o : adTemplate.getAdFileList()) {
             adTemplate.getAdFileString().add(JsonMapper.nonDefaultMapper().toJson(o));
         }
+        adTemplate.setAllowCity(StringUtils.join(adTemplate.getAllowCityList(), ","));
         return adTemplate;
     }
 

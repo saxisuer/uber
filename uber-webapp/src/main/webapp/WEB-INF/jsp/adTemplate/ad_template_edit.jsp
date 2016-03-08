@@ -69,11 +69,9 @@
                         <input class="textbox-text textbox-prompt" name="allowCity" value="${adTemplate.allowCity}" id="allowCity"/>
                     </div>
                 </div>
-
-                <div class="formgourp">
+                <div>
                     <div>
-                        <div id="showSelect" style="width: 550px;overflow:auto;max-height: 200px;max-width:650px;white-space: normal;">
-                        </div>
+                        <div id="showSelect" style="width: 550px;overflow:auto;max-height: 200px;max-width:650px;white-space: normal;"></div>
                     </div>
                 </div>
             </div>

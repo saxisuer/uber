@@ -20,5 +20,7 @@ import java.util.Map;
 public interface DeviceInfoDao extends BaseDao<DeviceInfo, Long> {
 
 
-    List<HashMap<String,Object>> statistic(Map<String,Object> param);
+    List<HashMap<String, Object>> statistic(Map<String, Object> param);
+
+    List<DeviceInfo> getListByTempId(Long tempId);
 }

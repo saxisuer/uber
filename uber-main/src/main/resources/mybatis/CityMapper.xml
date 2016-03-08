@@ -34,6 +34,12 @@
         ORDER BY city_name
     </select>
 
+
+    <select id="loadCityByAdTemp" parameterType="long" resultType="city">
+        SELECT * from t_city
+        WHERE city_code IN (SELECT city_code FROM t_ad_template_city_rel WHERE ad_temp_id = #{VALUE})
+    </select>
+
     <select id="getById" parameterType="long" resultType="city">
         SELECT * FROM t_city
         <where>

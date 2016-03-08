@@ -14,6 +14,16 @@
           LEFT JOIN t_device_group ON t_device_info.device_group_id = t_device_group.id
     </select>
 
+    <select id="getListByAdTempId" resultType="deviceInfo" parameterType="long">
+        SELECT
+        t_device_info.*,
+        t_city.city_name_cn
+        FROM t_device_info
+        LEFT JOIN t_city ON t_device_info.city_code = t_city.city_code
+        WHERE t_city.city_code IN (SELECT city_code FROM t_ad_template_city_rel WHERE ad_temp_id = #{VALUE})
+    </select>
+
+
     <update id="update" parameterType="deviceInfo">
         UPDATE t_device_info
         <set>

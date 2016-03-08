@@ -1,5 +1,6 @@
 package com.uber.uberfamily.service;
 
+import com.github.pagehelper.PageInfo;
 import com.uber.uberfamily.dao.DeviceGroupDao;
 import com.uber.uberfamily.framework.BaseService;
 import com.uber.uberfamily.model.DeviceGroup;
@@ -18,4 +19,6 @@ import java.util.Map;
 public interface DeviceGroupService extends BaseService<DeviceGroup, Long, DeviceGroupDao> {
 
     List<Map<String, Object>> getDeviceGroupCombo(Long cityCode);
+
+    PageInfo<DeviceGroup> getListByTempId(Long tempId);
 }

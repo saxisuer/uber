@@ -1,10 +1,13 @@
 package com.uber.uberfamily.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.uber.uberfamily.dao.DeviceInfoDao;
 import com.uber.uberfamily.framework.BaseServiceImpl;
 import com.uber.uberfamily.framework.MyBatisService;
 import com.uber.uberfamily.model.DeviceInfo;
 import com.uber.uberfamily.service.DeviceInfoService;
+import org.springframework.util.Assert;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -30,5 +33,13 @@ public class DeviceInfoServiceImpl extends BaseServiceImpl<DeviceInfo, Long, Dev
     @Override
     public List<HashMap<String, Object>> statistic(Map<String, Object> param) {
         return this.getBaseDao().statistic(param);
+    }
+
+    @Override
+    public PageInfo<DeviceInfo> getListByTempId(Long tempId) {
+        Assert.notNull(tempId);
+        PageHelper.startPage(0, 0);
+        List<DeviceInfo> list = this.getBaseDao().getListByTempId(tempId);
+        return new PageInfo<DeviceInfo>(list);
     }
 }

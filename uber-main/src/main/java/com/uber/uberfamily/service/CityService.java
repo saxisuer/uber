@@ -1,5 +1,6 @@
 package com.uber.uberfamily.service;
 
+import com.github.pagehelper.PageInfo;
 import com.uber.uberfamily.dao.CityDao;
 import com.uber.uberfamily.framework.BaseService;
 import com.uber.uberfamily.model.City;
@@ -18,4 +19,7 @@ import java.util.Map;
 public interface CityService extends BaseService<City, Long, CityDao> {
 
     List<Map<String, Object>> getCityListForCombo();
+
+
+    PageInfo<City> loadCityByAdTemp(Long tempId);
 }

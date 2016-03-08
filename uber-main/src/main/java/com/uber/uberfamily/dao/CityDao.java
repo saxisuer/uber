@@ -20,4 +20,6 @@ public interface CityDao extends BaseDao<City, Long> {
 
 
     List<Map<String, Object>> getCityListForCombo();
+
+    List<City> loadCityByAdTemp(Long tempId);
 }

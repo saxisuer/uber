@@ -5,6 +5,9 @@ import com.uber.uberfamily.framework.DataStore;
 import com.uber.uberfamily.model.AdTemplate;
 import com.uber.uberfamily.model.User;
 import com.uber.uberfamily.service.AdTemplateService;
+import com.uber.uberfamily.service.CityService;
+import com.uber.uberfamily.service.DeviceGroupService;
+import com.uber.uberfamily.service.DeviceInfoService;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
@@ -43,6 +46,15 @@ public class AdTemplateController {
 
     @Autowired
     private AdTemplateService adTemplateService;
+
+    @Autowired
+    private CityService cityService;
+
+    @Autowired
+    private DeviceGroupService deviceGroupService;
+
+    @Autowired
+    private DeviceInfoService deviceInfoService;
 
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)

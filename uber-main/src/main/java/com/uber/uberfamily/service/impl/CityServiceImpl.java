@@ -1,11 +1,14 @@
 package com.uber.uberfamily.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.uber.uberfamily.dao.CityDao;
 import com.uber.uberfamily.framework.BaseServiceImpl;
 import com.uber.uberfamily.framework.MyBatisService;
 import com.uber.uberfamily.model.City;
 import com.uber.uberfamily.service.CityService;
 import org.apache.log4j.Logger;
+import org.springframework.util.Assert;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -32,5 +35,13 @@ public class CityServiceImpl extends BaseServiceImpl<City, Long, CityDao> implem
     @Override
     public List<Map<String, Object>> getCityListForCombo() {
         return this.getBaseDao().getCityListForCombo();
+    }
+
+    @Override
+    public PageInfo<City> loadCityByAdTemp(Long tempId) {
+        Assert.notNull(tempId);
+        PageHelper.startPage(0, 0);
+        List<City> list = this.getBaseDao().loadCityByAdTemp(tempId);
+        return new PageInfo<City>(list);
     }
 }

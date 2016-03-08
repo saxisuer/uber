@@ -20,4 +20,6 @@ public interface DeviceGroupDao extends BaseDao<DeviceGroup, Long> {
 
 
     List<Map<String, Object>> getDeviceGroupCombo(Long cityCode);
+
+    List<DeviceGroup> getListByTempId(Long tempId);
 }
