@@ -61,6 +61,12 @@
                     </div>
                 </div>
                 <div class="formgourp">
+                    <label>应用城市: </label>
+                    <div class="textbox">
+                        <input class="textbox-text textbox-prompt" name="allowCity" id="allowCity"/>
+                    </div>
+                </div>
+                <div class="formgourp">
                     <div>
                         <div id="showSelect" style="width: 550px;overflow:auto;max-height: 200px;max-width:650px;white-space: normal;">
                         </div>
@@ -104,6 +110,21 @@
                     $('#fileList').dialog('close');
                 }
             }]
+        });
+
+        $('input[name=templateName]').validatebox({
+            required: true
+        });
+        $('input[name=templateDesc]').validatebox({
+            required: true
+        });
+        $('#allowCity').combobox({
+            required: true,
+            url: '${pageContext.request.contextPath}/city/getCityListForCombo',
+            method: 'GET',
+            valueField: 'cityCode',
+            textField: 'cityNameCn',
+            multiple: true
         });
 
         $('#selectFile').linkbutton({

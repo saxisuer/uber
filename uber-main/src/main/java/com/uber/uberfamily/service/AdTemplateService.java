@@ -20,5 +20,10 @@ public interface AdTemplateService extends BaseService<AdTemplate, Long, AdTempl
 
     void deleteRelByTempId(Long id);
 
-    void createRel(List<Map<String,Object>> insertList);
+    void createRel(List<Map<String, Object>> insertList);
+
+
+    void deleteCityRel(Long id);
+
+    void createCityRel(List<Map<String, Object>> insertMap);
 }

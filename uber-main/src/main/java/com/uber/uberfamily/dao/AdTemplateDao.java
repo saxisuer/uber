@@ -22,4 +22,8 @@ public interface AdTemplateDao extends BaseDao<AdTemplate, Long> {
     void createRel(List<Map<String, Object>> insertMap);
 
     void deleteRelByTempId(Long id);
+
+    void deleteCityRel(Long id);
+
+    void createCityRel(List<Map<String, Object>> insertMap);
 }

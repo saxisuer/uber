@@ -41,18 +41,27 @@
             <result column="ad_file_id" property="fileId" javaType="long"/>
             <result column="ad_file_file_title" property="fileTitle" javaType="string"/>
         </collection>
+        <collection property="allowCityList" ofType="long" fetchType="lazy">
+            <result column="ad_file_city_code"/>
+        </collection>
     </resultMap>
 
     <select id="getById" parameterType="long" resultMap="adTemplateMap">
         SELECT
         t_ad_file_template.*,
         t_ad_template_file_rel.ad_file_id AS ad_file_id,
-        t_ad_fileList.fileTitle AS ad_file_file_title
-        FROM t_ad_file_template, t_ad_template_file_rel, t_ad_fileList
+        t_ad_fileList.fileTitle AS ad_file_file_title,
+        t_city.city_code AS ad_file_city_code
+        FROM t_ad_file_template
+        LEFT JOIN (t_ad_template_file_rel, t_ad_fileList, t_ad_template_city_rel, t_city)
+        ON
+        (t_ad_file_template.id = t_ad_template_file_rel.ad_temp_id
+        AND t_ad_template_file_rel.ad_file_id = t_ad_fileList.id
+        AND t_ad_file_template.id = t_ad_template_city_rel.ad_temp_id
+        AND t_city.city_code =
+        t_ad_template_city_rel.city_code)
         <where>
-            t_ad_file_template.id = t_ad_template_file_rel.ad_temp_id
-            AND t_ad_template_file_rel.ad_file_id = t_ad_fileList.id
-            AND t_ad_file_template.id = #{value}
+            t_ad_file_template.id = #{value}
         </where>
     </select>
 
@@ -69,5 +78,17 @@
 
     <delete id="delete" parameterType="long">
         delete from t_ad_file_template WHERE id=#{value}
+    </delete>
+
+
+    <insert id="createCityRel" parameterType="java.util.ArrayList">
+        INSERT INTO t_ad_template_city_rel(ad_temp_id,city_code) VALUES
+        <foreach collection="list" separator="," item="item">
+            (#{item.tempId},#{item.cityCode})
+        </foreach>
+    </insert>
+
+    <delete id="deleteCityRel" parameterType="long">
+        DELETE FROM t_ad_template_city_rel WHERE ad_temp_id=#{VALUE}
     </delete>
 </mapper>

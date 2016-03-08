@@ -35,8 +35,8 @@ public class AdTemplateServiceImplTest {
 
     @Test
     public void testGetById() throws Exception {
-        AdTemplate adTemplate = adTemplateService.getById(1L);
-        System.out.println(adTemplate);
+        AdTemplate adTemplate = adTemplateService.getById(18L);
+        System.out.println(adTemplate.toString());
     }
 
 

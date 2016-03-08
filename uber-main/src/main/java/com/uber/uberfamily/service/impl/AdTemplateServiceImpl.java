@@ -50,6 +50,12 @@ public class AdTemplateServiceImpl extends BaseServiceImpl<AdTemplate, Long, AdT
             makeInsrtList(model, fileIds, mapList);
             this.createRel(mapList);
         }
+        if (StringUtils.isNotEmpty(model.getAllowCity())) {
+            List<String> cityCodes = Arrays.asList(model.getAllowCity().split(","));
+            List<Map<String, Object>> cityList = new ArrayList<Map<String, Object>>();
+            makeCityList(model, cityCodes, cityList);
+            this.createCityRel(cityList);
+        }
         return model;
     }
 
@@ -72,7 +78,23 @@ public class AdTemplateServiceImpl extends BaseServiceImpl<AdTemplate, Long, AdT
             makeInsrtList(model, fileIds, mapList);
             this.createRel(mapList);
         }
+        if (StringUtils.isNotEmpty(model.getAllowCity())) {
+            this.deleteCityRel(model.getId());
+            List<String> cityCodes = Arrays.asList(model.getAllowCity().split(","));
+            List<Map<String, Object>> cityList = new ArrayList<Map<String, Object>>();
+            makeCityList(model, cityCodes, cityList);
+            this.createCityRel(cityList);
+        }
         return model;
+    }
+
+    private void makeCityList(AdTemplate model, List<String> cityCodes, List<Map<String, Object>> cityList) {
+        for (String cityCode : cityCodes) {
+            Map<String, Object> ins = new HashMap<String, Object>();
+            ins.put("tempId", model.getId());
+            ins.put("cityCode", cityCode);
+            cityList.add(ins);
+        }
     }
 
     @Override
@@ -84,6 +106,16 @@ public class AdTemplateServiceImpl extends BaseServiceImpl<AdTemplate, Long, AdT
     @Override
     public void createRel(List<Map<String, Object>> insertList) {
         this.baseDao.createRel(insertList);
+    }
+
+    @Override
+    public void deleteCityRel(Long id) {
+        this.getBaseDao().deleteCityRel(id);
+    }
+
+    @Override
+    public void createCityRel(List<Map<String, Object>> insertMap) {
+        this.getBaseDao().createCityRel(insertMap);
     }
 
     @Override

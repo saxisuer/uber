@@ -57,7 +57,8 @@
                 {field: 'templateName', title: '模板名称', width: 100, halign: 'center', align: 'left'},
                 {field: 'templateDesc', title: '模板备注', width: 100, halign: 'center', align: 'left'},
                 {field: 'creator', title: '创建人', width: 100, halign: 'center', align: 'left'},
-                {field: 'fileCount', title: '广告个数', width: 100, halign: 'center', align: 'left'}
+                {field: 'fileCount', title: '广告个数', width: 100, halign: 'center', align: 'left'},
+                {field: 'id', title: '操作', formatter: gridFormatter}
             ]],
             toolbar: '#toolbar',
             pagination: true,
@@ -111,6 +112,16 @@
                 }
             });
         });
+
+
+        function gridFormatter(value, rowData, rowIndex) {
+            var rowId = rowData.id;
+            var url = "";
+            url += "<a title='城市绑定' onclick='javascript:void(" + rowId + ")'>城市绑定 </a>&nbsp;&nbsp;";
+            url += "<a title='设备组绑定' onclick='javascript:void(" + rowId + ")'>设备组绑定 </a>";
+            url += "<a title='设备绑定' onclick='javascript:void(" + rowId + ")'>设备绑定 </a>";
+            return url;
+        }
 
         //刷新
         $("#refresh").on("click", function () {
