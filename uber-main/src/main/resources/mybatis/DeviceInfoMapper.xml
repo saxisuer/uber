@@ -14,13 +14,8 @@
           LEFT JOIN t_device_group ON t_device_info.device_group_id = t_device_group.id
     </select>
 
-    <select id="getListByAdTempId" resultType="deviceInfo" parameterType="long">
-        SELECT
-        t_device_info.*,
-        t_city.city_name_cn
-        FROM t_device_info
-        LEFT JOIN t_city ON t_device_info.city_code = t_city.city_code
-        WHERE t_city.city_code IN (SELECT city_code FROM t_ad_template_city_rel WHERE ad_temp_id = #{VALUE})
+    <select id="getListByAdTempId" resultType="deviceInfo" parameterType="long" statementType="CALLABLE">
+        call getDeviceByAdTempId(#{VALUE })
     </select>
 
 
@@ -82,5 +77,30 @@
                                                      FROM t_call_log
                                                      GROUP BY deviceUUID) t2
             ON t1.deviceUUID = t2.deviceUUID
+    </select>
+
+
+    <select id="getListByType" parameterType="java.util.Map" resultType="deviceInfo">
+        SELECT id,deviceUUID from t_device_info
+        <where>
+            <if test="bindType =='city'">
+                city_code IN
+                <foreach collection="bindIds" separator="," open="(" close=")" item="item">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="bindType =='group'">
+                device_group_id IN
+                <foreach collection="bindIds" item="item" close=")" open="(" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="bindType =='device'">
+                id IN
+                <foreach collection="bindIds" item="item" close=")" open="(" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
     </select>
 </mapper>

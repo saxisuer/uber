@@ -85,7 +85,7 @@
 <script type="text/javascript">
     $(function () {
         $('#cityCodeCombox').combobox({
-            url: '${pageContext.request.contextPath}/city/getCityListForCombo',
+            url: '${pageContext.request.contextPath}/city/getCityListForCombo?type=1',
             method: 'GET',
             valueField: 'cityCode',
             editable: false,

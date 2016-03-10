@@ -23,4 +23,7 @@ public interface DeviceInfoService extends BaseService<DeviceInfo, Long, DeviceI
     List<HashMap<String, Object>> statistic(Map<String, Object> param);
 
     PageInfo<DeviceInfo> getListByTempId(Long tempId);
+
+    List<DeviceInfo> getListByType(String bindType, String bindId);
+
 }

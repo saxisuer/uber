@@ -18,7 +18,7 @@ import java.util.Map;
  */
 public interface CityService extends BaseService<City, Long, CityDao> {
 
-    List<Map<String, Object>> getCityListForCombo();
+    List<Map<String, Object>> getCityListForCombo(Long type);
 
 
     PageInfo<City> loadCityByAdTemp(Long tempId);

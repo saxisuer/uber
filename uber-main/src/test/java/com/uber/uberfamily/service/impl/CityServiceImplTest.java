@@ -30,7 +30,7 @@ public class CityServiceImplTest {
 
     @Test
     public void testLoadCityByAdTemp() throws Exception {
-        PageInfo pageInfo = cityService.loadCityByAdTemp(5L);
+        PageInfo pageInfo = cityService.loadCityByAdTemp(1L);
         System.out.println(pageInfo);
     }
 }

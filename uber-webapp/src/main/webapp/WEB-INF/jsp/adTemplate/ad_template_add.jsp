@@ -39,7 +39,7 @@
     <input name="id" value="${adTemplate.id}" type="hidden"/>
     <input id="adFileIds" name="adFileIds" value="${adTemplate.adFileIds}" type="hidden"/>
     <div class="user-form">
-        <h2>新增广告组</h2>
+        <h2>新增广告模板</h2>
         <div class="yui3-g">
             <div class="yui3-u-1-2">
                 <div class="formgourp">
@@ -123,7 +123,26 @@
             method: 'GET',
             valueField: 'cityCode',
             textField: 'cityNameCn',
-            multiple: true
+            multiple: true,
+            editable: false,
+            onSelect: function (record) {
+                if (record.cityCode != '1') {
+                    //判断是否已经选择了全部城市
+                    var a = $('#allowCity').combobox('getValues');
+                    console.log(a);
+                    for (var i in a) {
+                        if (a[i] == '1') {
+                            $.messager.alert('提示', '已经选择全部城市,无需选择其他城市');
+                            $('#allowCity').combobox('clear');
+                            $('#allowCity').combobox('setValues', '1');
+                            return false;
+                        }
+                    }
+                } else {
+                    $('#allowCity').combobox('clear');
+                    $('#allowCity').combobox('setValues', '1');
+                }
+            }
         });
 
         $('#selectFile').linkbutton({

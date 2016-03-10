@@ -18,7 +18,6 @@ import java.util.Map;
 @MyBatisRepository
 public interface AdTemplateDao extends BaseDao<AdTemplate, Long> {
 
-
     void createRel(List<Map<String, Object>> insertMap);
 
     void deleteRelByTempId(Long id);
@@ -26,4 +25,6 @@ public interface AdTemplateDao extends BaseDao<AdTemplate, Long> {
     void deleteCityRel(Long id);
 
     void createCityRel(List<Map<String, Object>> insertMap);
+
+    void bindDevice(Map<String, Object> insertMap);
 }

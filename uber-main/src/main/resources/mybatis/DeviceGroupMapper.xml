@@ -11,10 +11,8 @@
         </where>
     </select>
 
-    <select id="getListByTempId" parameterType="long" resultType="deviceGroup">
-        SELECT t_device_group.* ,t_city.city_name_cn
-        FROM t_device_group LEFT JOIN t_city ON t_device_group.city_code= t_city.city_code
-        WHERE t_city.city_code IN (SELECT city_code FROM t_ad_template_city_rel WHERE ad_temp_id = #{VALUE})
+    <select id="getListByTempId" parameterType="long" resultType="deviceGroup" statementType="CALLABLE">
+      call getDeviceGroupByTempId(#{VALUE })
     </select>
 
     <insert id="create" parameterType="deviceGroup" useGeneratedKeys="true" keyProperty="id">

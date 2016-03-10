@@ -22,5 +22,7 @@ public interface DeviceInfoDao extends BaseDao<DeviceInfo, Long> {
 
     List<HashMap<String, Object>> statistic(Map<String, Object> param);
 
-    List<DeviceInfo> getListByTempId(Long tempId);
+    List<DeviceInfo> getListByAdTempId(Long tempId);
+
+    List<DeviceInfo> getListByType(Map<String, Object> searchMap);
 }

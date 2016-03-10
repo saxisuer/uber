@@ -88,4 +88,8 @@
     <delete id="deleteCityRel" parameterType="long">
         DELETE FROM t_ad_template_city_rel WHERE ad_temp_id=#{VALUE}
     </delete>
+
+    <insert id="bindDevice" parameterType="java.util.Map">
+        REPLACE INTO t_ad_template_device_rel(device_id,ad_temp_id)VALUES (#{deviceId},#{adTempId});
+    </insert>
 </mapper>

@@ -44,4 +44,11 @@ public class DeviceInfoServiceImplTest {
         List l = deviceInfoService.statistic(null);
         System.out.println(l);
     }
+
+
+    @Test
+    public void test3() {
+        List l = deviceInfoService.getListByType("city", "32,23,23");
+        System.out.println(l);
+    }
 }

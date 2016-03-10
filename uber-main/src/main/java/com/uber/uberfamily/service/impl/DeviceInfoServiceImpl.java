@@ -39,7 +39,17 @@ public class DeviceInfoServiceImpl extends BaseServiceImpl<DeviceInfo, Long, Dev
     public PageInfo<DeviceInfo> getListByTempId(Long tempId) {
         Assert.notNull(tempId);
         PageHelper.startPage(0, 0);
-        List<DeviceInfo> list = this.getBaseDao().getListByTempId(tempId);
+        List<DeviceInfo> list = this.getBaseDao().getListByAdTempId(tempId);
         return new PageInfo<DeviceInfo>(list);
     }
+
+    @Override
+    public List<DeviceInfo> getListByType(String bindType, String bindId) {
+        String[] bindIds = bindId.split(",");
+        Map<String, Object> searchMap = new HashMap<String, Object>();
+        searchMap.put("bindType", bindType);
+        searchMap.put("bindIds", bindIds);
+        return this.getBaseDao().getListByType(searchMap);
+    }
+
 }

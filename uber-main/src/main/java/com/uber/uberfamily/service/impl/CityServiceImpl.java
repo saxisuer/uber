@@ -33,8 +33,8 @@ public class CityServiceImpl extends BaseServiceImpl<City, Long, CityDao> implem
     }
 
     @Override
-    public List<Map<String, Object>> getCityListForCombo() {
-        return this.getBaseDao().getCityListForCombo();
+    public List<Map<String, Object>> getCityListForCombo(Long type) {
+        return this.getBaseDao().getCityListForCombo(type);
     }
 
     @Override

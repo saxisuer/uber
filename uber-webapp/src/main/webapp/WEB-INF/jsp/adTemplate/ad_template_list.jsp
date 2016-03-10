@@ -29,15 +29,15 @@
 <!-- 数据表格区域 -->
 <table id="users" style="table-layout:fixed;">
 </table>
-<div id="cityDialog">
-    <table id="city" style="table-layout:fixed;"></table>
+<div id="cityDialog" style="max-height: 280px;">
+    <table id="city"></table>
 </div>
-<div id="groupDialog">
-    <table id="group" style="table-layout:fixed;"></table>
+<div id="groupDialog" style="max-height: 280px;">
+    <table id="group"></table>
 </div>
 
-<div id="deviceDialog">
-    <table id="device" style="table-layout:fixed;"></table>
+<div id="deviceDialog" style="max-height: 280px;">
+    <table id="device"></table>
 </div>
 <!-- 表格顶部工具栏 -->
 <div id="toolbar">
@@ -76,9 +76,8 @@
         });
 
         $('#cityDialog').dialog({
-            height: 350,
             close: true,
-            title: 'cityDialog',
+            title: '城市列表',
             closed: true,
             modal: true,
             width: 550,
@@ -87,29 +86,111 @@
             collapsible: true,
             draggable: true,
             resizable: true,
-            onOpen: function () {
-            }
+            buttons: [{
+                text: '绑定',
+                iconCls: 'icon-save',
+                handler: function () {
+                    bindDevice('city')
+                }
+            }, {
+                text: '取消',
+                iconCls: 'icon-cancel',
+                handler: function () {
+                    $('#cityDialog').dialog('close');
+                }
+            }]
         });
         $('#city').datagrid({
-            idField: 'id',
+            autoLoad: false,
             method: 'POST',
-            url: '${ctx}/city/loadData',
+            url: '${ctx}/adTemplate/loadCityData',
             selectOnCheck: true,
             checkOnSelect: true,
             nowrap: true,
+            width: 550,
             fitColumns: true,
             rownumbers: true,
             showPageList: false,
-            singleSelect: true,
+            singleSelect: false,
+            onBeforeLoad: function () {
+                var opts = $(this).datagrid('options');
+                return opts.autoLoad;
+            },
+            onLoadSuccess: function (data) {
+                if (data.total > 0) {
+                    $('#cityDialog').dialog('open');
+                } else {
+                    $.messager.alert("提示", '尚无适合此模板的城市')
+                }
+            },
             columns: [[
                 {field: 'ck', checkbox: true},
-                {field: 'cityName', title: '城市发音', width: 100, halign: 'center', align: 'left'},
-                {field: 'cityNameCn', title: '城市名称', width: 100, halign: 'center', align: 'left'}
+                {field: 'cityName', title: '城市发音', width: 50, halign: 'center', align: 'left'},
+                {field: 'cityNameCn', title: '城市名称', width: 50, halign: 'center', align: 'left'}
+            ]]
+        });
+        $('#group').datagrid({
+            autoLoad: false,
+            method: 'POST',
+            url: '${ctx}/adTemplate/loadGroupData',
+            selectOnCheck: true,
+            checkOnSelect: true,
+            nowrap: true,
+            width: 540,
+            fitColumns: true,
+            rownumbers: true,
+            singleSelect: false,
+            onBeforeLoad: function () {
+                var opts = $(this).datagrid('options');
+                return opts.autoLoad;
+            },
+            onLoadSuccess: function (data) {
+                if (data.total > 0) {
+                    $('#groupDialog').dialog('open');
+                } else {
+                    $.messager.alert("提示", '尚无适合此模板的设备组')
+                }
+            },
+            columns: [[
+                {field: 'ck', checkbox: true},
+                {field: 'groupName', title: '设备组名称', width: 50, halign: 'center', align: 'left'},
+                {field: 'groupDesc', title: '设备组备注', width: 50, halign: 'center', align: 'left'},
+                {field: 'cityNameCn', title: '所属城市', width: 50, halign: 'center', align: 'left'}
+            ]]
+        });
+        $('#device').datagrid({
+            autoLoad: false,
+            method: 'POST',
+            url: '${ctx}/adTemplate/loadDeviceData',
+            selectOnCheck: true,
+            checkOnSelect: true,
+            nowrap: true,
+            width: 550,
+            fitColumns: true,
+            rownumbers: true,
+            showPageList: false,
+            singleSelect: false,
+            onLoadSuccess: function (data) {
+                if (data.total > 0) {
+                    $('#deviceDialog').dialog('open');
+                } else {
+                    $.messager.alert("提示", '尚无适合此模板的设备')
+                }
+            },
+            onBeforeLoad: function () {
+                var opts = $(this).datagrid('options');
+                return opts.autoLoad;
+            },
+            columns: [[
+                {field: 'ck', checkbox: true},
+                {field: 'deviceUUID', title: '设备ID', width: 50, halign: 'center', align: 'left'},
+                {field: 'groupName', title: '设备组', width: 50, halign: 'center', align: 'left'},
+                {field: 'cityNameCn', title: '市', width: 50, halign: 'center', align: 'left'}
             ]]
         });
         $('#groupDialog').dialog({
             close: true,
-            title: 'groupDialog',
+            title: '设备组列表',
             closed: true,
             modal: true,
             width: 550,
@@ -117,11 +198,24 @@
             maximizable: true,
             collapsible: true,
             draggable: true,
-            resizable: true
+            resizable: true,
+            buttons: [{
+                text: '绑定',
+                iconCls: 'icon-save',
+                handler: function () {
+                    bindDevice('group')
+                }
+            }, {
+                text: '取消',
+                iconCls: 'icon-cancel',
+                handler: function () {
+                    $('#groupDialog').dialog('close');
+                }
+            }]
         });
         $('#deviceDialog').dialog({
             close: true,
-            title: 'deviceDialog',
+            title: '设备列表',
             closed: true,
             modal: true,
             width: 550,
@@ -129,7 +223,20 @@
             maximizable: true,
             collapsible: true,
             draggable: true,
-            resizable: true
+            resizable: true,
+            buttons: [{
+                text: '绑定',
+                iconCls: 'icon-save',
+                handler: function () {
+                    bindDevice('device')
+                }
+            }, {
+                text: '取消',
+                iconCls: 'icon-cancel',
+                handler: function () {
+                    $('#deviceDialog').dialog('close');
+                }
+            }]
         });
 
         //新增弹出框
@@ -195,19 +302,59 @@
 
 
     function bindCity(rowId) {
+        $('#city').datagrid('options').autoLoad = true;
         $('#city').datagrid('load', {
             tempId: rowId
         });
-        $('#cityDialog').dialog('open');
     }
+
     function bindGroup(rowId) {
-        $('#groupDialog').dialog('open');
+        $('#group').datagrid('options').autoLoad = true;
+        $('#group').datagrid('load', {
+            tempId: rowId
+        });
     }
 
     function bindDeviceInfo(rowId) {
-        $('#deviceDialog').dialog('open');
+        $('#device').datagrid('options').autoLoad = true;
+        $('#device').datagrid('load', {
+            tempId: rowId
+        });
     }
 
+    function bindDevice(bindType) {
+        var adTempId = $('#users').datagrid('getSelected').id;
+        var selections = $('#city').datagrid('getSelections');
+        var cityIds = [];
+        $.each(selections, function (i, v) {
+            cityIds.push(v.cityCode);
+        });
+        $.ajax({
+            url: '${ctx}/adTemplate/bindDevice',
+            method: 'POST',
+            data: {
+                'adTempId': adTempId,
+                'bindId': cityIds.join(","),
+                'bindType': bindType
+            },
+            success: function (data) {
+                if (data.result == 'SUCCESS') {
+                    $.messager.show({
+                        title: '提示',
+                        msg: '绑定成功'
+                    });
+                    $('#cityDialog').dialog('close');
+                    $('#groupDialog').dialog('close');
+                    $('#deviceDialog').dialog('close');
+                } else {
+                    $.messager.alert('提示', '绑定失败');
+                }
+            },
+            error: function () {
+                $.messager.alert('提示', '系统故障');
+            }
+        })
+    }
     function formatStatus(val, row) {
         if (val == 1) {
             return '启用';

@@ -19,7 +19,7 @@ import java.util.Map;
 public interface CityDao extends BaseDao<City, Long> {
 
 
-    List<Map<String, Object>> getCityListForCombo();
+    List<Map<String, Object>> getCityListForCombo(Long type);
 
     List<City> loadCityByAdTemp(Long tempId);
 }

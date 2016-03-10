@@ -91,7 +91,7 @@ public class CityController {
 
     @ResponseBody
     @RequestMapping(value = "/getCityListForCombo", method = RequestMethod.GET)
-    public List<Map<String, Object>> getCityListForCombo() {
-        return this.cityService.getCityListForCombo();
+    public List<Map<String, Object>> getCityListForCombo(Long type) {
+        return this.cityService.getCityListForCombo(type);
     }
 }
