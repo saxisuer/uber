@@ -16,8 +16,8 @@
     </select>
 
     <insert id="create" useGeneratedKeys="true" keyProperty="id" parameterType="adTemplate">
-        insert into t_ad_file_template ( template_name, template_desc, create_time, creator) values
-        (#{templateName},#{templateDesc},#{createTime,jdbcType=TIME,javaType=Date},#{creator})
+        insert into t_ad_file_template ( template_name, template_desc, create_time, creator,is_default) values
+        (#{templateName},#{templateDesc},#{createTime,jdbcType=TIME,javaType=Date},#{creator},#{isDefault})
     </insert>
 
     <update id="update" parameterType="adTemplate">
@@ -25,6 +25,7 @@
         <set>
             <if test="templateName !=null">template_name = #{templateName},</if>
             <if test="templateDesc !=null">template_desc = #{templateDesc},</if>
+            <if test="isDefault !=null">is_default = #{isDefault},</if>
         </set>
         <where>
             id=#{id}
@@ -37,6 +38,7 @@
         <result column="template_desc" property="templateDesc"/>
         <result column="creator" property="creator"/>
         <result column="create_time" property="createTime"/>
+        <result column="is_default" property="isDefault"/>
         <collection property="adFileList" ofType="java.util.Map" fetchType="lazy">
             <result column="ad_file_id" property="fileId" javaType="long"/>
             <result column="ad_file_file_title" property="fileTitle" javaType="string"/>

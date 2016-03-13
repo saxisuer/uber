@@ -53,7 +53,7 @@
             required: true
         });
         $('#cityCode').combobox({
-            url: '${pageContext.request.contextPath}/city/getCityListForCombo',
+            url: '${pageContext.request.contextPath}/city/getCityListForCombo?type=1',
             method: 'GET',
             required: true,
             valueField: 'cityCode',

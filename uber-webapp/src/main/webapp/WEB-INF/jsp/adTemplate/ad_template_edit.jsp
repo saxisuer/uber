@@ -58,6 +58,12 @@
                     </div>
                 </div>
                 <div class="formgourp">
+                    <label>设为默认: </label>
+                    <div class="textbox">
+                        <input class="textbox-text textbox-prompt" name="isDefault" id="isDefault" value="${adTemplate.isDefault}"/>
+                    </div>
+                </div>
+                <div class="formgourp">
                     <label>广告列表：</label>
                     <div class="textbox">
                         <a id="selectFile" href="javascript:void(0)" onclick="openGrid()">选取广告</a>
@@ -93,6 +99,20 @@
         $('#templateDesc').validatebox({
             required: true
         });
+        $('#isDefault').switchbutton({
+            checked: true,
+            value: 'NO',
+            onText: '是',
+            offText: '否',
+            checked: $('#isDefault').val() == 'YES',
+            onChange: function (checked) {
+                if (checked) {
+                    $('#isDefault').switchbutton('setValue', 'YES')
+                } else {
+                    $('#isDefault').switchbutton('setValue', 'NO')
+                }
+            }
+        });
         $('#fileList').dialog({
             close: true,
             title: '广告列表',
@@ -127,7 +147,7 @@
             valueField: 'cityCode',
             textField: 'cityNameCn',
             multiple: true,
-            editable:false,
+            editable: false,
             onSelect: function (record) {
                 if (record.cityCode != '1') {
                     //判断是否已经选择了全部城市

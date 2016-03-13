@@ -55,6 +55,12 @@
                     </div>
                 </div>
                 <div class="formgourp">
+                    <label>设为默认: </label>
+                    <div class="textbox">
+                        <input class="textbox-text textbox-prompt" name="isDefault" id="isDefault"/>
+                    </div>
+                </div>
+                <div class="formgourp">
                     <label>广告列表：</label>
                     <div class="textbox">
                         <a id="selectFile" href="javascript:void(0)" onclick="openGrid()">选取广告</a>
@@ -116,6 +122,20 @@
         });
         $('input[name=templateDesc]').validatebox({
             required: true
+        });
+        $('#isDefault').switchbutton({
+            checked: true,
+            value: 'NO',
+            onText: '是',
+            offText: '否',
+            checked: $('#isDefault').val() == 'YES',
+            onChange: function (checked) {
+                if (checked) {
+                    $('#isDefault').switchbutton('setValue', 'YES')
+                } else {
+                    $('#isDefault').switchbutton('setValue', 'NO')
+                }
+            }
         });
         $('#allowCity').combobox({
             required: true,

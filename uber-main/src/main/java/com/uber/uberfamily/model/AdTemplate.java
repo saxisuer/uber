@@ -19,19 +19,26 @@ import java.util.Map;
 public class AdTemplate extends BaseModel {
 
     private String templateName;
+
     private String templateDesc;
+
     private Date createTime;
+
     private String creator;
 
     private String allowCity;
 
     private List<Long> allowCityList = new ArrayList<>();
+
     private Long fileCount;
+
     private List<Map<String, Object>> adFileList;
 
     private List<String> adFileString = new ArrayList<>();
 
     private String adFileIds;
+
+    private String isDefault;
 
 
     public String getTemplateName() {
@@ -112,6 +119,14 @@ public class AdTemplate extends BaseModel {
 
     public void setAllowCityList(List<Long> allowCityList) {
         this.allowCityList = allowCityList;
+    }
+
+    public String getIsDefault() {
+        return isDefault;
+    }
+
+    public void setIsDefault(String isDefault) {
+        this.isDefault = isDefault;
     }
 
     /**
