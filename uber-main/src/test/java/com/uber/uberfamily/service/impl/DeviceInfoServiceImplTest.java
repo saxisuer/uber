@@ -51,4 +51,11 @@ public class DeviceInfoServiceImplTest {
         List l = deviceInfoService.getListByType("city", "32,23,23");
         System.out.println(l);
     }
+
+
+    @Test
+    public void test4() {
+        Long i = deviceInfoService.getCountByUUID("adasd");
+        System.out.println(i);
+    }
 }

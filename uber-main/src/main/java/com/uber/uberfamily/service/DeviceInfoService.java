@@ -26,4 +26,5 @@ public interface DeviceInfoService extends BaseService<DeviceInfo, Long, DeviceI
 
     List<DeviceInfo> getListByType(String bindType, String bindId);
 
+    Long getCountByUUID(String deviceUUID);
 }

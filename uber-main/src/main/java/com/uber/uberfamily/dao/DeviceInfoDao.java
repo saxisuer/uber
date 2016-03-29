@@ -25,4 +25,6 @@ public interface DeviceInfoDao extends BaseDao<DeviceInfo, Long> {
     List<DeviceInfo> getListByAdTempId(Long tempId);
 
     List<DeviceInfo> getListByType(Map<String, Object> searchMap);
+
+    Long getCountByUUID(String deviceUUID);
 }

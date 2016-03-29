@@ -16,7 +16,6 @@
         #{md5Check},#{uploadByWho},#{uploadTime},#{isUploaded},#{startTime},#{endTime},#{boardcastMode},#{isAudited},#{auditTime},#{fileLevel})
     </insert>
 
-
     <select id="getById" parameterType="long" resultType="fileList">
         SELECT * FROM t_ad_fileList
         WHERE id= #{value}
@@ -66,5 +65,16 @@
                     ORDER BY file_list_id ASC
                     LIMIT 0, 1
         )
+    </select>
+
+    <select id="getFileListForDevice" parameterType="long" resultType="fileList">
+        SELECT *
+        FROM t_ad_fileList
+        WHERE id IN (
+          SELECT ad_file_id
+          FROM t_ad_template_file_rel
+          WHERE ad_temp_id = (SELECT ad_temp_id
+                              FROM t_ad_template_device_rel
+                              WHERE device_id = #{VALUE}))
     </select>
 </mapper>

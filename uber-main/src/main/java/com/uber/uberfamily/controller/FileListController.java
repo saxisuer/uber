@@ -6,6 +6,7 @@ import com.uber.uberfamily.framework.util.MD5Util;
 import com.uber.uberfamily.framework.util.PropertiestUtil;
 import com.uber.uberfamily.model.FileList;
 import com.uber.uberfamily.model.User;
+import com.uber.uberfamily.service.DeviceInfoService;
 import com.uber.uberfamily.service.FileListService;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.io.FileUtils;
@@ -49,6 +50,9 @@ public class FileListController {
 
     @Autowired
     private FileListService fileListService;
+
+    @Autowired
+    private DeviceInfoService deviceInfoService;
 
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -229,6 +233,36 @@ public class FileListController {
             result.put("error", "no file find");
         }
         return result;
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/getFileListByDeviceInfo/{deviceUUID}")
+    public Map<String, Object> getFileListByDeviceInfo(@PathVariable String deviceUUID, HttpServletRequest request) {
+        Map<String, Object> result = new HashMap<>();
+        Long deviceId = deviceInfoService.getCountByUUID(deviceUUID);
+        if (null == deviceId) {
+            result.put("result", "error");
+            result.put("msg", "no device find with this deviceUUID");
+            return result;
+        } else {
+            List<FileList> fileLists = fileListService.getFileListForDevice(deviceId);
+            List<Map<String, String>> resultContent = new ArrayList<Map<String, String>>();
+            for (FileList fileList : fileLists) {
+                Map<String, String> map = new HashMap<String, String>();
+                String savePath = File.separator + PropertiestUtil.pro.get("uploadPath").toString();
+                String context = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+                String downLoadFilePath = context + savePath + File.separator + fileList.getUniqueFileName();
+                logger.info(downLoadFilePath);
+                map.put("savePath", downLoadFilePath);
+                map.put("fileName", fileList.getFileName());
+                map.put("startTime", DateFormatUtils.format(fileList.getStartTime(), "yyyy-MM-dd HH:mm:ss"));
+                map.put("endTime", DateFormatUtils.format(fileList.getEndTime(), "yyyy-MM-dd HH:mm:ss"));
+                resultContent.add(map);
+            }
+            result.put("resultContent", resultContent);
+            return result;
+        }
     }
 
 }

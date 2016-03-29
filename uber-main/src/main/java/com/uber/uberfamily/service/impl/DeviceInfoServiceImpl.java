@@ -52,4 +52,10 @@ public class DeviceInfoServiceImpl extends BaseServiceImpl<DeviceInfo, Long, Dev
         return this.getBaseDao().getListByType(searchMap);
     }
 
+    @Override
+    public Long getCountByUUID(String deviceUUID) {
+        Assert.notNull(deviceUUID);
+        return this.baseDao.getCountByUUID(deviceUUID);
+    }
+
 }

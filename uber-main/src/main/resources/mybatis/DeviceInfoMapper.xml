@@ -18,6 +18,9 @@
         call getDeviceByAdTempId(#{VALUE })
     </select>
 
+    <select id="getCountByUUID" parameterType="java.lang.String" resultType="long">
+        SELECT id FROM t_device_info WHERE deviceUUID = #{VALUE,javaType=string}
+    </select>
 
     <update id="update" parameterType="deviceInfo">
         UPDATE t_device_info

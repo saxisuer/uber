@@ -20,4 +20,5 @@ public interface FileListService extends BaseService<FileList, Long, FileListDao
 
     FileList getFileForDevice(Long deviceId);
 
+    List<FileList> getFileListForDevice(Long deviceId);
 }

@@ -47,6 +47,11 @@ public class FileListServiceImpl extends BaseServiceImpl<FileList, Long, FileLis
     }
 
     @Override
+    public List<FileList> getFileListForDevice(Long deviceId) {
+        return this.baseDao.getFileListForDevice(deviceId);
+    }
+
+    @Override
     public void delete(Long id) {
         this.getBaseDao().deleteDeviceInfoRelByFileId(id);
         super.delete(id);

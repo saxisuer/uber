@@ -4,6 +4,7 @@ import com.uber.uberfamily.framework.BaseDao;
 import com.uber.uberfamily.framework.MyBatisRepository;
 import com.uber.uberfamily.model.FileList;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,4 +25,6 @@ public interface FileListDao extends BaseDao<FileList, Long> {
     FileList getFileForDevice(Long deviceId);
 
     void deleteDeviceInfoRelByFileId(Long fileListId);
+
+    List<FileList> getFileListForDevice(Long deviceId);
 }
