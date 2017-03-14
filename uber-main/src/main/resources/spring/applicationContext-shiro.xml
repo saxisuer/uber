@@ -34,6 +34,7 @@
         <property name="unauthorizedUrl" value="/unauth.html"/>
         <property name="filterChainDefinitions">
             <value>
+                /api/** =anon
                 /public/** = anon
                 /auth/login = anon
                 /404.jsp = anon

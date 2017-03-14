@@ -13,11 +13,11 @@ import com.uber.uberfamily.framework.BaseModel;
 public class City extends BaseModel {
 
 
-    public String cityName;
+    private String cityName;
 
-    public Long cityCode;
+    private Long cityCode;
 
-    public String cityNameCn;
+    private String cityNameCn;
 
 
     public String getCityName() {

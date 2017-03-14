@@ -26,6 +26,7 @@ public class DeviceGroup extends BaseModel {
      * 城市
      */
     private Long cityCode;
+
     private String cityNameCn;
 
 

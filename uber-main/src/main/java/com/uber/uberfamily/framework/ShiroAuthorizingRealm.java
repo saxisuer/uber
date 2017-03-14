@@ -27,11 +27,15 @@ import java.util.Set;
  */
 public class ShiroAuthorizingRealm extends AuthorizingRealm {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    private final RoleService roleService;
 
     @Autowired
-    private RoleService roleService;
+    public ShiroAuthorizingRealm(RoleService roleService, UserService userService) {
+        this.roleService = roleService;
+        this.userService = userService;
+    }
 
 
     /**

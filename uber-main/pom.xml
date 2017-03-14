@@ -7,6 +7,7 @@
         <groupId>com.uber</groupId>
         <version>1.0</version>
     </parent>
+    <artifactId>uber-main</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
     <dependencies>
@@ -31,7 +32,31 @@
             <artifactId>poi-ooxml</artifactId>
             <version>3.10.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.uber.sdk</groupId>
+            <artifactId>rides</artifactId>
+            <version>0.2.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.code.gson</groupId>
+                    <artifactId>gson</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
-    <artifactId>uber-main</artifactId>
+
 
 </project>
